@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap: definir cuando PUBLIC_SITE_URL esté configurado en despliegue
+Sitemap: https://edinson.proyectocolmena.com/sitemap-index.xml

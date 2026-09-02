@@ -9,7 +9,7 @@ El portfolio es un sitio **estático** generado por Astro. Hostinger sirve los a
 | Requisito | Detalle |
 |-----------|---------|
 | Plan | Cualquier hosting compartido con PHP ≥ 8.0 |
-| Dominio | **Pendiente** — configurar DNS |
+| Dominio | https://edinson.proyectocolmena.com |
 | SSL | Let's Encrypt vía panel Hostinger (obligatorio) |
 | Node.js en producción | **No requerido** — build local o CI |
 

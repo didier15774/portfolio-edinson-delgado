@@ -5,6 +5,7 @@ import AboutTeaser from '@/components/sections/AboutTeaser.astro';
 import JourneyCards from '@/components/sections/JourneyCards.astro';
 import ProjectCard from '@/components/sections/ProjectCard.astro';
 import CtaBanner from '@/components/sections/CtaBanner.astro';
+import Recommendations from '@/components/sections/Recommendations.astro';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import Button from '@/components/ui/Button.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
@@ -55,6 +56,7 @@ const projects = (await getCollection('projects'))
       </p>
     </div>
   </section>
+  <Recommendations />
   <CtaBanner
     title={homeContent.cta.title}
     text={homeContent.cta.text}

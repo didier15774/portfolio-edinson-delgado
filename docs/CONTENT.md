@@ -176,13 +176,13 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 - [ ] **Responsabilidad específica** en AProbar, Clicks y Colmena
 - [ ] **Problema de negocio** y **resultados verificables** por proyecto
 - [ ] **Capturas de pantalla** anonimizadas (sin datos personales de terceros)
-- [ ] **Dominio final** del portfolio (para SEO, OG y sitemap)
+- [ ] **Dominio final** del portfolio — `https://edinson.proyectocolmena.com`
 - [ ] **Foto profesional** (opcional; si no hay, diseño sin foto)
 
 ### Importantes (mejoran credibilidad)
 
 - [ ] Diagramas de arquitectura simplificados por proyecto
-- [ ] Testimonios o referencias (con permiso)
+- [ ] Testimonios o referencias (con permiso) — estructura en `src/data/recommendations.ts`; sección oculta hasta `authorized: true`
 - [ ] Certificaciones GeneXus u otras
 - [ ] Idiomas y nivel (español nativo, inglés técnico, etc.)
 - [ ] Disponibilidad horaria / modalidad preferida (remoto, híbrido)

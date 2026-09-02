@@ -114,21 +114,29 @@ Formato: **ADR** (Architecture Decision Record). Toda decisión importante se re
 
 ## ADR-012: Dominio centralizado
 
-**Estado:** Aceptada  
-**Fecha:** 2026-09-01  
-**Contexto:** Dominio de producción aún no definido.  
-**Decisión:** `DEFAULT_SITE_URL` y `PUBLIC_SITE_URL` en `src/data/site.ts`; `astro.config.ts` lee la misma variable de entorno. Componentes usan `getSiteUrl()` — sin hardcodear dominio en UI.  
-**Valor temporal:** `https://example.com`
+**Estado:** Aceptada (actualizada)  
+**Fecha:** 2026-09-02  
+**Contexto:** Dominio de producción definido.  
+**Decisión:** `PUBLIC_SITE_URL=https://edinson.proyectocolmena.com` en `.env` (no versionado) y `.env.example`. Build productivo vía `scripts/build-prod.mjs`. Sin URL válida no se emiten canonical, OG absolutos ni sitemap.  
+**Valor:** `https://edinson.proyectocolmena.com`
 
 ---
 
 ## ADR-013: Contacto vía SMTP Hostinger
 
-**Estado:** Aceptada (implementación diferida)  
-**Fecha:** 2026-09-01  
-**Contexto:** Preferencia de Edinson por SMTP en Hostinger.  
-**Decisión:** `contact.config.example.php` incluye sección SMTP; implementación completa en bloque 6.  
-**Consecuencias:** Bloque 1 solo incluye placeholder seguro en `contact.php`.
+**Estado:** Aceptada  
+**Fecha:** 2026-09-02  
+**Contexto:** Preferencia de SMTP en Hostinger; dominio definitivo conocido.  
+**Decisión:** `contact.config.example.php` con `mail_from` y `allowed_origins` del dominio; credenciales solo en `contact.config.php` del servidor. Guía en `docs/SMTP_HOSTINGER.md`.  
+
+---
+
+## ADR-014: Recomendaciones con autorización explícita
+
+**Estado:** Aceptada  
+**Fecha:** 2026-09-02  
+**Contexto:** Incluir referencias profesionales sin inventar contenido.  
+**Decisión:** `src/data/recommendations.ts` con campos texto, nombre, cargo, empresa, relación y `authorized`. Solo se publican ítems autorizados; si la lista filtrada está vacía, la sección no se renderiza. Textos originales; solo correcciones de claridad aprobadas por el autor.  
 
 ---
 
@@ -162,3 +170,4 @@ Formato: **ADR** (Architecture Decision Record). Toda decisión importante se re
 | Base de datos | Fuera de alcance v1 |
 | CMS headless | Complejidad y costo no justificados en v1 |
 | Formspree / Netlify Forms | Cambia arquitectura; preferir PHP en Hostinger |
+| Placeholders de recomendaciones | No mostrar sección vacía ni textos inventados |

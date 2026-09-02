@@ -1,0 +1,96 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import {
+  getPublishedRecommendations,
+  hasPublishedRecommendations,
+} from '@/data/recommendations';
+
+if (!hasPublishedRecommendations()) {
+  return null;
+}
+
+const items = getPublishedRecommendations();
+---
+
+<section class="section section--alt" id="recomendaciones" aria-labelledby="recomendaciones-heading">
+  <div class="container">
+    <SectionHeading
+      id="recomendaciones-heading"
+      title="Recomendaciones"
+      subtitle="Referencias profesionales autorizadas para su publicación."
+    />
+    <ul class="recommendations" role="list">
+      {
+        items.map((item) => (
+          <li class="recommendations__item card">
+            <blockquote class="recommendations__quote">
+              <p>{item.text}</p>
+            </blockquote>
+            <footer class="recommendations__meta">
+              <p class="recommendations__name">{item.name}</p>
+              <p class="recommendations__role text-muted">
+                {item.role}
+                {item.company ? ` · ${item.company}` : ''}
+              </p>
+              <p class="recommendations__relationship text-muted">{item.relationship}</p>
+            </footer>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .recommendations {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  @media (min-width: 768px) {
+    .recommendations {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .recommendations__quote {
+    margin: 0 0 var(--space-md);
+  }
+
+  .recommendations__quote p {
+    margin: 0;
+    font-size: var(--text-base);
+    line-height: 1.65;
+    color: var(--color-text);
+  }
+
+  .recommendations__quote p::before {
+    content: '“';
+  }
+
+  .recommendations__quote p::after {
+    content: '”';
+  }
+
+  .recommendations__name {
+    font-weight: 600;
+    margin: 0 0 var(--space-xs);
+    color: var(--color-text-heading);
+  }
+
+  .recommendations__role,
+  .recommendations__relationship {
+    margin: 0;
+    font-size: var(--text-sm);
+  }
+
+  .recommendations__relationship {
+    margin-top: var(--space-xs);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-accent-hover);
+  }
+</style>
