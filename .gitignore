@@ -17,6 +17,8 @@ public/api/contact.config.php
 
 # Lighthouse reports (local QA)
 lighthouse-*.json
+lighthouse-*.html
+localhost_*.report.html
 
 # OS
 .DS_Store
