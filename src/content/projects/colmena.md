@@ -4,10 +4,19 @@ summary: Empresa y plataforma de presentación de servicios, metodología y solu
 status: producción
 featured: true
 order: 3
+problem: >-
+  Presentar de forma clara los servicios, la metodología y las soluciones de software
+  de la empresa, como base de comunicación comercial y operativa.
+solution: >-
+  Plataforma de presentación de servicios y metodología, evolucionada desde la etapa
+  inicial como Colmena Comunidad Digital hacia Proyecto Colmena como actividad vigente.
+architecture: >-
+  Plataforma web orientada a presentación de servicios y soluciones de software.
 technologies: []
 features:
   - Presentación de servicios y metodología
   - Soluciones de software
+  - Actividad empresarial vigente desde 2016
 responsibility: []
 results: []
 images: []

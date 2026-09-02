@@ -2,6 +2,7 @@
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import Chip from '@/components/ui/Chip.astro';
 import Button from '@/components/ui/Button.astro';
+import ProjectGallery from '@/components/sections/ProjectGallery.astro';
 
 interface Props {
   title: string;
@@ -14,6 +15,7 @@ interface Props {
   problem?: string;
   solution?: string;
   architecture?: string;
+  images?: { src: string; alt: string; width: number; height: number }[];
 }
 
 const {
@@ -27,6 +29,7 @@ const {
   problem,
   solution,
   architecture,
+  images = [],
 } = Astro.props;
 ---
 
@@ -102,6 +105,8 @@ const {
         </ul>
       </section>
     )}
+
+    <ProjectGallery images={images} projectTitle={title} />
 
     <div class="case-cta">
       <Button href="/contacto/" variant="primary">Contactar sobre un proyecto similar</Button>

@@ -4,6 +4,15 @@ summary: Gestión de mantenimiento en campo desde dispositivos móviles.
 status: producción
 featured: true
 order: 2
+problem: >-
+  Gestionar trabajos de mantenimiento en campo con trazabilidad de clientes, edificios,
+  unidades, elementos y evidencia fotográfica desde dispositivos móviles.
+solution: >-
+  Sistema web con gestión de clientes, edificios, unidades y elementos; registro de trabajos,
+  fotografías, frecuencias e historial; generación de informes PDF.
+architecture: >-
+  Aplicación web PHP con MySQL, interfaz responsive para uso móvil en campo,
+  y APIs para integración con otros sistemas.
 technologies:
   - PHP
   - MySQL
@@ -13,10 +22,10 @@ technologies:
   - APIs
   - Servicios web
 features:
-  - Clientes y edificios
-  - Unidades y elementos
-  - Trabajos y fotografías
-  - Frecuencias e historial
+  - Clientes, edificios, unidades y elementos
+  - Órdenes de trabajo en campo
+  - Registro fotográfico de evidencia
+  - Frecuencias e historial de mantenimiento
   - Informes PDF
 responsibility: []
 results: []

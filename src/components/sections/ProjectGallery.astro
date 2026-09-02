@@ -1,0 +1,82 @@
+---
+interface ImageItem {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+interface Props {
+  images: ImageItem[];
+  projectTitle: string;
+}
+
+const { images, projectTitle } = Astro.props;
+---
+
+{
+  images.length > 0 ? (
+    <section class="case-block">
+      <h2 class="case-block__title">Capturas</h2>
+      <div class="project-gallery">
+        {images.map((image) => (
+          <figure class="project-gallery__item">
+            <img
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        ))}
+      </div>
+    </section>
+  ) : (
+    <section class="case-block project-gallery--empty" aria-label="Capturas pendientes">
+      <h2 class="case-block__title">Capturas</h2>
+      <p class="text-muted">
+        Las capturas de {projectTitle} se publicarán cuando estén disponibles y anonimizadas.
+      </p>
+    </section>
+  )
+}
+
+<style>
+  .case-block__title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .project-gallery {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  @media (min-width: 768px) {
+    .project-gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .project-gallery__item {
+    margin: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-elevated);
+  }
+
+  .project-gallery__item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .project-gallery--empty {
+    padding: var(--space-lg);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+</style>
