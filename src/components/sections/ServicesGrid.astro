@@ -1,0 +1,18 @@
+---
+import { services } from '@/data/services';
+import Card from '@/components/ui/Card.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+---
+
+<section class="section">
+  <div class="container">
+    <SectionHeading title="Servicios" subtitle="Áreas de trabajo con foco en sistemas empresariales." />
+    <div class="grid grid--2">
+      {services.map((service) => (
+        <Card title={service.title}>
+          <p class="card__text">{service.description}</p>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

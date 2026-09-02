@@ -1,14 +1,7 @@
 /**
  * Configuración central del sitio.
- * Cambiar DEFAULT_SITE_URL o PUBLIC_SITE_URL cuando el dominio esté definido.
+ * URL pública: definir PUBLIC_SITE_URL al desplegar (ver src/lib/site-url.ts).
  */
-
-export const DEFAULT_SITE_URL = 'https://example.com';
-
-export function getSiteUrl(): string {
-  const fromEnv = import.meta.env.PUBLIC_SITE_URL as string | undefined;
-  return (fromEnv ?? DEFAULT_SITE_URL).replace(/\/$/, '');
-}
 
 export const siteConfig = {
   name: 'Edinson Delgado',

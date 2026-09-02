@@ -1,6 +1,7 @@
 export interface ExperienceEntry {
   id: string;
   company: string;
+  previousName?: string;
   role: string;
   start: string;
   end: string | null;
@@ -16,7 +17,9 @@ export const experienceTimeline: ExperienceEntry[] = [
     start: '2024-04',
     end: '2026-01',
     periodLabel: 'abril 2024 — enero 2026',
-    highlights: [],
+    highlights: [
+      'Desarrollo y evolución de aplicaciones empresariales GeneXus en entornos productivos.',
+    ],
   },
   {
     id: 'ust',
@@ -25,15 +28,21 @@ export const experienceTimeline: ExperienceEntry[] = [
     start: '2021-03',
     end: '2024-02',
     periodLabel: 'marzo 2021 — febrero 2024',
-    highlights: [],
+    highlights: [
+      'Liderazgo técnico en innovación, desarrollo y evolución de soluciones de software.',
+    ],
   },
   {
     id: 'colmena',
-    company: 'Colmena Comunidad Digital',
+    company: 'Colmena',
+    previousName: 'Colmena Comunidad Digital',
     role: 'Fundador y Director',
     start: '2016-05',
-    end: '2021-01',
-    periodLabel: 'mayo 2016 — enero 2021',
-    highlights: [],
+    end: null,
+    periodLabel: 'mayo 2016 — actualidad',
+    highlights: [
+      'Fundación y dirección de la empresa; evolución hacia plataforma de servicios, metodología y soluciones de software.',
+      'Etapa inicial como Colmena Comunidad Digital (mayo 2016 — enero 2021).',
+    ],
   },
 ];

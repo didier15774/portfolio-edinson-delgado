@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:prod": "node -e \"if(!process.env.PUBLIC_SITE_URL){console.error('PUBLIC_SITE_URL requerida para build de producción');process.exit(1)}\" && astro build",
     "preview": "astro preview",
     "check": "astro check",
     "test": "npm run build"

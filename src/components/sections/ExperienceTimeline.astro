@@ -1,0 +1,94 @@
+---
+import { experienceTimeline } from '@/data/experience';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+---
+
+<section class="section" id="experiencia-timeline">
+  <div class="container container--narrow">
+    <SectionHeading
+      title="Experiencia profesional"
+      subtitle="Trayectoria en desarrollo, liderazgo técnico y dirección de proyectos."
+    />
+    <ol class="timeline">
+      {
+        experienceTimeline.map((entry) => (
+          <li class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__content">
+              <p class="timeline__period">{entry.periodLabel}</p>
+              <h3 class="timeline__role">{entry.role}</h3>
+              <p class="timeline__company">
+                {entry.company}
+                {entry.previousName && (
+                  <span class="timeline__alias"> (antes {entry.previousName})</span>
+                )}
+              </p>
+              {entry.highlights.length > 0 && (
+                <ul class="timeline__highlights">
+                  {entry.highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .timeline__item {
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    gap: var(--space-md);
+  }
+
+  .timeline__marker {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-top: 0.35rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px rgb(20 184 166 / 0.2);
+  }
+
+  .timeline__period {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-accent-hover);
+    margin: 0 0 var(--space-xs);
+  }
+
+  .timeline__role {
+    font-size: var(--text-lg);
+    margin: 0 0 var(--space-xs);
+  }
+
+  .timeline__company {
+    font-weight: 600;
+    margin: 0 0 var(--space-sm);
+  }
+
+  .timeline__alias {
+    font-weight: 400;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .timeline__highlights {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+</style>

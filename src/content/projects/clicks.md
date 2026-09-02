@@ -22,5 +22,3 @@ responsibility: []
 results: []
 images: []
 ---
-
-Contenido del caso de estudio pendiente de revisión final.

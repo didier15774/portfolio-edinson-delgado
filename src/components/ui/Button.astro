@@ -3,12 +3,13 @@ interface Props {
   href: string;
   variant?: 'primary' | 'secondary' | 'ghost';
   class?: string;
+  download?: string | boolean;
 }
 
-const { href, variant = 'primary', class: className = '' } = Astro.props;
+const { href, variant = 'primary', class: className = '', download } = Astro.props;
 const classes = ['btn', `btn--${variant}`, className].filter(Boolean).join(' ');
 ---
 
-<a href={href} class={classes}>
+<a href={href} class={classes} download={download}>
   <slot />
 </a>

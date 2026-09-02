@@ -1,0 +1,23 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import ExperienceTimeline from '@/components/sections/ExperienceTimeline.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { siteConfig } from '@/data/site';
+---
+
+<PageLayout
+  title={`Experiencia profesional — ${siteConfig.name}`}
+  description="Trayectoria en Sofis Solutions, Universal Soluciones Tecnológicas y Colmena."
+  canonicalPath="/experiencia/"
+>
+  <section class="section section--hero">
+    <div class="container">
+      <SectionHeading
+        as="h1"
+        title="Experiencia"
+        subtitle="Más de 20 años en desarrollo de software empresarial, liderazgo técnico y dirección de proyectos."
+      />
+    </div>
+  </section>
+  <ExperienceTimeline />
+</PageLayout>

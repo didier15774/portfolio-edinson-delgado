@@ -1,0 +1,42 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import ProjectCard from '@/components/sections/ProjectCard.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { siteConfig } from '@/data/site';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<PageLayout
+  title={`Proyectos — ${siteConfig.name}`}
+  description="Casos de estudio: AProbar, Clicks y Proyecto Colmena."
+  canonicalPath="/proyectos/"
+>
+  <section class="section section--hero">
+    <div class="container">
+      <SectionHeading
+        as="h1"
+        title="Proyectos"
+        subtitle="Casos de estudio con el problema abordado, tecnologías utilizadas y alcance del trabajo realizado."
+      />
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--2">
+        {
+          projects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              summary={project.data.summary}
+              status={project.data.status}
+              slug={project.id}
+              technologies={project.data.technologies}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</PageLayout>

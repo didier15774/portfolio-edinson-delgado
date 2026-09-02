@@ -1,0 +1,35 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import JourneyHero from '@/components/sections/JourneyHero.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Button from '@/components/ui/Button.astro';
+import { journeys } from '@/data/journeys';
+import { siteConfig } from '@/data/site';
+
+const journey = journeys.innovacion;
+---
+
+<PageLayout
+  title={`Innovación e IA aplicada — ${siteConfig.name}`}
+  description={journey.subheadline}
+  canonicalPath="/innovacion/"
+>
+  <JourneyHero journey={journey} />
+
+  <section class="section">
+    <div class="container container--narrow">
+      <SectionHeading
+        title="Dirección tecnológica con IA aplicada"
+        subtitle="Automatización y agentes especializados bajo metodología HEXYN, con revisión humana en cada entrega."
+      />
+      <ul>
+        <li>Evaluación práctica de GeneXus Next y su enfoque agéntico.</li>
+        <li>Desarrollo acelerado con control de calidad y responsabilidad técnica.</li>
+        <li>Automatización de tareas repetitivas sin comprometer arquitectura ni seguridad.</li>
+      </ul>
+      <p style="margin-top: 2rem;">
+        <Button href="/hexyn/" variant="primary">Conocer metodología HEXYN</Button>
+      </p>
+    </div>
+  </section>
+</PageLayout>

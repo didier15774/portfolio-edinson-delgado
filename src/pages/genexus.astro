@@ -1,0 +1,52 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import JourneyHero from '@/components/sections/JourneyHero.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Chip from '@/components/ui/Chip.astro';
+import { journeys } from '@/data/journeys';
+import { genexusProfile } from '@/data/genexus';
+import { siteConfig } from '@/data/site';
+
+const journey = journeys.genexus;
+---
+
+<PageLayout
+  title={`GeneXus Senior — ${siteConfig.name}`}
+  description={genexusProfile.summary}
+  canonicalPath="/genexus/"
+>
+  <JourneyHero journey={journey} />
+
+  <section class="section" id="experiencia-genexus">
+    <div class="container">
+      <SectionHeading
+        title={genexusProfile.headline}
+        subtitle={genexusProfile.summary}
+      />
+      <p class="text-muted genexus-versions">
+        GeneXus {genexusProfile.versions.from} a {genexusProfile.versions.to}. {genexusProfile.versions.next}.
+      </p>
+      <div class="grid grid--2">
+        {
+          genexusProfile.capabilities.map((group) => (
+            <article class="card">
+              <h3 class="card__title">{group.category}</h3>
+              <ul class="chip-list" role="list">
+                {group.items.map((item) => (
+                  <li role="listitem"><Chip label={item} /></li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .genexus-versions {
+    margin-bottom: var(--space-xl);
+    max-width: 42rem;
+  }
+</style>

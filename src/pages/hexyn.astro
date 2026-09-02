@@ -1,0 +1,27 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import HexynProcess from '@/components/sections/HexynProcess.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Button from '@/components/ui/Button.astro';
+import { hexynContent } from '@/data/hexyn';
+import { siteConfig } from '@/data/site';
+---
+
+<PageLayout
+  title={`${hexynContent.title} — ${siteConfig.name}`}
+  description={hexynContent.summary}
+  canonicalPath="/hexyn/"
+>
+  <section class="section section--hero">
+    <div class="container">
+      <SectionHeading as="h1" title={hexynContent.title} subtitle={hexynContent.summary} />
+      <p class="text-muted" style="max-width: 42rem;">{hexynContent.principle}</p>
+    </div>
+  </section>
+  <HexynProcess />
+  <section class="section">
+    <div class="container">
+      <Button href="/contacto/" variant="primary">Consultar sobre HEXYN</Button>
+    </div>
+  </section>
+</PageLayout>

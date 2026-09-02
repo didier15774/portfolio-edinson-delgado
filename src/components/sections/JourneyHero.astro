@@ -1,0 +1,55 @@
+---
+import type { JourneyConfig } from '@/data/journeys';
+import Button from '@/components/ui/Button.astro';
+
+interface Props {
+  journey: JourneyConfig;
+}
+
+const { journey } = Astro.props;
+---
+
+<section class="hero section--hero journey-hero" data-journey={journey.slug}>
+  <div class="container">
+    <p class="hero__eyebrow">Recorrido nivel {journey.level}</p>
+    <h1>{journey.headline}</h1>
+    <p class="hero__subtitle">{journey.subheadline}</p>
+    <ul class="journey-hero__list" role="list">
+      {journey.highlights.map((item) => (
+        <li class="journey-hero__item">{item}</li>
+      ))}
+    </ul>
+    <div class="hero__actions">
+      <Button href={journey.primaryCta.href} variant="primary">{journey.primaryCta.label}</Button>
+      <Button href={journey.secondaryCta.href} variant="secondary">{journey.secondaryCta.label}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .journey-hero__list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-lg) 0 0;
+    display: grid;
+    gap: var(--space-sm);
+    max-width: 40rem;
+  }
+
+  .journey-hero__item {
+    position: relative;
+    padding-left: 1.25rem;
+    color: var(--color-text-muted);
+  }
+
+  .journey-hero__item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+</style>

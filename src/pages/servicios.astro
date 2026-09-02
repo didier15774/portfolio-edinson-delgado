@@ -1,0 +1,29 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import ServicesGrid from '@/components/sections/ServicesGrid.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Button from '@/components/ui/Button.astro';
+import { siteConfig } from '@/data/site';
+---
+
+<PageLayout
+  title={`Servicios — ${siteConfig.name}`}
+  description="Desarrollo GeneXus Senior, mantenimiento, modernización e integración, y desarrollo asistido por agentes de IA."
+  canonicalPath="/servicios/"
+>
+  <section class="section section--hero">
+    <div class="container">
+      <SectionHeading
+        as="h1"
+        title="Servicios"
+        subtitle="Soluciones para empresas que necesitan evolucionar sistemas en producción o construir plataformas nuevas con calidad técnica."
+      />
+    </div>
+  </section>
+  <ServicesGrid />
+  <section class="section">
+    <div class="container">
+      <Button href="/contacto/" variant="primary">Consultar disponibilidad</Button>
+    </div>
+  </section>
+</PageLayout>

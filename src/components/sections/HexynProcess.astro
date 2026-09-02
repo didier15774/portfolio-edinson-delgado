@@ -1,0 +1,73 @@
+---
+import { hexynContent } from '@/data/hexyn';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+---
+
+<section class="section" id="proceso-hexyn">
+  <div class="container">
+    <SectionHeading title={hexynContent.title} subtitle={hexynContent.summary} />
+    <p class="hexyn-principle">{hexynContent.principle}</p>
+    <ol class="hexyn-steps">
+      {
+        hexynContent.steps.map((step) => (
+          <li class="hexyn-step card">
+            <span class="hexyn-step__order">{step.order}</span>
+            <div>
+              <h3 class="hexyn-step__title">{step.title}</h3>
+              <p class="hexyn-step__text">{step.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .hexyn-principle {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 48rem;
+    margin: 0 0 var(--space-2xl);
+  }
+
+  .hexyn-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .hexyn-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-md);
+    align-items: start;
+  }
+
+  .hexyn-step__order {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: rgb(20 184 166 / 0.15);
+    color: var(--color-accent-hover);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: var(--text-sm);
+  }
+
+  .hexyn-step__title {
+    font-size: var(--text-base);
+    margin: 0 0 var(--space-xs);
+  }
+
+  .hexyn-step__text {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+</style>

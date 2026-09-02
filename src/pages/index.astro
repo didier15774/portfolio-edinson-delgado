@@ -1,7 +1,16 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
+import ProjectCard from '@/components/sections/ProjectCard.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Button from '@/components/ui/Button.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
 import { siteConfig } from '@/data/site';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <PageLayout
@@ -9,5 +18,30 @@ import { siteConfig } from '@/data/site';
   description={`${siteConfig.tagline}. ${siteConfig.availability.label}.`}
   canonicalPath="/"
 >
+  <JsonLd type="Person" slot="head" />
   <Hero />
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        title="Proyectos destacados"
+        subtitle="Sistemas en producción y plataformas empresariales desarrolladas o lideradas."
+      />
+      <div class="grid grid--2">
+        {
+          projects.map((project) => (
+            <ProjectCard
+              title={project.data.title}
+              summary={project.data.summary}
+              status={project.data.status}
+              slug={project.id}
+              technologies={project.data.technologies}
+            />
+          ))
+        }
+      </div>
+      <p style="margin-top: 2rem;">
+        <Button href="/proyectos/" variant="secondary">Ver todos los proyectos</Button>
+      </p>
+    </div>
+  </section>
 </PageLayout>

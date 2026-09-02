@@ -1,0 +1,140 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { contactContent } from '@/data/contact';
+import { siteConfig } from '@/data/site';
+---
+
+<PageLayout
+  title={`${contactContent.title} — ${siteConfig.name}`}
+  description={`Contacto: ${siteConfig.email}. ${siteConfig.location.label}. ${siteConfig.availability.label}.`}
+  canonicalPath="/contacto/"
+>
+  <section class="section section--hero">
+    <div class="container">
+      <SectionHeading as="h1" title={contactContent.title} subtitle={contactContent.intro} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid--2">
+      <div>
+        <h2 class="contact-block__title">Canales directos</h2>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-list__label">Email</span>
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          </li>
+          <li>
+            <span class="contact-list__label">LinkedIn</span>
+            <a href={siteConfig.linkedin} rel="noopener noreferrer" target="_blank">linkedin.com/in/edinsondelgado</a>
+          </li>
+          <li>
+            <span class="contact-list__label">GitHub</span>
+            <a href={siteConfig.github} rel="noopener noreferrer" target="_blank">github.com/didier15774</a>
+          </li>
+          <li>
+            <span class="contact-list__label">Ubicación</span>
+            {siteConfig.location.label}
+          </li>
+          <li>
+            <span class="contact-list__label">Disponibilidad</span>
+            {siteConfig.availability.label} — {siteConfig.availability.areas.join(', ')}
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form card" method="post" action="/api/contact.php" aria-describedby="contact-form-note">
+        <h2 class="contact-block__title">Formulario</h2>
+        <p id="contact-form-note" class="card__text">{contactContent.note}</p>
+
+        <div class="contact-form__field contact-form__honeypot" aria-hidden="true">
+          <label for="website">{contactContent.formLabels.honeypot}</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="contact-form__field">
+          <label for="name">{contactContent.formLabels.name}</label>
+          <input type="text" id="name" name="name" required autocomplete="name" maxlength="100" disabled />
+        </div>
+
+        <div class="contact-form__field">
+          <label for="email">{contactContent.formLabels.email}</label>
+          <input type="email" id="email" name="email" required autocomplete="email" maxlength="254" disabled />
+        </div>
+
+        <div class="contact-form__field">
+          <label for="subject">{contactContent.formLabels.subject}</label>
+          <input type="text" id="subject" name="subject" required maxlength="150" disabled />
+        </div>
+
+        <div class="contact-form__field">
+          <label for="message">{contactContent.formLabels.message}</label>
+          <textarea id="message" name="message" rows="5" required minlength="20" maxlength="2000" disabled></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary" disabled>{contactContent.formLabels.submit}</button>
+      </form>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .contact-block__title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .contact-list__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-accent-hover);
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-form__field {
+    display: grid;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .contact-form__field label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+
+  .contact-form__field input,
+  .contact-form__field textarea {
+    width: 100%;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: inherit;
+  }
+
+  .contact-form__field input:disabled,
+  .contact-form__field textarea:disabled,
+  .contact-form button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  .contact-form__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>

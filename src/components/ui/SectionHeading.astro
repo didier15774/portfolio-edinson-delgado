@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  as?: 'h1' | 'h2';
+  id?: string;
+}
+
+const { title, subtitle, as: Tag = 'h2', id } = Astro.props;
+---
+
+<div class="section-heading">
+  <Tag class="section-heading__title" id={id}>{title}</Tag>
+  {subtitle && <p class="section-heading__subtitle text-muted">{subtitle}</p>}
+</div>
+
+<style>
+  .section-heading {
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-heading__title {
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-heading__subtitle {
+    font-size: var(--text-lg);
+    max-width: 42rem;
+    margin: 0;
+  }
+</style>

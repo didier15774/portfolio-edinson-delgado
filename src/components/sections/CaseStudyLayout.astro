@@ -1,0 +1,149 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Chip from '@/components/ui/Chip.astro';
+import Button from '@/components/ui/Button.astro';
+
+interface Props {
+  title: string;
+  summary: string;
+  status: string;
+  features: string[];
+  technologies: string[];
+  responsibility: string[];
+  results: string[];
+  problem?: string;
+  solution?: string;
+  architecture?: string;
+}
+
+const {
+  title,
+  summary,
+  status,
+  features,
+  technologies,
+  responsibility,
+  results,
+  problem,
+  solution,
+  architecture,
+} = Astro.props;
+---
+
+<article class="section">
+  <div class="container container--narrow">
+    <nav class="breadcrumb text-muted" aria-label="Ruta de navegación">
+      <a href="/proyectos/">Proyectos</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">{title}</span>
+    </nav>
+
+    <header class="case-header">
+      <Chip label={status} />
+      <h1>{title}</h1>
+      <p class="case-header__summary">{summary}</p>
+    </header>
+
+    {problem && (
+      <section class="case-block">
+        <SectionHeading as="h2" title="Problema" />
+        <p>{problem}</p>
+      </section>
+    )}
+
+    {solution && (
+      <section class="case-block">
+        <SectionHeading as="h2" title="Solución" />
+        <p>{solution}</p>
+      </section>
+    )}
+
+    {responsibility.length > 0 && (
+      <section class="case-block">
+        <SectionHeading as="h2" title="Responsabilidad" />
+        <ul>
+          {responsibility.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+    )}
+
+    {features.length > 0 && (
+      <section class="case-block">
+        <SectionHeading as="h2" title="Funcionalidades" />
+        <ul>
+          {features.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+    )}
+
+    {architecture && (
+      <section class="case-block">
+        <SectionHeading as="h2" title="Arquitectura" />
+        <p>{architecture}</p>
+      </section>
+    )}
+
+    {technologies.length > 0 && (
+      <section class="case-block">
+        <SectionHeading as="h2" title="Tecnologías" />
+        <ul class="chip-list" role="list">
+          {technologies.map((tech) => (
+            <li role="listitem"><Chip label={tech} /></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {results.length > 0 && (
+      <section class="case-block">
+        <SectionHeading as="h2" title="Resultados" />
+        <ul>
+          {results.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+    )}
+
+    <div class="case-cta">
+      <Button href="/contacto/" variant="primary">Contactar sobre un proyecto similar</Button>
+    </div>
+
+    <slot />
+  </div>
+</article>
+
+<style>
+  .breadcrumb {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .breadcrumb a {
+    text-decoration: none;
+  }
+
+  .case-header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .case-header h1 {
+    margin: var(--space-md) 0;
+  }
+
+  .case-header__summary {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+  }
+
+  .case-block {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .case-block ul {
+    padding-left: 1.25rem;
+    color: var(--color-text-muted);
+  }
+
+  .case-cta {
+    margin-top: var(--space-3xl);
+  }
+</style>

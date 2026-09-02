@@ -1,0 +1,40 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import CaseStudyLayout from '@/components/sections/CaseStudyLayout.astro';
+import { siteConfig } from '@/data/site';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Awaited<ReturnType<typeof getCollection<'projects'>>>[number];
+}
+
+const { project } = Astro.props;
+const { data } = project;
+---
+
+<PageLayout
+  title={`${data.title} — Proyectos — ${siteConfig.name}`}
+  description={data.summary}
+  canonicalPath={`/proyectos/${project.id}/`}
+>
+  <CaseStudyLayout
+    title={data.title}
+    summary={data.summary}
+    status={data.status}
+    features={data.features}
+    technologies={data.technologies}
+    responsibility={data.responsibility}
+    results={data.results}
+    problem={data.problem}
+    solution={data.solution}
+    architecture={data.architecture}
+  />
+</PageLayout>

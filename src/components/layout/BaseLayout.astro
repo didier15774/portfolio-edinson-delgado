@@ -1,7 +1,7 @@
 ---
-import '@/styles/global.css';
 import type { ThemeMode } from '@/data/site';
 import { siteConfig } from '@/data/site';
+import Meta from '@/components/seo/Meta.astro';
 
 interface Props {
   title?: string;
@@ -17,7 +17,6 @@ const {
   noindex = false,
 } = Astro.props;
 
-const canonicalUrl = new URL(canonicalPath, Astro.site);
 const themeDefault: ThemeMode = siteConfig.theme.default;
 ---
 
@@ -27,10 +26,6 @@ const themeDefault: ThemeMode = siteConfig.theme.default;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
-    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,15 +33,7 @@ const themeDefault: ThemeMode = siteConfig.theme.default;
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content={siteConfig.locale} />
-    <meta property="og:site_name" content={siteConfig.name} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <Meta {title} {description} {canonicalPath} {noindex} />
     <slot name="head" />
     <script is:inline define:vars={{ storageKey: siteConfig.theme.storageKey, defaultTheme: themeDefault }}>
       (function () {
@@ -63,6 +50,7 @@ const themeDefault: ThemeMode = siteConfig.theme.default;
   <body>
     <slot name="skip" />
     <slot />
-    <script src="/scripts/theme.js" defer></script>
+    <script is:inline src="/scripts/theme.js" defer></script>
+    <script is:inline src="/scripts/nav.js" defer></script>
   </body>
 </html>

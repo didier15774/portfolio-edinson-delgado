@@ -1,0 +1,41 @@
+---
+import { siteConfig } from '@/data/site';
+
+interface Props {
+  type?: 'Person' | 'WebPage';
+}
+
+const { type = 'WebPage' } = Astro.props;
+const siteUrl = Astro.site?.href ? Astro.site.href.replace(/\/$/, '') : undefined;
+
+if (!siteUrl) {
+  return null;
+}
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteConfig.name,
+  jobTitle: siteConfig.role,
+  url: siteUrl,
+  email: siteConfig.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: siteConfig.location.city,
+    addressCountry: siteConfig.location.country,
+  },
+  sameAs: [siteConfig.linkedin, siteConfig.github],
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: siteConfig.name,
+  url: siteUrl,
+  inLanguage: siteConfig.language,
+};
+
+const schema = type === 'Person' ? personSchema : webPageSchema;
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap se añadirá en bloque SEO cuando el dominio esté definido
-# Sitemap: https://example.com/sitemap-index.xml
+# Sitemap: definir cuando PUBLIC_SITE_URL esté configurado en despliegue

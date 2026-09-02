@@ -1,0 +1,50 @@
+---
+import { mainNavigation } from '@/data/navigation';
+import { siteConfig } from '@/data/site';
+import { isNavActive } from '@/lib/paths';
+
+const currentPath = Astro.url.pathname;
+const menuId = 'main-navigation-menu';
+---
+
+<nav class="site-nav" aria-label="Navegación principal">
+  <button
+    type="button"
+    class="site-nav__toggle"
+    aria-expanded="false"
+    aria-controls={menuId}
+    data-nav-toggle
+  >
+    <span class="site-nav__toggle-label">Menú</span>
+  </button>
+
+  <div class="site-nav__panel" id={menuId} data-nav-panel hidden>
+    <ul class="site-nav__list">
+      {
+        mainNavigation.map((item) => {
+          const active = isNavActive(currentPath, item.href);
+          return (
+            <li class="site-nav__item">
+              <a
+                href={item.href}
+                class:list={['site-nav__link', { 'is-active': active }]}
+                aria-current={active ? 'page' : undefined}
+                data-nav-link
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <div class="site-nav__actions">
+      <button type="button" class="btn btn--secondary site-nav__theme" data-theme-toggle>
+        Modo claro
+      </button>
+      <a href={siteConfig.cv.path} class="btn btn--primary site-nav__cv" download>
+        CV
+      </a>
+    </div>
+  </div>
+</nav>

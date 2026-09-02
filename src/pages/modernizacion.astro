@@ -1,0 +1,36 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import JourneyHero from '@/components/sections/JourneyHero.astro';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Button from '@/components/ui/Button.astro';
+import { journeys } from '@/data/journeys';
+import { siteConfig } from '@/data/site';
+
+const journey = journeys.modernizacion;
+---
+
+<PageLayout
+  title={`Modernización de sistemas — ${siteConfig.name}`}
+  description={journey.subheadline}
+  canonicalPath="/modernizacion/"
+>
+  <JourneyHero journey={journey} />
+
+  <section class="section">
+    <div class="container container--narrow">
+      <SectionHeading
+        title="Enfoque de modernización"
+        subtitle="Evolución técnica de sistemas críticos priorizando continuidad operativa, integración y calidad de entrega."
+      />
+      <ul>
+        <li>Integración mediante APIs REST y SOAP con sistemas existentes.</li>
+        <li>Migraciones y evolución arquitectónica planificadas por etapas.</li>
+        <li>Liderazgo técnico y coordinación con equipos y clientes.</li>
+        <li>Experiencia en plataformas empresariales en producción.</li>
+      </ul>
+      <p style="margin-top: 2rem;">
+        <Button href="/experiencia/" variant="primary">Ver experiencia profesional</Button>
+      </p>
+    </div>
+  </section>
+</PageLayout>

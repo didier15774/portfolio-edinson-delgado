@@ -1,6 +1,7 @@
 @import './tokens.css';
 @import './typography.css';
 @import './layout.css';
+@import './components/nav.css';
 @import './components/button.css';
 @import './components/card.css';
 @import './components/header.css';
