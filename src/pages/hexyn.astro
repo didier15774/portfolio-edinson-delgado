@@ -3,6 +3,7 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import HexynProcess from '@/components/sections/HexynProcess.astro';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import Button from '@/components/ui/Button.astro';
+import CtaBanner from '@/components/sections/CtaBanner.astro';
 import { hexynContent } from '@/data/hexyn';
 import { siteConfig } from '@/data/site';
 ---
@@ -13,15 +14,45 @@ import { siteConfig } from '@/data/site';
   canonicalPath="/hexyn/"
 >
   <section class="section section--hero">
-    <div class="container">
+    <div class="container container--narrow">
       <SectionHeading as="h1" title={hexynContent.title} subtitle={hexynContent.summary} />
-      <p class="text-muted" style="max-width: 42rem;">{hexynContent.principle}</p>
+      <p class="hexyn-lead">{hexynContent.principle}</p>
     </div>
   </section>
   <HexynProcess />
-  <section class="section">
-    <div class="container">
-      <Button href="/contacto/" variant="primary">Consultar sobre HEXYN</Button>
+  <section class="section section--alt">
+    <div class="container container--narrow">
+      <SectionHeading
+        title="Relación con otros recorridos"
+        subtitle="HEXYN complementa el desarrollo GeneXus y la modernización de sistemas."
+      />
+      <div class="hexyn-links">
+        <Button href="/innovacion/" variant="secondary">Recorrido Innovación</Button>
+        <Button href="/genexus/" variant="ghost">Recorrido GeneXus</Button>
+        <Button href="/modernizacion/" variant="ghost">Recorrido Modernización</Button>
+      </div>
     </div>
   </section>
+  <CtaBanner
+    title="¿Quiere aplicar HEXYN en su proyecto?"
+    text="Consulte sobre desarrollo asistido por agentes de IA con revisión humana y QA antes de producción."
+    primaryLabel="Contactar"
+    primaryHref="/contacto/"
+    secondaryLabel="Ver servicios"
+    secondaryHref="/servicios/"
+  />
 </PageLayout>
+
+<style>
+  .hexyn-lead {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 42rem;
+  }
+
+  .hexyn-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+</style>

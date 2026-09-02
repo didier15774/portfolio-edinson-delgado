@@ -44,9 +44,14 @@ import { siteConfig } from '@/data/site';
         </ul>
       </div>
 
-      <form class="contact-form card" method="post" action="/api/contact.php" aria-describedby="contact-form-note">
+      <form
+        id="contact-form"
+        class="contact-form card"
+        method="post"
+        action="/api/contact.php"
+        novalidate
+      >
         <h2 class="contact-block__title">Formulario</h2>
-        <p id="contact-form-note" class="card__text">{contactContent.note}</p>
 
         <div class="contact-form__field contact-form__honeypot" aria-hidden="true">
           <label for="website">{contactContent.formLabels.honeypot}</label>
@@ -55,28 +60,32 @@ import { siteConfig } from '@/data/site';
 
         <div class="contact-form__field">
           <label for="name">{contactContent.formLabels.name}</label>
-          <input type="text" id="name" name="name" required autocomplete="name" maxlength="100" disabled />
+          <input type="text" id="name" name="name" required autocomplete="name" maxlength="100" />
         </div>
 
         <div class="contact-form__field">
           <label for="email">{contactContent.formLabels.email}</label>
-          <input type="email" id="email" name="email" required autocomplete="email" maxlength="254" disabled />
+          <input type="email" id="email" name="email" required autocomplete="email" maxlength="254" />
         </div>
 
         <div class="contact-form__field">
           <label for="subject">{contactContent.formLabels.subject}</label>
-          <input type="text" id="subject" name="subject" required maxlength="150" disabled />
+          <input type="text" id="subject" name="subject" required maxlength="150" />
         </div>
 
         <div class="contact-form__field">
           <label for="message">{contactContent.formLabels.message}</label>
-          <textarea id="message" name="message" rows="5" required minlength="20" maxlength="2000" disabled></textarea>
+          <textarea id="message" name="message" rows="5" required minlength="20" maxlength="2000"></textarea>
         </div>
 
-        <button type="submit" class="btn btn--primary" disabled>{contactContent.formLabels.submit}</button>
+        <p id="contact-form-status" class="contact-form__status" aria-live="polite"></p>
+
+        <button type="submit" class="btn btn--primary">{contactContent.formLabels.submit}</button>
       </form>
     </div>
   </section>
+
+  <script is:inline src="/scripts/contact-form.js" defer></script>
 </PageLayout>
 
 <style>
@@ -123,11 +132,9 @@ import { siteConfig } from '@/data/site';
     font: inherit;
   }
 
-  .contact-form__field input:disabled,
-  .contact-form__field textarea:disabled,
-  .contact-form button:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
+  .contact-form__field input:focus-visible,
+  .contact-form__field textarea:focus-visible {
+    border-color: var(--color-accent);
   }
 
   .contact-form__honeypot {
@@ -136,5 +143,23 @@ import { siteConfig } from '@/data/site';
     width: 1px;
     height: 1px;
     overflow: hidden;
+  }
+
+  .contact-form__status {
+    min-height: 1.5rem;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .contact-form__status--success {
+    color: var(--color-success);
+  }
+
+  .contact-form__status--error {
+    color: var(--color-error);
+  }
+
+  .contact-form__status--loading {
+    color: var(--color-text-muted);
   }
 </style>

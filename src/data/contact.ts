@@ -10,5 +10,5 @@ export const contactContent = {
     submit: 'Enviar mensaje',
     honeypot: 'Sitio web',
   },
-  note: 'El envío del formulario se habilitará en el bloque de contacto con validación servidor y SMTP en Hostinger.',
+  note: 'El formulario envía a través del endpoint seguro configurado en el servidor.',
 };

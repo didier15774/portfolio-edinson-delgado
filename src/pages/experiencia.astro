@@ -2,7 +2,9 @@
 import PageLayout from '@/layouts/PageLayout.astro';
 import ExperienceTimeline from '@/components/sections/ExperienceTimeline.astro';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
+import CtaBanner from '@/components/sections/CtaBanner.astro';
 import { siteConfig } from '@/data/site';
+import { homeContent } from '@/data/home';
 ---
 
 <PageLayout
@@ -20,4 +22,12 @@ import { siteConfig } from '@/data/site';
     </div>
   </section>
   <ExperienceTimeline />
+  <CtaBanner
+    title={homeContent.cta.title}
+    text={homeContent.cta.text}
+    primaryLabel={homeContent.cta.primary.label}
+    primaryHref={homeContent.cta.primary.href}
+    secondaryLabel={homeContent.cta.secondary.label}
+    secondaryHref={homeContent.cta.secondary.href}
+  />
 </PageLayout>
