@@ -1,0 +1,18 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import { siteConfig } from '@/data/site';
+
+const title = `Sitio en construcción — ${siteConfig.name}`;
+---
+
+<PageLayout {title} canonicalPath={Astro.url.pathname} noindex>
+  <section class="section">
+    <div class="container container--narrow">
+      <h1>Página no encontrada</h1>
+      <p class="text-muted">La ruta solicitada no existe en este sitio.</p>
+      <p style="margin-top: 1.5rem;">
+        <a href="/" class="btn btn--primary" style="display: inline-flex;">Volver al inicio</a>
+      </p>
+    </div>
+  </section>
+</PageLayout>

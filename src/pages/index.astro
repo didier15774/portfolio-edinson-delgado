@@ -1,0 +1,13 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import { siteConfig } from '@/data/site';
+---
+
+<PageLayout
+  title={`${siteConfig.name} — ${siteConfig.role}`}
+  description={`${siteConfig.tagline}. ${siteConfig.availability.label}.`}
+  canonicalPath="/"
+>
+  <Hero />
+</PageLayout>

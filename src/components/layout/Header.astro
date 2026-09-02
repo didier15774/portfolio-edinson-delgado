@@ -1,0 +1,30 @@
+---
+import { mainNavigation } from '@/data/navigation';
+import { siteConfig } from '@/data/site';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container site-header__inner flex-between">
+    <a href="/" class="site-header__brand">{siteConfig.name}</a>
+    <nav aria-label="Navegación principal">
+      <ul class="chip-list" style="list-style: none; padding: 0; margin: 0;">
+        {
+          mainNavigation.slice(0, 4).map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="chip"
+                aria-current={currentPath === item.href ? 'page' : undefined}
+                style="text-decoration: none;"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

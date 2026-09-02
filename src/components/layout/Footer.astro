@@ -1,0 +1,54 @@
+---
+import { mainNavigation, journeyNavigation } from '@/data/navigation';
+import { siteConfig } from '@/data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div>
+      <p class="site-footer__title">{siteConfig.name}</p>
+      <p class="text-muted">{siteConfig.role}</p>
+      <p class="text-muted">{siteConfig.availability.label}</p>
+      <p class="text-muted">{siteConfig.location.label}</p>
+    </div>
+    <div>
+      <p class="site-footer__title">Navegación</p>
+      <ul class="site-footer__links">
+        {mainNavigation.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="site-footer__title">Recorridos</p>
+      <ul class="site-footer__links">
+        {journeyNavigation.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+      <p class="site-footer__title" style="margin-top: 1rem;">Contacto</p>
+      <ul class="site-footer__links">
+        <li>
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        </li>
+        <li>
+          <a href={siteConfig.linkedin} rel="noopener noreferrer" target="_blank">LinkedIn</a>
+        </li>
+        <li>
+          <a href={siteConfig.github} rel="noopener noreferrer" target="_blank">GitHub</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container" style="margin-top: 2rem;">
+    <p class="text-muted" style="font-size: var(--text-sm);">
+      © {year} {siteConfig.name}
+    </p>
+  </div>
+</footer>

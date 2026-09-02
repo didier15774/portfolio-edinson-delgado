@@ -1,0 +1,14 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  class?: string;
+}
+
+const { href, variant = 'primary', class: className = '' } = Astro.props;
+const classes = ['btn', `btn--${variant}`, className].filter(Boolean).join(' ');
+---
+
+<a href={href} class={classes}>
+  <slot />
+</a>
