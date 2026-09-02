@@ -1,0 +1,46 @@
+---
+import Button from '@/components/ui/Button.astro';
+
+interface Props {
+  title: string;
+  text: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+const { title, text, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="section">
+  <div class="container grid grid--2 about-teaser">
+    <div>
+      <h2 class="about-teaser__title">{title}</h2>
+      <p class="text-muted">{text}</p>
+    </div>
+    <div class="about-teaser__action">
+      <Button href={ctaHref} variant="secondary">{ctaLabel}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-teaser {
+    align-items: center;
+  }
+
+  .about-teaser__title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .about-teaser__action {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  @media (min-width: 768px) {
+    .about-teaser__action {
+      justify-content: flex-end;
+    }
+  }
+</style>

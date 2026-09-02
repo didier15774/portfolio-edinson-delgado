@@ -1,13 +1,22 @@
 ---
 import { siteConfig } from '@/data/site';
+import { homeContent } from '@/data/home';
 import Button from '@/components/ui/Button.astro';
+
+interface Props {
+  eyebrow?: string;
+  subtitle?: string;
+}
+
+const { eyebrow = homeContent.heroEyebrow, subtitle = homeContent.valueProposition } = Astro.props;
 ---
 
 <section class="hero section--hero">
   <div class="container hero__content">
-    <p class="hero__eyebrow">Portfolio profesional</p>
+    <p class="hero__eyebrow">{eyebrow}</p>
     <h1>{siteConfig.role}</h1>
     <p class="hero__subtitle">{siteConfig.tagline}</p>
+    <p class="hero__lead">{subtitle}</p>
     <div class="hero__chips chip-list" role="list" aria-label="Especialidades">
       {siteConfig.specialties.map((item) => (
         <span class="chip" role="listitem">{item}</span>
@@ -15,8 +24,18 @@ import Button from '@/components/ui/Button.astro';
     </div>
     <div class="hero__actions">
       <Button href="/proyectos/" variant="primary">Ver proyectos</Button>
-      <Button href={siteConfig.cv.path} variant="secondary">Descargar CV</Button>
+      <Button href={siteConfig.cv.path} variant="secondary" download={siteConfig.cv.filename}>
+        Descargar CV
+      </Button>
       <Button href="/contacto/" variant="ghost">Contactar</Button>
     </div>
   </div>
 </section>
+
+<style>
+  .hero__lead {
+    margin-top: var(--space-md);
+    color: var(--color-text-muted);
+    max-width: 38rem;
+  }
+</style>

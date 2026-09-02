@@ -25,9 +25,24 @@
   grid-template-columns: 1fr;
 }
 
+.section--alt {
+  background: var(--color-bg-elevated);
+  border-block: 1px solid var(--color-border);
+}
+
+.grid--3 {
+  grid-template-columns: 1fr;
+}
+
 @media (min-width: 768px) {
-  .grid--2 {
+  .grid--3 {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

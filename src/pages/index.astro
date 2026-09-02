@@ -1,11 +1,15 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
+import AboutTeaser from '@/components/sections/AboutTeaser.astro';
+import JourneyCards from '@/components/sections/JourneyCards.astro';
 import ProjectCard from '@/components/sections/ProjectCard.astro';
+import CtaBanner from '@/components/sections/CtaBanner.astro';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import Button from '@/components/ui/Button.astro';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import { siteConfig } from '@/data/site';
+import { homeContent } from '@/data/home';
 import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects'))
@@ -20,6 +24,13 @@ const projects = (await getCollection('projects'))
 >
   <JsonLd type="Person" slot="head" />
   <Hero />
+  <AboutTeaser
+    title={homeContent.aboutTeaser.title}
+    text={homeContent.aboutTeaser.text}
+    ctaLabel={homeContent.aboutTeaser.cta.label}
+    ctaHref={homeContent.aboutTeaser.cta.href}
+  />
+  <JourneyCards title={homeContent.journeys.title} subtitle={homeContent.journeys.subtitle} />
   <section class="section">
     <div class="container">
       <SectionHeading
@@ -44,4 +55,12 @@ const projects = (await getCollection('projects'))
       </p>
     </div>
   </section>
+  <CtaBanner
+    title={homeContent.cta.title}
+    text={homeContent.cta.text}
+    primaryLabel={homeContent.cta.primary.label}
+    primaryHref={homeContent.cta.primary.href}
+    secondaryLabel={homeContent.cta.secondary.label}
+    secondaryHref={homeContent.cta.secondary.href}
+  />
 </PageLayout>

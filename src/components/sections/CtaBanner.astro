@@ -1,0 +1,53 @@
+---
+import Button from '@/components/ui/Button.astro';
+
+interface Props {
+  title: string;
+  text: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+}
+
+const { title, text, primaryLabel, primaryHref, secondaryLabel, secondaryHref } = Astro.props;
+---
+
+<section class="section cta-banner">
+  <div class="container cta-banner__inner card">
+    <div>
+      <h2 class="cta-banner__title">{title}</h2>
+      <p class="text-muted">{text}</p>
+    </div>
+    <div class="cta-banner__actions">
+      <Button href={primaryHref} variant="primary">{primaryLabel}</Button>
+      <Button href={secondaryHref} variant="secondary">{secondaryLabel}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner__inner {
+    display: grid;
+    gap: var(--space-lg);
+    background: linear-gradient(135deg, var(--color-bg-elevated), rgb(20 184 166 / 0.08));
+  }
+
+  @media (min-width: 768px) {
+    .cta-banner__inner {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+  }
+
+  .cta-banner__title {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .cta-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+</style>

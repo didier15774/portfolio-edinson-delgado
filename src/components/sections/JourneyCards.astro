@@ -1,0 +1,58 @@
+---
+import { journeyList } from '@/data/journeys';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import Button from '@/components/ui/Button.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="section section--alt">
+  <div class="container">
+    <SectionHeading title={title} subtitle={subtitle} />
+    <div class="grid grid--3">
+      {
+        journeyList.map((journey) => (
+          <article class="card journey-card" data-level={journey.level}>
+            <p class="journey-card__level">Nivel {journey.level}</p>
+            <h3 class="journey-card__title">{journey.headline}</h3>
+            <p class="card__text">{journey.subheadline}</p>
+            <Button href={journey.path} variant="ghost">Explorar recorrido</Button>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .journey-card__level {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-accent-hover);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .journey-card__title {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+  }
+
+  .journey-card[data-level='1'] {
+    border-top: 3px solid var(--color-blue-500);
+  }
+
+  .journey-card[data-level='2'] {
+    border-top: 3px solid var(--color-teal-500);
+  }
+
+  .journey-card[data-level='3'] {
+    border-top: 3px solid var(--color-teal-400);
+  }
+</style>
