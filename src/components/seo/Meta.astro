@@ -13,6 +13,7 @@ const { title, description, canonicalPath, noindex = false } = Astro.props;
 const siteUrl = Astro.site?.href ? Astro.site.href.replace(/\/$/, '') : undefined;
 const canonical = siteUrl ? absoluteUrl(canonicalPath, siteUrl) : undefined;
 const ogUrl = canonical;
+const ogImage = siteUrl ? absoluteUrl('/images/og-default.svg', siteUrl) : undefined;
 ---
 
 <title>{title}</title>
@@ -29,6 +30,8 @@ const ogUrl = canonical;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 {ogUrl && <meta property="og:url" content={ogUrl} />}
-<meta name="twitter:card" content="summary" />
+{ogImage && <meta property="og:image" content={ogImage} />}
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+{ogImage && <meta name="twitter:image" content={ogImage} />}

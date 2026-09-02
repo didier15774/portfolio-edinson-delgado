@@ -9,9 +9,11 @@
     "build:prod": "node -e \"if(!process.env.PUBLIC_SITE_URL){console.error('PUBLIC_SITE_URL requerida para build de producción');process.exit(1)}\" && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "npm run build"
+    "test": "npm run build && node --experimental-strip-types --test tests/**/*.test.ts",
+    "test:unit": "node --experimental-strip-types --test tests/contact-validation.test.ts"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.2.10"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 import { resolvePublicSiteUrl } from './src/lib/site-url';
 
 const siteUrl = resolvePublicSiteUrl(process.env.PUBLIC_SITE_URL);
@@ -18,4 +19,5 @@ export default defineConfig({
   build: {
     format: 'directory',
   },
+  integrations: siteUrl ? [sitemap()] : [],
 });
