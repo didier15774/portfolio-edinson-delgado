@@ -106,11 +106,18 @@ npm test            # build:prod + pruebas de rutas, SEO y validación
 ```bash
 npm run build:prod
 npm test
-# Subir contenido de dist/ → public_html/
-# Crear public_html/api/contact.config.php (SMTP) — ver docs/SMTP_HOSTINGER.md
+# O scripts automatizados (SSH):
+# Deploy\validate_remote.bat
+# Deploy\build_Production.bat
+# Deploy\deploy_Production.bat
 ```
 
-Checklist completo: [docs/CHECKLIST_PRODUCCION.md](./docs/CHECKLIST_PRODUCCION.md)
+Guía de scripts: [Deploy/docs/DEPLOY_PROCESS.md](./Deploy/docs/DEPLOY_PROCESS.md)  
+Checklist: [docs/CHECKLIST_PRODUCCION.md](./docs/CHECKLIST_PRODUCCION.md)  
+SMTP: [docs/SMTP_HOSTINGER.md](./docs/SMTP_HOSTINGER.md)
+
+**Producción:** https://edinson.proyectocolmena.com  
+Credenciales SSH solo en `Deploy/deploy.config.ps1` (gitignored).
 
 ---
 

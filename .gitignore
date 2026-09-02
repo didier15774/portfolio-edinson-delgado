@@ -3,6 +3,8 @@ node_modules/
 
 # Build
 dist/
+_deploy-staging/
+Deploy/artifacts/
 
 # Astro
 .astro/
@@ -14,6 +16,9 @@ dist/
 
 # PHP secrets (production config on server only)
 public/api/contact.config.php
+
+# Deploy secrets (SSH / Hostinger) — never commit
+Deploy/deploy.config.ps1
 
 # Lighthouse reports (local QA)
 lighthouse-*.json
@@ -28,6 +33,7 @@ desktop.ini
 # Logs
 *.log
 npm-debug.log*
+Deploy/logs/
 
 # Editor
 .vscode/*
