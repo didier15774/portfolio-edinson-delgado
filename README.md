@@ -1,60 +1,45 @@
 # Portfolio — Edinson Delgado
 
-Sitio profesional estático para presentar trayectoria, proyectos y servicios de **Edinson Delgado** — Senior Software Engineer / Technical Lead con 20 años en sistemas empresariales.
+Sitio profesional estático para presentar la trayectoria, proyectos y servicios de **Edinson Delgado** — Senior Software Engineer / Technical Lead con 20 años construyendo y modernizando sistemas empresariales.
 
-Orientado a generar oportunidades laborales, contratos como contractor y clientes directos. No es un currículum decorativo: cada sección comunica problemas que resuelve, experiencia verificable y forma de contacto.
+Objetivo: convertir experiencia real en evidencia verificable para oportunidades laborales, contratos como contractor y clientes propios.
 
 | | |
 |--|--|
-| **Sitio (producción)** | [https://edinson.proyectocolmena.com](https://edinson.proyectocolmena.com) |
+| **Sitio en producción** | [https://edinson.proyectocolmena.com](https://edinson.proyectocolmena.com) |
 | **Repositorio** | [github.com/didier15774/portfolio-edinson-delgado](https://github.com/didier15774/portfolio-edinson-delgado) |
+| **Versión** | `v1.0.0` |
+
+![Inicio del portfolio en producción](docs/assets/home-production.png)
 
 ---
 
-## Objetivo
+## Descripción profesional
 
-Convertir la trayectoria profesional en evidencia clara para tres audiencias:
+El visitante debe comprender en segundos qué problemas resuelve Edinson, qué sistemas ha construido y cómo contactarlo. El sitio combina:
 
-| Audiencia | Recorrido sugerido |
-|-----------|-------------------|
-| Reclutadores / RRHH técnico | Inicio → Experiencia → CV |
-| CTO / gerentes de TI | `/modernizacion/` → Proyectos |
-| Equipos GeneXus | `/genexus/` → GeneXus |
-| Clientes / founders | `/innovacion/` → HEXYN → Contacto |
+- Identidad visual tecnológica (azul marino / turquesa, modo oscuro principal).
+- Tres recorridos compartibles (`/genexus/`, `/modernizacion/`, `/innovacion/`) en un solo producto.
+- Casos de estudio extensibles, metodología HEXYN y formulario de contacto seguro.
 
 ---
 
-## Tecnologías
+## Stack
 
-| Capa | Stack |
-|------|-------|
-| Framework | [Astro](https://astro.build) 7.2 — SSG (`output: static`) |
+| Capa | Tecnología |
+|------|------------|
+| Framework | Astro 7.2 — SSG (`output: static`) |
 | Lenguaje | TypeScript (strict) |
-| Estilos | CSS con variables de diseño (modo oscuro principal) |
+| Estilos | CSS con variables de diseño (sin Tailwind) |
 | Contenido | Content Collections (Markdown + Zod) |
-| Contacto | PHP + SMTP Hostinger (`public/api/contact.php`) |
-| Despliegue | Hostinger — contenido de `dist/` en `public_html` |
+| Contacto | PHP + SMTP Hostinger (`api/contact.php`) |
+| Hosting | Hostinger — `dist/` → `public_html` |
 
-Sin React, Vue, Tailwind ni base de datos en esta versión.
-
----
-
-## Funcionalidades
-
-- Hero profesional con especialidades y CTAs (proyectos, CV, contacto)
-- Tres **recorridos compartibles**: `/genexus/`, `/modernizacion/`, `/innovacion/`
-- Casos de estudio: **AProbar**, **Clicks**, **Proyecto Colmena**
-- Metodología **HEXYN** (IA como acelerador bajo control humano)
-- Línea de tiempo profesional (Sofis, UST, Colmena)
-- **Recomendaciones** gestionadas en `src/data/recommendations.ts` (sección oculta hasta haber ítems autorizados)
-- Formulario de contacto con validación servidor, honeypot y SMTP
-- SEO: canonical, Open Graph, JSON-LD y sitemap con el dominio de producción
-- Navegación accesible (teclado, `aria-current`, menú móvil)
-- Modo oscuro por defecto; modo claro preparado
+Sin React, Vue, Next.js ni base de datos en v1.
 
 ---
 
-## Rutas
+## Rutas principales
 
 ```
 /                          Inicio
@@ -82,76 +67,48 @@ Sin React, Vue, Tailwind ni base de datos en esta versión.
 ```bash
 git clone https://github.com/didier15774/portfolio-edinson-delgado.git
 cd portfolio-edinson-delgado
-cp .env.example .env   # PUBLIC_SITE_URL ya apunta al dominio de producción
+cp .env.example .env
 npm install
-npm run dev            # http://localhost:4321
+npm run dev
 ```
 
-### Comandos útiles
-
-```bash
-npm run check       # TypeScript / Astro diagnostics
-npm run build       # Build sin exigir dominio (SEO absoluto desactivado)
-npm run build:prod  # Build productivo (lee .env / PUBLIC_SITE_URL)
-npm run preview     # Sirve dist/ — no abrir dist/index.html con file://
-npm test            # build:prod + pruebas de rutas, SEO y validación
-```
-
-> **Importante:** Los estilos se cargan desde `/_astro/`. Abrir `dist/index.html` con `file://` no funciona.
+Abrir http://localhost:4321 — no abrir `dist/index.html` con `file://` (los CSS viven en `/_astro/`).
 
 ---
 
-## Despliegue (Hostinger)
+## Build y despliegue
 
 ```bash
+# Build productivo (SEO + sitemap con dominio real)
 npm run build:prod
 npm test
-# O scripts automatizados (SSH):
-# Deploy\validate_remote.bat
-# Deploy\build_Production.bat
-# Deploy\deploy_Production.bat
+npm run check
+
+# Despliegue automatizado a Hostinger (Windows)
+Deploy\validate_remote.bat
+Deploy\build_Production.bat
+Deploy\deploy_Production.bat
 ```
 
-Guía de scripts: [Deploy/docs/DEPLOY_PROCESS.md](./Deploy/docs/DEPLOY_PROCESS.md)  
-Checklist: [docs/CHECKLIST_PRODUCCION.md](./docs/CHECKLIST_PRODUCCION.md)  
-SMTP: [docs/SMTP_HOSTINGER.md](./docs/SMTP_HOSTINGER.md)
+Documentación:
 
-**Producción:** https://edinson.proyectocolmena.com  
-Credenciales SSH solo en `Deploy/deploy.config.ps1` (gitignored).
+- [Deploy/docs/DEPLOY_PROCESS.md](./Deploy/docs/DEPLOY_PROCESS.md)
+- [docs/CHECKLIST_PRODUCCION.md](./docs/CHECKLIST_PRODUCCION.md)
+- [docs/SMTP_HOSTINGER.md](./docs/SMTP_HOSTINGER.md)
 
----
-
-## Recomendaciones
-
-Archivo: `src/data/recommendations.ts`
-
-Campos: `text`, `name`, `role`, `company`, `relationship`, `authorized`, `order`.
-
-Solo se publican entradas con `authorized: true`. Si no hay ninguna, la sección **no aparece** (sin placeholders). Los textos deben ser originales; solo se admiten correcciones de claridad aprobadas por el autor.
+**Secretos fuera del repo:** `.env`, `Deploy/deploy.config.ps1`, `api/contact.config.php` (solo en el servidor).
 
 ---
 
-## Secretos (fuera del repositorio)
-
-| Archivo | Ubicación |
-|---------|-----------|
-| `.env` | Local / CI — no versionado |
-| `contact.config.php` | Solo en Hostinger `public_html/api/` |
-
-Plantillas versionadas: `.env.example`, `contact.config.example.php`.
-
----
-
-## Estado del proyecto
+## Estado
 
 | Área | Estado |
 |------|--------|
-| Sitio estático (15 rutas) | Completado |
-| Dominio `edinson.proyectocolmena.com` | Configurado en build productivo |
-| Formulario PHP + SMTP | Código listo — credenciales solo en servidor |
+| Sitio estático (15 rutas) | En producción |
+| Dominio | https://edinson.proyectocolmena.com |
+| Formulario + SMTP | Código listo — configurar `contact.config.php` en Hostinger |
 | Recomendaciones | Estructura lista — sección oculta hasta autorizaciones |
-| Capturas de proyectos | Estructura lista — imágenes pendientes |
-| Despliegue Hostinger | Pendiente de subir `dist/` |
+| Capturas de proyectos | Pendientes |
 
 ---
 
@@ -159,12 +116,10 @@ Plantillas versionadas: `.env.example`, `contact.config.example.php`.
 
 | Documento | Contenido |
 |-----------|-----------|
-| [AGENTS.md](./AGENTS.md) | Guía para agentes y colaboradores |
+| [AGENTS.md](./AGENTS.md) | Guía para agentes |
 | [docs/PRODUCT.md](./docs/PRODUCT.md) | Producto y mapa del sitio |
-| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Arquitectura técnica |
+| [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Arquitectura |
 | [docs/SECURITY.md](./docs/SECURITY.md) | Seguridad del formulario |
-| [docs/SMTP_HOSTINGER.md](./docs/SMTP_HOSTINGER.md) | SMTP sin secretos en git |
-| [docs/CHECKLIST_PRODUCCION.md](./docs/CHECKLIST_PRODUCCION.md) | Pruebas productivas |
 | [docs/DEPLOYMENT_HOSTINGER.md](./docs/DEPLOYMENT_HOSTINGER.md) | Despliegue |
 
 ---
