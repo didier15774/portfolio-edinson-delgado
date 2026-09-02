@@ -3,9 +3,12 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import JourneyHero from '@/components/sections/JourneyHero.astro';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import Chip from '@/components/ui/Chip.astro';
+import Button from '@/components/ui/Button.astro';
+import CtaBanner from '@/components/sections/CtaBanner.astro';
 import { journeys } from '@/data/journeys';
 import { genexusProfile } from '@/data/genexus';
 import { siteConfig } from '@/data/site';
+import { homeContent } from '@/data/home';
 
 const journey = journeys.genexus;
 ---
@@ -19,10 +22,7 @@ const journey = journeys.genexus;
 
   <section class="section" id="experiencia-genexus">
     <div class="container">
-      <SectionHeading
-        title={genexusProfile.headline}
-        subtitle={genexusProfile.summary}
-      />
+      <SectionHeading title={genexusProfile.headline} subtitle={genexusProfile.summary} />
       <p class="text-muted genexus-versions">
         GeneXus {genexusProfile.versions.from} a {genexusProfile.versions.to}. {genexusProfile.versions.next}.
       </p>
@@ -42,11 +42,46 @@ const journey = journeys.genexus;
       </div>
     </div>
   </section>
+
+  <section class="section section--alt">
+    <div class="container container--narrow">
+      <SectionHeading
+        title="Contexto de aplicación"
+        subtitle="Experiencia en entornos productivos con equipos, clientes y sistemas de misión crítica."
+      />
+      <ul class="genexus-context">
+        <li>Knowledge bases en producción con evolución continua y soporte.</li>
+        <li>Integraciones con servicios externos mediante SOAP, REST, JSON y XML.</li>
+        <li>Migraciones entre versiones de GeneXus y bases de datos heterogéneas.</li>
+        <li>Uso de WorkWithPlus, K2BTools, PXTools, GAM y GX Server.</li>
+      </ul>
+      <p style="margin-top: 2rem;">
+        <Button href="/servicios/" variant="secondary">Ver todos los servicios</Button>
+        <Button href="/contacto/" variant="primary">Consultar disponibilidad</Button>
+      </p>
+    </div>
+  </section>
+
+  <CtaBanner
+    title="¿Necesita un desarrollador GeneXus Senior?"
+    text="Disponible para mantenimiento, evolución, integraciones y desarrollo de sistemas nuevos."
+    primaryLabel="Contactar"
+    primaryHref="/contacto/"
+    secondaryLabel="Ver experiencia"
+    secondaryHref="/experiencia/"
+  />
 </PageLayout>
 
 <style>
   .genexus-versions {
     margin-bottom: var(--space-xl);
     max-width: 42rem;
+  }
+
+  .genexus-context {
+    padding-left: 1.25rem;
+    color: var(--color-text-muted);
+    display: grid;
+    gap: var(--space-sm);
   }
 </style>

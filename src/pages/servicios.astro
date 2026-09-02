@@ -3,7 +3,10 @@ import PageLayout from '@/layouts/PageLayout.astro';
 import ServicesGrid from '@/components/sections/ServicesGrid.astro';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import Button from '@/components/ui/Button.astro';
+import CtaBanner from '@/components/sections/CtaBanner.astro';
+import { services } from '@/data/services';
 import { siteConfig } from '@/data/site';
+import { homeContent } from '@/data/home';
 ---
 
 <PageLayout
@@ -20,10 +23,54 @@ import { siteConfig } from '@/data/site';
       />
     </div>
   </section>
+
   <ServicesGrid />
-  <section class="section">
+
+  <section class="section section--alt">
     <div class="container">
-      <Button href="/contacto/" variant="primary">Consultar disponibilidad</Button>
+      <SectionHeading
+        title="Cómo trabajo"
+        subtitle="Cada servicio se adapta al contexto del cliente y al estado del sistema."
+      />
+      <div class="grid grid--2">
+        {
+          services.map((service, index) => (
+            <article class="card service-detail">
+              <span class="service-detail__index">{String(index + 1).padStart(2, '0')}</span>
+              <h3 class="card__title">{service.title}</h3>
+              <p class="card__text">{service.description}</p>
+              {service.id === 'genexus-senior' && (
+                <Button href="/genexus/" variant="ghost">Ver recorrido GeneXus</Button>
+              )}
+              {service.id === 'modernizacion' && (
+                <Button href="/modernizacion/" variant="ghost">Ver recorrido Modernización</Button>
+              )}
+              {service.id === 'hexyn' && (
+                <Button href="/hexyn/" variant="ghost">Ver metodología HEXYN</Button>
+              )}
+            </article>
+          ))
+        }
+      </div>
     </div>
   </section>
+
+  <CtaBanner
+    title={homeContent.cta.title}
+    text={homeContent.cta.text}
+    primaryLabel={homeContent.cta.primary.label}
+    primaryHref={homeContent.cta.primary.href}
+    secondaryLabel={homeContent.cta.secondary.label}
+    secondaryHref={homeContent.cta.secondary.href}
+  />
 </PageLayout>
+
+<style>
+  .service-detail__index {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-accent-hover);
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+</style>
