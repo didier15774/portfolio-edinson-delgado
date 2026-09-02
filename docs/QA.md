@@ -129,10 +129,14 @@ Probar en anchos: **360**, **390**, **768**, **1024**, **1440** px.
 
 ## Checklist pre-release
 
-- [ ] `npm run build` sin warnings críticos
-- [ ] `npm test` pasa
-- [ ] `npm audit` sin críticas sin mitigar
-- [ ] Consola del navegador sin errores en rutas críticas
+- [x] `npm run build` sin warnings críticos
+- [x] `npm test` pasa (23 pruebas)
+- [x] `npm run check` sin errores
+- [x] `npm audit` sin vulnerabilidades críticas
+- [x] CSS global cargado vía `/_astro/` (no abrir `dist/index.html` directo)
+- [x] `npm run dev` y `npm run preview` verificados
+- [ ] Lighthouse ≥ 90 en producción con HTTPS y `PUBLIC_SITE_URL` (auditar post-despliegue)
+- [ ] Formulario probado end-to-end en Hostinger con SMTP
 - [ ] Documentación actualizada
 - [ ] `contact.config.php` configurado en servidor
 

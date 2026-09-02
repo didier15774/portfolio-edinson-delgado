@@ -18,17 +18,21 @@ El portfolio es un sitio **estático** generado por Astro. Hostinger sirve los a
 ```
 [Máquina local / CI]
   npm install
-  npm run build        → genera dist/
-  npm test             → verificar
+  PUBLIC_SITE_URL=https://tudominio.com npm run build:prod
+  npm test
 
 [Subida a Hostinger]
-  FTP / File Manager / Git deploy
-  Copiar contenido de dist/ → public_html/
+  FTP / File Manager
+  Copiar contenido de dist/ → public_html/ (no la carpeta dist en sí)
 
 [Post-despliegue]
-  Crear contact.config.php en public_html/api/
-  Probar formulario y SSL
+  Crear contact.config.php en public_html/api/ (SMTP recomendado)
+  Verificar HTTPS, formulario y sitemap-index.xml
 ```
+
+> **Importante:** No abrir `dist/index.html` directamente en el navegador.
+> Usar `npm run dev` (desarrollo) o `npm run preview` (producción local).
+> En Hostinger, el servidor web sirve los archivos con rutas `/_astro/` correctas.
 
 ## Estructura en servidor
 

@@ -15,6 +15,9 @@ dist/
 # PHP secrets (production config on server only)
 public/api/contact.config.php
 
+# Lighthouse reports (local QA)
+lighthouse-*.json
+
 # OS
 .DS_Store
 Thumbs.db
