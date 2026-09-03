@@ -1,6 +1,11 @@
 ---
 title: Clicks
 summary: Gestión de mantenimiento en campo desde dispositivos móviles.
+logo:
+  src: /images/projects/clicks-gray.png
+  alt: Logo de ClickS
+  width: 720
+  height: 220
 status: producción
 featured: true
 order: 2

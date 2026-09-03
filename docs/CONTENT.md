@@ -74,7 +74,7 @@ Mensaje clave: *La IA acelera; la experiencia humana garantiza calidad y respons
 
 | Campo | Valor |
 |-------|-------|
-| Email | it.edelgado@gmail.com |
+| Email | edelgado@proyectocolmena.com |
 | LinkedIn | https://www.linkedin.com/in/edinsondelgado/ |
 | GitHub | https://github.com/didier15774 |
 | Ubicación | Canelones, Uruguay |

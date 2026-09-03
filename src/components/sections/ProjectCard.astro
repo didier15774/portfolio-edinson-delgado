@@ -11,6 +11,12 @@ interface Props {
   problem?: string;
   responsibility?: string[];
   coverLabel?: string;
+  logo?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 }
 
 const {
@@ -22,14 +28,29 @@ const {
   problem,
   responsibility = [],
   coverLabel = title,
+  logo,
 } = Astro.props;
 
 const responsibilityText = responsibility.slice(0, 2).join(' · ');
 ---
 
 <article class="card project-card">
-  <div class="project-card__cover" aria-hidden="true">
-    <span class="project-card__cover-label">Portada — {coverLabel}</span>
+  <div class="project-card__cover">
+    {
+      logo ? (
+        <img
+          class="project-card__logo"
+          src={logo.src}
+          alt={logo.alt}
+          width={logo.width}
+          height={logo.height}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <span class="project-card__cover-label">Portada — {coverLabel}</span>
+      )
+    }
   </div>
 
   <div class="project-card__body">
@@ -87,14 +108,23 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 8rem;
-    padding: var(--space-lg);
+    min-height: 7.5rem;
+    padding: var(--space-lg) var(--space-xl);
     background: linear-gradient(
       135deg,
       var(--color-navy-800) 0%,
       rgb(244 122 22 / 0.18) 100%
     );
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .project-card__logo {
+    display: block;
+    width: auto;
+    height: 2.75rem;
+    max-width: 11rem;
+    object-fit: contain;
+    opacity: 0.9;
   }
 
   .project-card__cover-label {

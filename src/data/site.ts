@@ -10,7 +10,7 @@ export const siteConfig = {
   locale: 'es_UY',
   language: 'es',
 
-  email: 'it.edelgado@gmail.com',
+  email: 'edelgado@proyectocolmena.com',
   linkedin: 'https://www.linkedin.com/in/edinsondelgado/',
   github: 'https://github.com/didier15774',
 

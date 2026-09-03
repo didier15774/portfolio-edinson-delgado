@@ -31,6 +31,8 @@ describe('production SEO', () => {
     assert.match(html, /application\/ld\+json/);
     assert.match(html, /"@type":"Person"/);
     assert.match(html, new RegExp(`"url":"${SITE}"`));
+    assert.match(html, /edelgado@proyectocolmena\.com/);
+    assert.doesNotMatch(html, /it\.edelgado@gmail\.com/);
     assert.doesNotMatch(html, /example\.com/);
     assert.doesNotMatch(html, /id="recomendaciones"/);
   });

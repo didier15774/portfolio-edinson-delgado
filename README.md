@@ -126,7 +126,7 @@ Documentación:
 
 ## Contacto
 
-- **Edinson Delgado** — [it.edelgado@gmail.com](mailto:it.edelgado@gmail.com)
+- **Edinson Delgado** — [edelgado@proyectocolmena.com](mailto:edelgado@proyectocolmena.com)
 - [LinkedIn](https://www.linkedin.com/in/edinsondelgado/)
 - [GitHub](https://github.com/didier15774)
 

@@ -44,7 +44,7 @@ Imagen OG por defecto: diseño con nombre, rol y paleta de marca (sin foto stock
   "name": "Edinson Delgado",
   "jobTitle": "Senior Software Engineer",
   "url": "https://DOMINIO/",
-  "email": "it.edelgado@gmail.com",
+  "email": "edelgado@proyectocolmena.com",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Canelones",

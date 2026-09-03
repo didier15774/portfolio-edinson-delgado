@@ -60,6 +60,39 @@ describe('critical routes', () => {
     assert.match(html, /etapa ajustada a tus prioridades y presupuesto/i);
   });
 
+  it('public contact email is corporate, not Gmail', () => {
+    const home = readFileSync(join(dist, 'index.html'), 'utf8');
+    const contact = readFileSync(join(dist, 'contacto', 'index.html'), 'utf8');
+    assert.match(home, /mailto:edelgado@proyectocolmena\.com/);
+    assert.match(contact, /mailto:edelgado@proyectocolmena\.com/);
+    assert.doesNotMatch(home, /it\.edelgado@gmail\.com/);
+    assert.doesNotMatch(contact, /it\.edelgado@gmail\.com/);
+  });
+
+  it('company and project logos are published', () => {
+    const logos = [
+      join(dist, 'images', 'companies', 'sofis-gray.png'),
+      join(dist, 'images', 'companies', 'universal-gray.png'),
+      join(dist, 'images', 'companies', 'colmena-gray.png'),
+      join(dist, 'images', 'companies', 'itools-gray.png'),
+      join(dist, 'images', 'companies', 'insis-gray.png'),
+      join(dist, 'images', 'companies', 'consorcio-gray.png'),
+      join(dist, 'images', 'companies', 'puntoexe-gray.png'),
+      join(dist, 'images', 'projects', 'aprobar-gray.png'),
+      join(dist, 'images', 'projects', 'clicks-gray.png'),
+    ];
+    for (const file of logos) {
+      assert.ok(existsSync(file), `missing ${file}`);
+    }
+    assert.ok(!existsSync(join(dist, 'images', 'projects', 'sofis-gray.png')));
+
+    const html = readFileSync(join(dist, 'index.html'), 'utf8');
+    assert.match(html, /\/images\/companies\/sofis-gray\.png/);
+    assert.match(html, /\/images\/projects\/aprobar-gray\.png/);
+    assert.match(html, /\/images\/projects\/clicks-gray\.png/);
+    assert.match(html, /alt="Logo de Sofis Solutions"/);
+  });
+
   it('contact availability without duplicated label text', () => {
     const html = readFileSync(join(dist, 'contacto', 'index.html'), 'utf8');
     assert.match(

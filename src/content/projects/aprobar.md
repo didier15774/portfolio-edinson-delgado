@@ -1,6 +1,11 @@
 ---
 title: AProbar
 summary: Plataforma de muestreo de productos e inteligencia del consumidor.
+logo:
+  src: /images/projects/aprobar-gray.png
+  alt: Logo de AProbar
+  width: 720
+  height: 220
 status: producción
 featured: true
 order: 1

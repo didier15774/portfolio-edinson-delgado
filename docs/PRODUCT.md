@@ -107,7 +107,7 @@ Línea de tiempo: Sofis Solutions, Universal Soluciones Tecnológicas, Colmena y
 
 ### Contacto
 - Formulario funcional
-- Email: it.edelgado@gmail.com
+- Email: edelgado@proyectocolmena.com
 - LinkedIn: https://www.linkedin.com/in/edinsondelgado/
 - GitHub: https://github.com/didier15774
 - Ubicación: Canelones, Uruguay — Montevideo, remoto, internacional
