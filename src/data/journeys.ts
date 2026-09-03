@@ -46,13 +46,13 @@ export const journeys: Record<string, JourneyConfig> = {
     path: '/innovacion/',
     headline: 'Innovación y desarrollo agéntico con control técnico humano',
     subheadline:
-      'IA aplicada, automatización y dirección tecnológica mediante metodología HEXYN y evaluación de GeneXus Next.',
+      'IA aplicada, automatización y dirección tecnológica con metodología propia de desarrollo multiagente, documentada y supervisada técnicamente, denominada HEXYN.',
     highlights: [
-      'Metodología HEXYN: IA como acelerador',
+      'Metodología propia HEXYN: desarrollo multiagente documentado y supervisado',
       'Agentes especializados bajo revisión humana',
       'Automatización con responsabilidad técnica',
     ],
-    primaryCta: { label: 'Conocer HEXYN', href: '/hexyn/' },
+    primaryCta: { label: 'Conocer metodología HEXYN', href: '/hexyn/' },
     secondaryCta: { label: 'Contactar', href: '/contacto/' },
   },
 };

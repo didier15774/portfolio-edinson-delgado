@@ -7,90 +7,76 @@ const items = getPublishedCompanies();
 if (items.length === 0) {
   return null;
 }
-
-const loopItems = [...items, ...items];
 ---
 
-<section class="section section--alt company-carousel" aria-labelledby="companies-heading">
+<section class="section section--alt company-band" aria-labelledby="companies-heading">
   <div class="container">
     <SectionHeading id="companies-heading" title={homeContent.companies.title} />
-  </div>
 
-  <div
-    class="company-carousel__viewport"
-    tabindex="0"
-    role="region"
-    aria-label="Empresas y proyectos con experiencia profesional"
-  >
-    <ul class="company-carousel__track" role="list">
-      {
-        loopItems.map((company, index) => (
-          <li
-            class="company-carousel__item"
-            role="listitem"
-            aria-hidden={index >= items.length ? 'true' : undefined}
-          >
-            {company.logoSrc ? (
-              <img
-                src={company.logoSrc}
-                alt={company.logoAlt ?? company.name}
-                width="160"
-                height="48"
-                loading="lazy"
-                decoding="async"
-                class="company-carousel__logo"
-              />
-            ) : (
-              <span class="company-carousel__name">{company.name}</span>
-            )}
-          </li>
-        ))
-      }
-    </ul>
+    <div
+      class="company-band__viewport"
+      tabindex="0"
+      role="region"
+      aria-label="Empresas y proyectos con experiencia profesional"
+    >
+      <ul class="company-band__track" role="list">
+        {
+          items.map((company) => (
+            <li class="company-band__item" role="listitem">
+              {company.logoSrc ? (
+                <img
+                  src={company.logoSrc}
+                  alt={company.logoAlt ?? `Logo de ${company.name}`}
+                  width={company.logoWidth ?? 160}
+                  height={company.logoHeight ?? 48}
+                  loading="lazy"
+                  decoding="async"
+                  class="company-band__logo"
+                />
+              ) : (
+                <span class="company-band__name">{company.name}</span>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </section>
 
 <style>
-  .company-carousel__viewport {
-    overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-accent) transparent;
-    padding-block: var(--space-lg);
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 8%,
-      black 92%,
-      transparent
-    );
+  .company-band__viewport {
+    margin-top: var(--space-lg);
+    padding-block: var(--space-md);
+    outline: none;
   }
 
-  .company-carousel__viewport:focus-visible {
+  .company-band__viewport:focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 4px;
+    border-radius: var(--radius-md);
   }
 
-  .company-carousel__track {
+  .company-band__track {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-xl);
-    width: max-content;
-    padding-inline: var(--space-xl);
+    justify-content: center;
+    gap: var(--space-lg) var(--space-xl);
     list-style: none;
     margin: 0;
-    animation: company-scroll 45s linear infinite;
+    padding: 0;
   }
 
-  .company-carousel__viewport:hover .company-carousel__track,
-  .company-carousel__viewport:focus-within .company-carousel__track {
-    animation-play-state: paused;
-  }
-
-  .company-carousel__item {
+  .company-band__item {
     flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
   }
 
-  .company-carousel__name {
+  .company-band__name {
     display: inline-flex;
     align-items: center;
     min-height: 3rem;
@@ -101,46 +87,60 @@ const loopItems = [...items, ...items];
     font-family: var(--font-display);
     font-size: var(--text-sm);
     font-weight: 600;
-    color: var(--color-text-heading);
+    color: var(--color-text-muted);
     white-space: nowrap;
+    transition:
+      color var(--transition-base),
+      border-color var(--transition-base);
   }
 
-  .company-carousel__logo {
+  .company-band__item:hover .company-band__name,
+  .company-band__item:focus-within .company-band__name {
+    color: var(--color-text-heading);
+    border-color: var(--color-accent);
+  }
+
+  .company-band__logo {
+    display: block;
     height: 2.5rem;
     width: auto;
     max-width: 10rem;
     object-fit: contain;
     filter: grayscale(1);
-    opacity: 0.85;
+    opacity: 0.55;
+    transition:
+      filter var(--transition-base),
+      opacity var(--transition-base);
   }
 
-  @keyframes company-scroll {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
+  .company-band__item:hover .company-band__logo,
+  .company-band__item:focus-within .company-band__logo {
+    filter: grayscale(0);
+    opacity: 1;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .company-carousel__track {
-      animation: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: auto;
-      max-width: var(--container-max);
-      margin-inline: auto;
+  /* Móvil: desplazamiento horizontal táctil, sin barra visible */
+  @media (max-width: 767px) {
+    .company-band__viewport {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
     }
 
-    .company-carousel__viewport {
-      overflow-x: visible;
-      mask-image: none;
-    }
-
-    .company-carousel__item[aria-hidden='true'] {
+    .company-band__viewport::-webkit-scrollbar {
       display: none;
+      width: 0;
+      height: 0;
+    }
+
+    .company-band__track {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      width: max-content;
+      padding-inline: var(--space-md);
+      gap: var(--space-md);
     }
   }
 </style>

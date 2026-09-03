@@ -21,6 +21,7 @@ const icons: Record<string, string> = {
       title={aiExecution.title}
       subtitle={aiExecution.text}
     />
+    <p class="ai-execution__note">{aiExecution.note}</p>
     <div class="grid grid--3 ai-execution__cards">
       {
         aiExecution.cards.map((card) => (
@@ -36,8 +37,16 @@ const icons: Record<string, string> = {
 </section>
 
 <style>
+  .ai-execution__note {
+    margin: calc(var(--space-md) * -1) 0 var(--space-xl);
+    max-width: 46rem;
+    font-size: var(--text-base);
+    line-height: 1.65;
+    color: var(--color-text);
+  }
+
   .ai-execution__cards {
-    margin-top: var(--space-xl);
+    margin-top: var(--space-md);
   }
 
   .ai-execution__card {

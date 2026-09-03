@@ -1,10 +1,11 @@
 export const homeContent = {
   heroLead:
-    '20 años desarrollando, manteniendo y modernizando software. Combino experiencia técnica, visión integral del negocio y agentes de IA para convertir necesidades en soluciones funcionales.',
+    'Más de 20 años creando, evolucionando y modernizando sistemas empresariales. Desarrollo soluciones web, móviles y de escritorio con GeneXus y otras tecnologías, coordinando agentes de IA bajo supervisión técnica humana.',
 
   aiExecution: {
     title: 'Más capacidad de ejecución para tu proyecto o equipo',
     text: 'Coordino agentes de IA especializados para trabajar en paralelo en análisis, arquitectura, desarrollo, QA y documentación. Puedo ejecutar proyectos de forma autónoma, integrarme a equipos existentes o capacitarlos para adoptar este modelo con supervisión técnica y trazabilidad.',
+    note: 'Los agentes me permiten trabajar con diferentes tecnologías, mientras mantengo la dirección técnica, la arquitectura, la seguridad y el control de calidad.',
     cards: [
       {
         id: 'empresas',
@@ -28,9 +29,30 @@ export const homeContent = {
     title: 'Experiencia en empresas y proyectos',
   },
 
-  journeys: {
-    title: 'Recorridos por especialidad',
-    subtitle: 'Tres perspectivas del mismo perfil profesional, según su necesidad.',
+  capabilities: {
+    title: 'Una trayectoria, tres capacidades que trabajan juntas',
+    subtitle:
+      'Tres fortalezas complementarias del mismo perfil profesional. No son planes, categorías excluyentes ni niveles de conocimiento.',
+    cards: [
+      {
+        id: 'genexus',
+        title: 'Desarrollo GeneXus Senior',
+        text: 'Experiencia desde GeneXus 9 hasta GeneXus 18, con WorkWithPlus, K2B Tools, PXTools, GAM y GX Server. Desarrollo y evolución de soluciones web, móviles y de escritorio con generadores Java y .NET.',
+        href: '/genexus/',
+      },
+      {
+        id: 'modernizacion',
+        title: 'Liderazgo técnico y modernización',
+        text: 'Dirección técnica, migración de versiones, modernización de sistemas, integraciones y coordinación de equipos y proyectos empresariales.',
+        href: '/modernizacion/',
+      },
+      {
+        id: 'innovacion',
+        title: 'Desarrollo asistido por agentes de IA',
+        text: 'Coordinación de agentes especializados para arquitectura, implementación, QA, documentación y despliegue, siempre bajo control técnico humano. Metodología propia de desarrollo multiagente, documentada y supervisada técnicamente, denominada HEXYN.',
+        href: '/innovacion/',
+      },
+    ],
   },
 
   projects: {
@@ -47,7 +69,8 @@ export const homeContent = {
   cta: {
     title: '¿Tiene un proyecto o sistema en producción?',
     text: 'Disponible para desarrollo GeneXus, modernización, integraciones y proyectos con IA aplicada bajo control técnico humano.',
-    primary: { label: 'Hablemos', href: '/contacto/' },
+    note: 'Podemos comenzar con una etapa ajustada a tus prioridades y presupuesto, y evolucionar la solución progresivamente.',
+    primary: { label: 'Conversemos sobre tu proyecto', href: '/contacto/' },
     secondary: { label: 'Descargar CV', href: '/cv/' },
   },
 };

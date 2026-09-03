@@ -5,7 +5,7 @@
 
 export const siteConfig = {
   name: 'Edinson Delgado',
-  role: 'Desarrollador GeneXus Senior y constructor de soluciones empresariales',
+  role: 'Desarrollador de software senior y líder técnico',
   tagline: 'Edinson Delgado',
   locale: 'es_UY',
   language: 'es',
@@ -22,8 +22,9 @@ export const siteConfig = {
 
   availability: {
     modes: ['presencial', 'híbrida', 'remota'] as const,
-    areas: ['Montevideo', 'remoto', 'proyectos internacionales'],
-    label: 'Disponibilidad presencial, híbrida y remota',
+    areas: ['proyectos nacionales', 'proyectos internacionales'] as const,
+    label:
+      'Disponibilidad presencial, híbrida y remota. Proyectos nacionales e internacionales.',
   },
 
   cv: {
@@ -37,15 +38,18 @@ export const siteConfig = {
       webp: '/images/profile/edinson-portfolio-2026.webp',
       width: 681,
       height: 1024,
-      alt: 'Retrato profesional de Edinson Delgado, desarrollador GeneXus Senior, con saco gris y camisa azul sobre fondo oscuro.',
+      alt: 'Retrato profesional de Edinson Delgado, desarrollador de software senior y líder técnico, con saco gris y camisa azul sobre fondo oscuro.',
     },
   },
 
   specialties: [
-    'GeneXus Senior',
-    'Desarrollo full-stack',
-    'Modernización de sistemas',
-    'Desarrollo asistido por agentes de IA',
+    'GeneXus',
+    'Web',
+    'Mobile',
+    'Escritorio',
+    'APIs',
+    'Modernización',
+    'IA aplicada',
   ],
 
   theme: {

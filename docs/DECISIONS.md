@@ -149,6 +149,17 @@ Formato: **ADR** (Architecture Decision Record). Toda decisión importante se re
 
 ---
 
+## ADR-016: Posicionamiento profesional sin niveles
+
+**Estado:** Aceptada  
+**Fecha:** 2026-09-03  
+**Contexto:** La portada presentaba a Edinson de forma demasiado estrecha (solo GeneXus / web) y las capacidades aparecían como “Nivel 1/2/3”.  
+**Decisión:** Rol unificado: “Desarrollador de software senior y líder técnico”. Capacidades complementarias en inicio sin niveles. CTA de contacto con mensaje de etapa progresiva según prioridades y presupuesto. Banda de empresas lista para logos reales en `public/images/companies/`.  
+
+---
+
+## ADR-010: trailingSlash
+
 **Estado:** Aceptada  
 **Fecha:** 2026-09-01  
 **Decisión:** `trailingSlash: 'always'` — URLs tipo `/contacto/`.  

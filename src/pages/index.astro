@@ -28,7 +28,7 @@ const projects = (await getCollection('projects'))
   <Hero />
   <AiExecution />
   <CompanyCarousel />
-  <JourneyCards title={homeContent.journeys.title} subtitle={homeContent.journeys.subtitle} />
+  <JourneyCards />
   <section class="section">
     <div class="container">
       <SectionHeading
@@ -64,6 +64,7 @@ const projects = (await getCollection('projects'))
   <CtaBanner
     title={homeContent.cta.title}
     text={homeContent.cta.text}
+    note={homeContent.cta.note}
     primaryLabel={homeContent.cta.primary.label}
     primaryHref={homeContent.cta.primary.href}
     secondaryLabel={homeContent.cta.secondary.label}

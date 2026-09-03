@@ -6,7 +6,7 @@ import { join } from 'node:path';
 const dist = join(process.cwd(), 'dist');
 
 const routes = [
-  { path: 'index.html', contains: 'Desarrollador GeneXus Senior' },
+  { path: 'index.html', contains: 'Desarrollador de software senior' },
   { path: join('sobre-mi', 'index.html'), contains: 'Sobre Edinson Delgado' },
   { path: join('servicios', 'index.html'), contains: 'Servicios' },
   { path: join('proyectos', 'index.html'), contains: 'Proyectos' },
@@ -50,4 +50,22 @@ describe('critical routes', () => {
       assert.ok(html.includes(route.contains.toLowerCase()), `expected "${route.contains}" in ${route.path}`);
     });
   }
+
+  it('homepage positioning without exclusive GeneXus title or levels', () => {
+    const html = readFileSync(join(dist, 'index.html'), 'utf8');
+    assert.match(html, /Desarrollador de software senior y líder técnico/i);
+    assert.doesNotMatch(html, /Nivel\s*[123]/i);
+    assert.doesNotMatch(html, /Senior Software Engineer\s*\/\s*Technical Lead/i);
+    assert.match(html, /Conversemos sobre tu proyecto/i);
+    assert.match(html, /etapa ajustada a tus prioridades y presupuesto/i);
+  });
+
+  it('contact availability without duplicated label text', () => {
+    const html = readFileSync(join(dist, 'contacto', 'index.html'), 'utf8');
+    assert.match(
+      html,
+      /Disponibilidad presencial, híbrida y remota\. Proyectos nacionales e internacionales\./,
+    );
+    assert.doesNotMatch(html, /DisponibilidadDisponibilidad/i);
+  });
 });

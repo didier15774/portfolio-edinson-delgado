@@ -1,6 +1,6 @@
 # Portfolio — Edinson Delgado
 
-Sitio profesional estático para presentar la trayectoria, proyectos y servicios de **Edinson Delgado** — Senior Software Engineer / Technical Lead con 20 años construyendo y modernizando sistemas empresariales.
+Sitio profesional estático para presentar la trayectoria, proyectos y servicios de **Edinson Delgado** — desarrollador de software senior y líder técnico con más de 20 años creando, evolucionando y modernizando sistemas empresariales.
 
 Objetivo: convertir experiencia real en evidencia verificable para oportunidades laborales, contratos como contractor y clientes propios.
 
@@ -49,10 +49,10 @@ Sin React, Vue, Next.js ni base de datos en v1.
 /proyectos/aprobar/        Caso AProbar
 /proyectos/clicks/         Caso Clicks
 /proyectos/colmena/        Caso Colmena
-/genexus/                  Recorrido Nivel 1
-/modernizacion/            Recorrido Nivel 2
-/innovacion/               Recorrido Nivel 3
-/hexyn/                    Metodología HEXYN
+/genexus/                  Capacidad GeneXus
+/modernizacion/            Capacidad modernización y liderazgo
+/innovacion/               Capacidad IA aplicada
+/hexyn/                    Metodología propia HEXYN
 /experiencia/              Timeline profesional
 /contacto/                 Formulario + canales directos
 /cv/                       Descarga de CV (PDF)
