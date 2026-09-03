@@ -5,8 +5,8 @@
 
 export const siteConfig = {
   name: 'Edinson Delgado',
-  role: 'Senior Software Engineer / Technical Lead',
-  tagline: '20 años construyendo y modernizando sistemas empresariales',
+  role: 'Desarrollador GeneXus Senior y constructor de soluciones empresariales',
+  tagline: 'Edinson Delgado',
   locale: 'es_UY',
   language: 'es',
 
@@ -27,8 +27,18 @@ export const siteConfig = {
   },
 
   cv: {
-    filename: 'Edinson_Delgado_CV_GeneXus_Senior.pdf',
-    path: '/cv/Edinson_Delgado_CV_GeneXus_Senior.pdf',
+    filename: 'Edinson_Delgado_CV_2026.pdf',
+    path: '/cv/Edinson_Delgado_CV_2026.pdf',
+  },
+
+  profile: {
+    image: {
+      jpg: '/images/profile/edinson-portfolio-2026.jpg',
+      webp: '/images/profile/edinson-portfolio-2026.webp',
+      width: 681,
+      height: 1024,
+      alt: 'Retrato profesional de Edinson Delgado, desarrollador GeneXus Senior, con saco gris y camisa azul sobre fondo oscuro.',
+    },
   },
 
   specialties: [

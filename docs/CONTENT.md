@@ -171,7 +171,7 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 
 ### Críticos (bloquean contenido final)
 
-- [ ] **CV en PDF** — archivo: `Edinson_Delgado_CV_GeneXus_Senior.pdf` → colocar en `public/cv/`
+- [x] **CV en PDF** — archivo: `Edinson_Delgado_CV_2026.pdf` → `public/cv/`
 - [ ] **Roles, fechas y descripciones** en Sofis Solutions, UST y Colmena
 - [ ] **Responsabilidad específica** en AProbar, Clicks y Colmena
 - [ ] **Problema de negocio** y **resultados verificables** por proyecto

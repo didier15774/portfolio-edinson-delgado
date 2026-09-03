@@ -3,14 +3,16 @@
 :root {
   color-scheme: dark;
 
-  /* Palette */
-  --color-navy-900: #0a1628;
-  --color-navy-800: #0f2240;
+  /* Palette — rediseño 2026 */
+  --color-navy-900: #0a1728;
+  --color-navy-800: #13263d;
   --color-navy-700: #1a365d;
+  --color-orange-500: #f47a16;
+  --color-orange-400: #ff9233;
   --color-blue-600: #2563eb;
   --color-blue-500: #3b82f6;
-  --color-teal-500: #14b8a6;
-  --color-teal-400: #2dd4bf;
+  --color-light-bg: #f3f5f7;
+  --color-text-dark: #1c2733;
   --color-slate-50: #f8fafc;
   --color-slate-100: #f1f5f9;
   --color-slate-200: #e2e8f0;
@@ -21,23 +23,23 @@
   --color-white: #ffffff;
   --color-success: #059669;
   --color-error: #dc2626;
-  --color-focus: #2dd4bf;
+  --color-focus: #f47a16;
 
   /* Semantic — dark (default) */
   --color-bg: var(--color-navy-900);
   --color-bg-elevated: var(--color-navy-800);
   --color-bg-subtle: var(--color-navy-700);
-  --color-surface: rgb(15 34 64 / 0.6);
+  --color-surface: rgb(19 38 61 / 0.72);
   --color-border: rgb(148 163 184 / 0.16);
   --color-text: var(--color-slate-100);
   --color-text-muted: var(--color-slate-400);
   --color-text-heading: var(--color-white);
-  --color-accent: var(--color-teal-500);
-  --color-accent-hover: var(--color-teal-400);
+  --color-accent: var(--color-orange-500);
+  --color-accent-hover: var(--color-orange-400);
   --color-link: var(--color-blue-500);
-  --color-link-hover: var(--color-teal-400);
+  --color-link-hover: var(--color-orange-400);
   --color-hero-gradient-start: var(--color-navy-900);
-  --color-hero-gradient-end: var(--color-navy-700);
+  --color-hero-gradient-end: var(--color-navy-800);
 
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -79,19 +81,19 @@
 [data-theme='light'] {
   color-scheme: light;
 
-  --color-bg: var(--color-slate-50);
+  --color-bg: var(--color-light-bg);
   --color-bg-elevated: var(--color-white);
   --color-bg-subtle: var(--color-slate-100);
   --color-surface: rgb(255 255 255 / 0.9);
   --color-border: rgb(10 22 40 / 0.1);
-  --color-text: var(--color-slate-700);
+  --color-text: var(--color-text-dark);
   --color-text-muted: var(--color-slate-600);
-  --color-text-heading: var(--color-slate-900);
-  --color-accent: var(--color-teal-500);
-  --color-accent-hover: #0d9488;
+  --color-text-heading: var(--color-text-dark);
+  --color-accent: var(--color-orange-500);
+  --color-accent-hover: #e06d0f;
   --color-link: var(--color-blue-600);
   --color-link-hover: #1d4ed8;
-  --color-hero-gradient-start: var(--color-slate-50);
+  --color-hero-gradient-start: var(--color-light-bg);
   --color-hero-gradient-end: var(--color-slate-100);
   --shadow-sm: 0 1px 2px rgb(10 22 40 / 0.06);
   --shadow-md: 0 4px 12px rgb(10 22 40 / 0.08);

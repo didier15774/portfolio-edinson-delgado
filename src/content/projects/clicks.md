@@ -27,7 +27,9 @@ features:
   - Registro fotográfico de evidencia
   - Frecuencias e historial de mantenimiento
   - Informes PDF
-responsibility: []
+responsibility:
+  - Diseño, desarrollo y mantenimiento del sistema en producción
+  - Interfaz responsive para operación en campo y generación de informes
 results: []
 images: []
 ---

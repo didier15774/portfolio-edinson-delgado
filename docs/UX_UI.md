@@ -9,7 +9,7 @@ Inspiración: estética **StackCraft** — tecnológica, moderna, profesional. *
 | Atributo | Sí | No |
 |----------|----|----|
 | Tono | Senior, empresarial, confiable | Juvenil excesivo, startup hype |
-| Visual | Azul marino, turquesa, claridad | Neón, cyberpunk, videojuego |
+| Visual | Azul marino, naranja, claridad | Neón, cyberpunk, videojuego |
 | Motion | Transiciones suaves, discretas | Animaciones gratuitas, parallax pesado |
 | Imágenes | Capturas reales de proyectos | Stock genérico de bancos |
 
@@ -17,21 +17,12 @@ Inspiración: estética **StackCraft** — tecnológica, moderna, profesional. *
 
 ```css
 /* tokens.css — valores previstos */
---color-navy-900: #0a1628;      /* Fondo oscuro principal */
---color-navy-800: #0f2240;
---color-navy-700: #1a365d;
---color-blue-600: #2563eb;      /* Acento primario */
---color-blue-500: #3b82f6;
---color-teal-500: #14b8a6;      /* Acento secundario / CTA */
---color-teal-400: #2dd4bf;
---color-slate-50: #f8fafc;      /* Fondo claro */
---color-slate-100: #f1f5f9;
---color-slate-700: #334155;     /* Texto cuerpo */
---color-slate-900: #0f172a;     /* Texto títulos (modo claro) */
---color-white: #ffffff;
---color-success: #059669;
---color-error: #dc2626;
---color-focus: #2dd4bf;         /* Anillo de foco accesible */
+--color-navy-900: #0a1728;      /* Fondo oscuro principal */
+--color-navy-800: #13263d;
+--color-orange-500: #f47a16;    /* Acento principal / CTA */
+--color-orange-400: #ff9233;
+--color-light-bg: #f3f5f7;      /* Fondo claro */
+--color-text-dark: #1c2733;     /* Texto cuerpo (modo claro) */
 ```
 
 ### Uso de fondos

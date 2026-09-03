@@ -6,7 +6,7 @@ import { join } from 'node:path';
 const dist = join(process.cwd(), 'dist');
 
 const routes = [
-  { path: 'index.html', contains: 'Senior Software Engineer' },
+  { path: 'index.html', contains: 'Desarrollador GeneXus Senior' },
   { path: join('sobre-mi', 'index.html'), contains: 'Sobre Edinson Delgado' },
   { path: join('servicios', 'index.html'), contains: 'Servicios' },
   { path: join('proyectos', 'index.html'), contains: 'Proyectos' },
@@ -37,7 +37,7 @@ describe('build output', () => {
   });
 
   it('CV pdf copied to dist', () => {
-    assert.ok(existsSync(join(dist, 'cv', 'Edinson_Delgado_CV_GeneXus_Senior.pdf')));
+    assert.ok(existsSync(join(dist, 'cv', 'Edinson_Delgado_CV_2026.pdf')));
   });
 });
 

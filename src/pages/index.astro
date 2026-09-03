@@ -1,7 +1,8 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
 import Hero from '@/components/sections/Hero.astro';
-import AboutTeaser from '@/components/sections/AboutTeaser.astro';
+import AiExecution from '@/components/sections/AiExecution.astro';
+import CompanyCarousel from '@/components/sections/CompanyCarousel.astro';
 import JourneyCards from '@/components/sections/JourneyCards.astro';
 import ProjectCard from '@/components/sections/ProjectCard.astro';
 import CtaBanner from '@/components/sections/CtaBanner.astro';
@@ -20,23 +21,19 @@ const projects = (await getCollection('projects'))
 
 <PageLayout
   title={`${siteConfig.name} — ${siteConfig.role}`}
-  description={`${siteConfig.tagline}. ${siteConfig.availability.label}.`}
+  description={homeContent.heroLead}
   canonicalPath="/"
 >
   <JsonLd type="Person" slot="head" />
   <Hero />
-  <AboutTeaser
-    title={homeContent.aboutTeaser.title}
-    text={homeContent.aboutTeaser.text}
-    ctaLabel={homeContent.aboutTeaser.cta.label}
-    ctaHref={homeContent.aboutTeaser.cta.href}
-  />
+  <AiExecution />
+  <CompanyCarousel />
   <JourneyCards title={homeContent.journeys.title} subtitle={homeContent.journeys.subtitle} />
   <section class="section">
     <div class="container">
       <SectionHeading
-        title="Proyectos destacados"
-        subtitle="Sistemas en producción y plataformas empresariales desarrolladas o lideradas."
+        title={homeContent.projects.title}
+        subtitle={homeContent.projects.subtitle}
       />
       <div class="grid grid--2">
         {
@@ -47,6 +44,9 @@ const projects = (await getCollection('projects'))
               status={project.data.status}
               slug={project.id}
               technologies={project.data.technologies}
+              problem={project.data.problem}
+              responsibility={project.data.responsibility}
+              coverLabel={project.data.title}
             />
           ))
         }
@@ -56,7 +56,11 @@ const projects = (await getCollection('projects'))
       </p>
     </div>
   </section>
-  <Recommendations />
+  <Recommendations
+    title={homeContent.recommendations.title}
+    subtitle={homeContent.recommendations.subtitle}
+    maxItems={homeContent.recommendations.maxItems}
+  />
   <CtaBanner
     title={homeContent.cta.title}
     text={homeContent.cta.text}

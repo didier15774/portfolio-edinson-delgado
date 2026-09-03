@@ -140,7 +140,14 @@ Formato: **ADR** (Architecture Decision Record). Toda decisión importante se re
 
 ---
 
-## ADR-010: trailingSlash
+## ADR-015: Rediseño visual portada 2026
+
+**Estado:** Aceptada  
+**Fecha:** 2026-09-02  
+**Contexto:** Paquete `PROMPT_REDISENO_PORTFOLIO_2026.md` con nueva identidad, hero en dos columnas, bloque IA y carrusel de empresas.  
+**Decisión:** Paleta navy + naranja (`#F47A16`); acento turquesa eliminado. Hero con foto en `public/images/profile/` (JPG + WebP). Secciones nuevas: `AiExecution`, `CompanyCarousel`. CV publicado como `Edinson_Delgado_CV_2026.pdf`. Logos de empresas solo cuando se entreguen; hasta entonces nombres tipográficos desde `src/data/companies.ts`.  
+
+---
 
 **Estado:** Aceptada  
 **Fecha:** 2026-09-01  

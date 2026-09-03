@@ -1,0 +1,63 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { homeContent } from '@/data/home';
+
+const { aiExecution } = homeContent;
+
+const icons: Record<string, string> = {
+  empresas:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>',
+  lideres:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+  emprendedores:
+    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>',
+};
+---
+
+<section class="section ai-execution" aria-labelledby="ai-execution-heading">
+  <div class="container">
+    <SectionHeading
+      id="ai-execution-heading"
+      title={aiExecution.title}
+      subtitle={aiExecution.text}
+    />
+    <div class="grid grid--3 ai-execution__cards">
+      {
+        aiExecution.cards.map((card) => (
+          <article class="card ai-execution__card">
+            <div class="ai-execution__icon" set:html={icons[card.id]} />
+            <h3 class="ai-execution__card-title">{card.title}</h3>
+            <p class="card__text">{card.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .ai-execution__cards {
+    margin-top: var(--space-xl);
+  }
+
+  .ai-execution__card {
+    border-top: 3px solid var(--color-accent);
+  }
+
+  .ai-execution__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: var(--space-md);
+    border-radius: var(--radius-md);
+    background: rgb(244 122 22 / 0.12);
+    color: var(--color-accent);
+  }
+
+  .ai-execution__card-title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+  }
+</style>

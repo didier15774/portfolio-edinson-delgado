@@ -12,12 +12,17 @@ solution: >-
   inicial como Colmena Comunidad Digital hacia Proyecto Colmena como actividad vigente.
 architecture: >-
   Plataforma web orientada a presentación de servicios y soluciones de software.
-technologies: []
+technologies:
+  - Astro
+  - PHP
+  - CSS
 features:
   - Presentación de servicios y metodología
   - Soluciones de software
   - Actividad empresarial vigente desde 2016
-responsibility: []
+responsibility:
+  - Fundación, dirección y evolución de la plataforma de servicios
+  - Definición de metodología, propuesta comercial y soluciones de software
 results: []
 images: []
 ---

@@ -28,7 +28,9 @@ features:
   - Reclutamiento
   - Módulo de aprendizaje
   - Automatizaciones
-responsibility: []
+responsibility:
+  - Arquitectura, desarrollo full-stack y evolución continua de la plataforma
+  - Integración de módulos empresariales, APIs REST y servicios web
 results: []
 images: []
 ---

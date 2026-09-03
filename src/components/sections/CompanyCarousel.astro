@@ -1,0 +1,146 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { getPublishedCompanies } from '@/data/companies';
+import { homeContent } from '@/data/home';
+
+const items = getPublishedCompanies();
+if (items.length === 0) {
+  return null;
+}
+
+const loopItems = [...items, ...items];
+---
+
+<section class="section section--alt company-carousel" aria-labelledby="companies-heading">
+  <div class="container">
+    <SectionHeading id="companies-heading" title={homeContent.companies.title} />
+  </div>
+
+  <div
+    class="company-carousel__viewport"
+    tabindex="0"
+    role="region"
+    aria-label="Empresas y proyectos con experiencia profesional"
+  >
+    <ul class="company-carousel__track" role="list">
+      {
+        loopItems.map((company, index) => (
+          <li
+            class="company-carousel__item"
+            role="listitem"
+            aria-hidden={index >= items.length ? 'true' : undefined}
+          >
+            {company.logoSrc ? (
+              <img
+                src={company.logoSrc}
+                alt={company.logoAlt ?? company.name}
+                width="160"
+                height="48"
+                loading="lazy"
+                decoding="async"
+                class="company-carousel__logo"
+              />
+            ) : (
+              <span class="company-carousel__name">{company.name}</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .company-carousel__viewport {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) transparent;
+    padding-block: var(--space-lg);
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+
+  .company-carousel__viewport:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 4px;
+  }
+
+  .company-carousel__track {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    width: max-content;
+    padding-inline: var(--space-xl);
+    list-style: none;
+    margin: 0;
+    animation: company-scroll 45s linear infinite;
+  }
+
+  .company-carousel__viewport:hover .company-carousel__track,
+  .company-carousel__viewport:focus-within .company-carousel__track {
+    animation-play-state: paused;
+  }
+
+  .company-carousel__item {
+    flex: 0 0 auto;
+  }
+
+  .company-carousel__name {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    padding: var(--space-sm) var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-heading);
+    white-space: nowrap;
+  }
+
+  .company-carousel__logo {
+    height: 2.5rem;
+    width: auto;
+    max-width: 10rem;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.85;
+  }
+
+  @keyframes company-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .company-carousel__track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: auto;
+      max-width: var(--container-max);
+      margin-inline: auto;
+    }
+
+    .company-carousel__viewport {
+      overflow-x: visible;
+      mask-image: none;
+    }
+
+    .company-carousel__item[aria-hidden='true'] {
+      display: none;
+    }
+  }
+</style>

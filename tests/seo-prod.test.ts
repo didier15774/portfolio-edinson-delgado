@@ -45,6 +45,6 @@ describe('production SEO', () => {
     assert.ok(existsSync(join(dist, 'api', 'contact.config.example.php')));
     assert.ok(!existsSync(join(dist, 'api', 'contact.config.php')));
     assert.ok(existsSync(join(dist, '.htaccess')));
-    assert.ok(existsSync(join(dist, 'cv', 'Edinson_Delgado_CV_GeneXus_Senior.pdf')));
+    assert.ok(existsSync(join(dist, 'cv', 'Edinson_Delgado_CV_2026.pdf')));
   });
 });

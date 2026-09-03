@@ -8,36 +8,108 @@ interface Props {
   status: string;
   slug: string;
   technologies?: string[];
+  problem?: string;
+  responsibility?: string[];
+  coverLabel?: string;
 }
 
-const { title, summary, status, slug, technologies = [] } = Astro.props;
+const {
+  title,
+  summary,
+  status,
+  slug,
+  technologies = [],
+  problem,
+  responsibility = [],
+  coverLabel = title,
+} = Astro.props;
+
+const responsibilityText = responsibility.slice(0, 2).join(' · ');
 ---
 
 <article class="card project-card">
-  <div class="project-card__meta">
-    <Chip label={status} />
+  <div class="project-card__cover" aria-hidden="true">
+    <span class="project-card__cover-label">Portada — {coverLabel}</span>
   </div>
-  <h3 class="card__title">
-    <a href={`/proyectos/${slug}/`} class="project-card__link">{title}</a>
-  </h3>
-  <p class="card__text">{summary}</p>
-  {
-    technologies.length > 0 && (
-      <ul class="chip-list project-card__tech" role="list">
-        {technologies.slice(0, 5).map((tech) => (
-          <li role="listitem">
-            <Chip label={tech} />
-          </li>
-        ))}
-      </ul>
-    )
-  }
-  <div class="project-card__action">
-    <Button href={`/proyectos/${slug}/`} variant="ghost">Ver caso</Button>
+
+  <div class="project-card__body">
+    <div class="project-card__meta">
+      <Chip label={status} />
+    </div>
+    <h3 class="card__title">
+      <a href={`/proyectos/${slug}/`} class="project-card__link">{title}</a>
+    </h3>
+    <p class="card__text">{summary}</p>
+
+    {
+      problem && (
+        <div class="project-card__detail">
+          <p class="project-card__detail-label">Problema resuelto</p>
+          <p class="project-card__detail-text">{problem}</p>
+        </div>
+      )
+    }
+
+    {
+      responsibilityText && (
+        <div class="project-card__detail">
+          <p class="project-card__detail-label">Mi responsabilidad</p>
+          <p class="project-card__detail-text">{responsibilityText}</p>
+        </div>
+      )
+    }
+
+    {
+      technologies.length > 0 && (
+        <ul class="chip-list project-card__tech" role="list">
+          {technologies.slice(0, 5).map((tech) => (
+            <li role="listitem">
+              <Chip label={tech} />
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <div class="project-card__action">
+      <Button href={`/proyectos/${slug}/`} variant="ghost">Ver caso completo</Button>
+    </div>
   </div>
 </article>
 
 <style>
+  .project-card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .project-card__cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 8rem;
+    padding: var(--space-lg);
+    background: linear-gradient(
+      135deg,
+      var(--color-navy-800) 0%,
+      rgb(244 122 22 / 0.18) 100%
+    );
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .project-card__cover-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .project-card__body {
+    padding: var(--space-lg);
+  }
+
   .project-card__meta {
     margin-bottom: var(--space-sm);
   }
@@ -51,8 +123,28 @@ const { title, summary, status, slug, technologies = [] } = Astro.props;
     color: var(--color-accent-hover);
   }
 
+  .project-card__detail {
+    margin-top: var(--space-md);
+  }
+
+  .project-card__detail-label {
+    margin: 0 0 var(--space-xs);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .project-card__detail-text {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.55;
+  }
+
   .project-card__tech {
-    margin: var(--space-md) 0;
+    margin: var(--space-md) 0 0;
   }
 
   .project-card__action {

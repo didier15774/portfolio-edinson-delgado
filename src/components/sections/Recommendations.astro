@@ -5,20 +5,28 @@ import {
   hasPublishedRecommendations,
 } from '@/data/recommendations';
 
+interface Props {
+  title?: string;
+  subtitle?: string;
+  maxItems?: number;
+}
+
+const {
+  title = 'Qué dicen sobre mi trabajo',
+  subtitle = 'Referencias profesionales autorizadas para su publicación.',
+  maxItems,
+} = Astro.props;
+
 if (!hasPublishedRecommendations()) {
   return null;
 }
 
-const items = getPublishedRecommendations();
+const items = getPublishedRecommendations().slice(0, maxItems);
 ---
 
 <section class="section section--alt" id="recomendaciones" aria-labelledby="recomendaciones-heading">
   <div class="container">
-    <SectionHeading
-      id="recomendaciones-heading"
-      title="Recomendaciones"
-      subtitle="Referencias profesionales autorizadas para su publicación."
-    />
+    <SectionHeading id="recomendaciones-heading" title={title} subtitle={subtitle} />
     <ul class="recommendations" role="list">
       {
         items.map((item) => (
@@ -53,6 +61,12 @@ const items = getPublishedRecommendations();
   @media (min-width: 768px) {
     .recommendations {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .recommendations {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
