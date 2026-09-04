@@ -4,6 +4,13 @@ import Chip from '@/components/ui/Chip.astro';
 import Button from '@/components/ui/Button.astro';
 import ProjectGallery from '@/components/sections/ProjectGallery.astro';
 
+interface ImageItem {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
 interface Props {
   title: string;
   summary: string;
@@ -15,7 +22,9 @@ interface Props {
   problem?: string;
   solution?: string;
   architecture?: string;
-  images?: { src: string; alt: string; width: number; height: number }[];
+  cover?: ImageItem;
+  logo?: ImageItem;
+  images?: ImageItem[];
 }
 
 const {
@@ -29,6 +38,8 @@ const {
   problem,
   solution,
   architecture,
+  cover,
+  logo,
   images = [],
 } = Astro.props;
 ---
@@ -41,7 +52,33 @@ const {
       <span aria-current="page">{title}</span>
     </nav>
 
+    {cover && (
+      <div class="case-cover">
+        <img
+          class="case-cover__img"
+          src={cover.src}
+          alt={cover.alt}
+          width={cover.width}
+          height={cover.height}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
+    )}
+
     <header class="case-header">
+      {logo && (
+        <img
+          class="case-header__logo"
+          src={logo.src}
+          alt={logo.alt}
+          width={logo.width}
+          height={logo.height}
+          loading="lazy"
+          decoding="async"
+        />
+      )}
       <Chip label={status} />
       <h1>{title}</h1>
       <p class="case-header__summary">{summary}</p>
@@ -117,6 +154,28 @@ const {
 </article>
 
 <style>
+  /* ── Portada visual de encabezado ── */
+  .case-cover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--space-2xl);
+    background: var(--color-bg-elevated);
+  }
+
+  .case-cover__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    /* No ampliar más allá de la resolución original (1600×900) */
+    max-width: 1600px;
+  }
+
+  /* ── Header del caso ── */
   .breadcrumb {
     font-size: var(--text-sm);
     margin-bottom: var(--space-lg);
@@ -130,6 +189,17 @@ const {
     margin-bottom: var(--space-2xl);
   }
 
+  .case-header__logo {
+    display: block;
+    height: 1.75rem;
+    width: auto;
+    max-width: 9rem;
+    object-fit: contain;
+    opacity: 0.7;
+    filter: grayscale(1);
+    margin-bottom: var(--space-md);
+  }
+
   .case-header h1 {
     margin: var(--space-md) 0;
   }
@@ -139,6 +209,7 @@ const {
     color: var(--color-text-muted);
   }
 
+  /* ── Bloques de contenido ── */
   .case-block {
     margin-bottom: var(--space-2xl);
   }

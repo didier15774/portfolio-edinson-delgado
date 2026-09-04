@@ -17,6 +17,14 @@ const projects = defineCollection({
     architecture: z.string().optional(),
     technologies: z.array(z.string()).default([]),
     results: z.array(z.string()).default([]),
+    cover: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+        width: z.number(),
+        height: z.number(),
+      })
+      .optional(),
     logo: z
       .object({
         src: z.string(),

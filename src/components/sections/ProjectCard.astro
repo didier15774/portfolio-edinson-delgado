@@ -2,6 +2,13 @@
 import Button from '@/components/ui/Button.astro';
 import Chip from '@/components/ui/Chip.astro';
 
+interface ImageItem {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
 interface Props {
   title: string;
   summary: string;
@@ -11,12 +18,8 @@ interface Props {
   problem?: string;
   responsibility?: string[];
   coverLabel?: string;
-  logo?: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
+  cover?: ImageItem;
+  logo?: ImageItem;
 }
 
 const {
@@ -28,6 +31,7 @@ const {
   problem,
   responsibility = [],
   coverLabel = title,
+  cover,
   logo,
 } = Astro.props;
 
@@ -36,10 +40,36 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
 
 <article class="card project-card">
   <div class="project-card__cover">
-    {
-      logo ? (
+    {cover ? (
+      <img
+        class="project-card__cover-img"
+        src={cover.src}
+        alt={cover.alt}
+        width={cover.width}
+        height={cover.height}
+        loading="lazy"
+        decoding="async"
+      />
+    ) : logo ? (
+      <img
+        class="project-card__logo"
+        src={logo.src}
+        alt={logo.alt}
+        width={logo.width}
+        height={logo.height}
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <span class="project-card__cover-label">Portada — {coverLabel}</span>
+    )}
+  </div>
+
+  <div class="project-card__body">
+    {logo && (
+      <div class="project-card__brand">
         <img
-          class="project-card__logo"
+          class="project-card__logo-inline"
           src={logo.src}
           alt={logo.alt}
           width={logo.width}
@@ -47,13 +77,9 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
           loading="lazy"
           decoding="async"
         />
-      ) : (
-        <span class="project-card__cover-label">Portada — {coverLabel}</span>
-      )
-    }
-  </div>
+      </div>
+    )}
 
-  <div class="project-card__body">
     <div class="project-card__meta">
       <Chip label={status} />
     </div>
@@ -104,12 +130,12 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
     overflow: hidden;
   }
 
+  /* ── Zona de portada ── */
   .project-card__cover {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 7.5rem;
-    padding: var(--space-lg) var(--space-xl);
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
     background: linear-gradient(
       135deg,
       var(--color-navy-800) 0%,
@@ -118,8 +144,22 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
     border-bottom: 1px solid var(--color-border);
   }
 
-  .project-card__logo {
+  .project-card__cover-img {
     display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    /* No ampliar más allá de la resolución original (1600×900) */
+    max-width: 1600px;
+  }
+
+  /* Fallback: solo logo sin cover */
+  .project-card__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: auto;
     height: 2.75rem;
     max-width: 11rem;
@@ -128,14 +168,35 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
   }
 
   .project-card__cover-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--color-text-muted);
     text-align: center;
+    white-space: nowrap;
   }
 
+  /* ── Logo inline en el body (cuando hay cover) ── */
+  .project-card__brand {
+    margin-bottom: var(--space-sm);
+  }
+
+  .project-card__logo-inline {
+    display: block;
+    width: auto;
+    height: 1.5rem;
+    max-width: 8rem;
+    object-fit: contain;
+    opacity: 0.75;
+    filter: grayscale(1);
+  }
+
+  /* ── Body ── */
   .project-card__body {
     padding: var(--space-lg);
   }

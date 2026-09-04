@@ -12,6 +12,11 @@ solution: >-
   inicial como Colmena Comunidad Digital hacia Proyecto Colmena como actividad vigente.
 architecture: >-
   Plataforma web orientada a presentación de servicios y soluciones de software.
+cover:
+  src: /images/projects/colmena-cover.webp
+  alt: Presentación de Proyecto Colmena y su metodología de desarrollo asistido por IA
+  width: 1600
+  height: 900
 technologies:
   - Astro
   - PHP

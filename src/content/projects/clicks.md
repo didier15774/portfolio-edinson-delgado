@@ -1,6 +1,11 @@
 ---
 title: Clicks
 summary: Gestión de mantenimiento en campo desde dispositivos móviles.
+cover:
+  src: /images/projects/clicks-cover.webp
+  alt: Panel de operaciones de ClickS con trabajos, operarios y estado de mantenimiento
+  width: 1600
+  height: 900
 logo:
   src: /images/projects/clicks-gray.png
   alt: Logo de ClickS
