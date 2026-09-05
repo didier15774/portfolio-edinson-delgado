@@ -3,7 +3,7 @@
  * Genera WebP 16:9 (máx. 1600×900) sin ampliar por encima del recorte fuente.
  *
  * AProbar  – panel/sidebar/métricas; elimina email y footer técnico físicamente
- * ClickS   – indicadores/trabajos/estado; excluye footer y versión
+ * ClickS   – pieza promocional escritorio+móvil (ver process-clicks-promo-cover.cjs)
  * Colmena  – nav + hero HEXYN; excluye “¿Te suena familiar?”
  */
 
@@ -87,12 +87,11 @@ async function exportCover({ name, extract, patches = [] }) {
     extract: { left: 0, top: 0, width: 1856, height: 760 },
   });
 
-  // ClickS: KPIs + trabajos + estado; tapa novedades/versión si entra.
-  const clicks = await exportCover({
-    name: 'clicks',
-    extract: { left: 0, top: 0, width: 1856, height: 820 },
-    patches: [{ x: 1320, y: 430, w: 460, h: 260, color: '#f8fafc' }],
-  });
+  // ClickS: regenerar con scripts/process-clicks-promo-cover.cjs (pieza promocional).
+  // Se deja un placeholder para no pisar la promo si se corre este script solo.
+  console.log('↷ clicks-cover.webp: usar node scripts/process-clicks-promo-cover.cjs');
+  const clicksMeta = await sharp(path.join(OUT, 'clicks-cover.webp')).metadata();
+  const clicks = { width: clicksMeta.width, height: clicksMeta.height };
 
   // Colmena: hero completo sin bloque inferior.
   const colmena = await exportCover({
