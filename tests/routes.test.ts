@@ -93,6 +93,36 @@ describe('critical routes', () => {
     assert.match(html, /alt="Logo de Sofis Solutions"/);
   });
 
+  it('project covers are published without personal email or deploy metadata', () => {
+    const covers = [
+      join(dist, 'images', 'projects', 'aprobar-cover.webp'),
+      join(dist, 'images', 'projects', 'clicks-cover.webp'),
+      join(dist, 'images', 'projects', 'colmena-cover.webp'),
+    ];
+    for (const file of covers) {
+      assert.ok(existsSync(file), `missing ${file}`);
+      const bytes = readFileSync(file);
+      assert.equal(bytes.includes(Buffer.from('it.edelgado@gmail.com')), false);
+      assert.equal(bytes.includes(Buffer.from('commercial-email')), false);
+      assert.equal(bytes.includes(Buffer.from('release/')), false);
+    }
+    assert.ok(!existsSync(join(dist, 'images', 'projects', 'aprobar-cover.png')));
+    assert.ok(!existsSync(join(dist, 'images', 'projects', 'clicks-cover.png')));
+    assert.ok(!existsSync(join(dist, 'images', 'projects', 'colmena-cover.png')));
+
+    const home = readFileSync(join(dist, 'index.html'), 'utf8');
+    assert.match(home, /\/images\/projects\/aprobar-cover\.webp/);
+    assert.match(home, /\/images\/projects\/clicks-cover\.webp/);
+    assert.match(home, /\/images\/projects\/colmena-cover\.webp/);
+    assert.match(
+      home,
+      /Panel de administración de AProbar con módulos empresariales y métricas operativas/,
+    );
+
+    const caseHtml = readFileSync(join(dist, 'proyectos', 'aprobar', 'index.html'), 'utf8');
+    assert.match(caseHtml, /\/images\/projects\/aprobar-cover\.webp/);
+  });
+
   it('contact availability without duplicated label text', () => {
     const html = readFileSync(join(dist, 'contacto', 'index.html'), 'utf8');
     assert.match(

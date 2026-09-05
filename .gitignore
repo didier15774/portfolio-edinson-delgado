@@ -42,3 +42,6 @@ Deploy/logs/
 
 # Test artifacts
 coverage/
+
+# Capturas fuente de portadas (pueden contener datos sensibles; solo WebP publicados)
+assets/project-covers/
