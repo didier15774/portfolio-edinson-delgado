@@ -2,9 +2,9 @@
  * process-covers.cjs
  * Genera WebP 16:9 (máx. 1600×900) sin ampliar por encima del recorte fuente.
  *
- * AProbar  – panel/sidebar/métricas; elimina email y footer técnico físicamente
+ * AProbar  – pieza promocional escritorio+móvil (ver process-aprobar-promo-cover.cjs)
  * ClickS   – pieza promocional escritorio+móvil (ver process-clicks-promo-cover.cjs)
- * Colmena  – nav + hero HEXYN; excluye “¿Te suena familiar?”
+ * Colmena  – pieza promocional escritorio+móvil (ver process-colmena-promo-cover.cjs)
  */
 
 'use strict';
@@ -81,11 +81,10 @@ async function exportCover({ name, extract, patches = [] }) {
 (async () => {
   console.log('Procesando portadas…\n');
 
-  // AProbar: corta antes de widgets Sistema/footer (email fuera del recorte).
-  const aprobar = await exportCover({
-    name: 'aprobar',
-    extract: { left: 0, top: 0, width: 1856, height: 760 },
-  });
+  // AProbar: regenerar con scripts/process-aprobar-promo-cover.cjs (pieza promocional).
+  console.log('↷ aprobar-cover.webp: usar node scripts/process-aprobar-promo-cover.cjs');
+  const aprobarMeta = await sharp(path.join(OUT, 'aprobar-cover.webp')).metadata();
+  const aprobar = { width: aprobarMeta.width, height: aprobarMeta.height };
 
   // ClickS: regenerar con scripts/process-clicks-promo-cover.cjs (pieza promocional).
   // Se deja un placeholder para no pisar la promo si se corre este script solo.
@@ -93,11 +92,10 @@ async function exportCover({ name, extract, patches = [] }) {
   const clicksMeta = await sharp(path.join(OUT, 'clicks-cover.webp')).metadata();
   const clicks = { width: clicksMeta.width, height: clicksMeta.height };
 
-  // Colmena: hero completo sin bloque inferior.
-  const colmena = await exportCover({
-    name: 'colmena',
-    extract: { left: 0, top: 0, width: 1852, height: 920 },
-  });
+  // Colmena: regenerar con scripts/process-colmena-promo-cover.cjs (pieza promocional).
+  console.log('↷ colmena-cover.webp: usar node scripts/process-colmena-promo-cover.cjs');
+  const colmenaMeta = await sharp(path.join(OUT, 'colmena-cover.webp')).metadata();
+  const colmena = { width: colmenaMeta.width, height: colmenaMeta.height };
 
   console.log('\nDimensiones finales:');
   console.log(JSON.stringify({ aprobar, clicks, colmena }, null, 2));

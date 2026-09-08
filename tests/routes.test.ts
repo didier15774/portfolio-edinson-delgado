@@ -116,7 +116,7 @@ describe('critical routes', () => {
     assert.match(home, /\/images\/projects\/colmena-cover\.webp/);
     assert.match(
       home,
-      /Panel de administración de AProbar con módulos empresariales y métricas operativas/,
+      /AProbar en escritorio y móvil — insights de consumidores, pricing e intención de compra/,
     );
 
     const caseHtml = readFileSync(join(dist, 'proyectos', 'aprobar', 'index.html'), 'utf8');

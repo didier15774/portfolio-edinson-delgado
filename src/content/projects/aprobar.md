@@ -3,9 +3,9 @@ title: AProbar
 summary: Plataforma de muestreo de productos e inteligencia del consumidor.
 cover:
   src: /images/projects/aprobar-cover.webp
-  alt: Panel de administración de AProbar con módulos empresariales y métricas operativas
-  width: 1351
-  height: 760
+  alt: AProbar en escritorio y móvil — insights de consumidores, pricing e intención de compra
+  width: 1024
+  height: 576
 logo:
   src: /images/projects/aprobar-gray.png
   alt: Logo de AProbar

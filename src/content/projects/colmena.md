@@ -14,9 +14,9 @@ architecture: >-
   Plataforma web orientada a presentación de servicios y soluciones de software.
 cover:
   src: /images/projects/colmena-cover.webp
-  alt: Presentación de Proyecto Colmena y su metodología de desarrollo asistido por IA
-  width: 1600
-  height: 900
+  alt: Proyecto Colmena en escritorio y móvil — metodología HEXYN de idea a resultado
+  width: 1024
+  height: 576
 technologies:
   - Astro
   - PHP

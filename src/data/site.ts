@@ -38,7 +38,7 @@ export const siteConfig = {
       webp: '/images/profile/edinson-portfolio-2026.webp',
       width: 681,
       height: 1024,
-      alt: 'Retrato profesional de Edinson Delgado, desarrollador de software senior y líder técnico, con saco gris y camisa azul sobre fondo oscuro.',
+      alt: 'Retrato profesional de Edinson Delgado, desarrollador de software senior y líder técnico, con saco gris y camisa azul en ambiente de oficina.',
     },
   },
 
