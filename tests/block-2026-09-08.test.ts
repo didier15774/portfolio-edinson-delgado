@@ -168,11 +168,39 @@ describe('theme toggle and navigation markup', () => {
 });
 
 describe('Cloudflare Web Analytics', () => {
-  it('is absent from default production test build without token', () => {
+  function readDotEnvToken(): string {
+    const envPath = join(process.cwd(), '.env');
+    if (!existsSync(envPath)) return '';
+    for (const line of readFileSync(envPath, 'utf8').split(/\r?\n/)) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const eq = trimmed.indexOf('=');
+      if (eq === -1) continue;
+      const key = trimmed.slice(0, eq).trim();
+      if (key !== 'PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN') continue;
+      return trimmed.slice(eq + 1).trim().replace(/^["']|["']$/g, '');
+    }
+    return '';
+  }
+
+  it('injects a single beacon in prod build when token is configured', () => {
     const html = readDist('index.html');
-    assert.doesNotMatch(html, /cloudflareinsights\.com\/beacon\.min\.js/);
-    assert.doesNotMatch(html, /data-cf-beacon/);
+    const token = (process.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN ?? '').trim() || readDotEnvToken();
+    const scriptHits = html.match(/static\.cloudflareinsights\.com\/beacon\.min\.js/g) ?? [];
+    const attrHits = html.match(/data-cf-beacon=/g) ?? [];
+
     assert.doesNotMatch(html, /google-analytics|gtag\(/i);
+
+    if (!token) {
+      assert.equal(scriptHits.length, 0);
+      assert.equal(attrHits.length, 0);
+      return;
+    }
+
+    assert.equal(scriptHits.length, 1, 'beacon script must appear once');
+    assert.equal(attrHits.length, 1, 'data-cf-beacon must appear once');
+    assert.match(html, new RegExp(`data-cf-beacon="[^"]*${token}[^"]*"`));
+    assert.match(html, /&quot;spa&quot;:false|"spa":false/);
   });
 
   it('component stays conditional on PROD + token', () => {

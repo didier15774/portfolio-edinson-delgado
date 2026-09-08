@@ -34,7 +34,7 @@ Componente: `src/components/seo/CloudflareAnalytics.astro` (incluido en `BaseLay
 2. Copiar el token al entorno de build (`PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN`).
 3. `npm run build:prod` (o el flujo de deploy habitual).
 4. En el HTML de producción, confirmar presencia de `static.cloudflareinsights.com/beacon.min.js`.
-5. Generar tráfico real y revisar el dashboard en Cloudflare (puede tardar minutos).
+5. Generar tráfico real y revisar el dashboard en Cloudflare. Cloudflare suele indicar que las estadísticas pueden tardar **unos minutos** (a menudo 1–5 minutos, a veces hasta ~30 minutos) en empezar a mostrarse tras activar el beacon y generar visitas.
 
 ## Si no hay token
 
