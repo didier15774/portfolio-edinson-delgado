@@ -56,3 +56,29 @@ describe('contact validation rules', () => {
     assert.equal(errors.length, 0);
   });
 });
+
+describe('contact origin allowlist', () => {
+  function isOriginAllowed(originHeader: string | undefined, allowed: string[]): boolean {
+    if (!originHeader || originHeader.trim() === '') return true;
+    const origin = originHeader.trim().replace(/\/$/, '');
+    const normalized = allowed.map((item) => item.replace(/\/$/, ''));
+    return normalized.includes(origin);
+  }
+
+  const allowed = ['https://edinson.proyectocolmena.com'];
+
+  it('accepts valid portfolio Origin', () => {
+    assert.equal(isOriginAllowed('https://edinson.proyectocolmena.com', allowed), true);
+    assert.equal(isOriginAllowed('https://edinson.proyectocolmena.com/', allowed), true);
+  });
+
+  it('rejects invalid Origin', () => {
+    assert.equal(isOriginAllowed('https://evil.example', allowed), false);
+    assert.equal(isOriginAllowed('https://clicks.proyectocolmena.com', allowed), false);
+  });
+
+  it('allows requests without Origin header', () => {
+    assert.equal(isOriginAllowed(undefined, allowed), true);
+    assert.equal(isOriginAllowed('', allowed), true);
+  });
+});

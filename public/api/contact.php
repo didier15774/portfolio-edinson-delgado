@@ -168,10 +168,66 @@ function send_via_smtp(array $smtp, string $to, string $from, string $subject, s
     return str_starts_with($sent, '250');
 }
 
+function get_request_origin(): string
+{
+    $origin = trim((string) ($_SERVER['HTTP_ORIGIN'] ?? ''));
+    if ($origin !== '') {
+        return rtrim($origin, '/');
+    }
+
+    return '';
+}
+
+/**
+ * Rechaza Origin distinto de los permitidos.
+ * Sin cabecera Origin (p. ej. algunas herramientas locales) no bloquea.
+ *
+ * @param list<string> $allowedOrigins
+ */
+function assert_allowed_origin(array $allowedOrigins): void
+{
+    if ($allowedOrigins === []) {
+        return;
+    }
+
+    $normalizedAllowed = [];
+    foreach ($allowedOrigins as $allowed) {
+        if (!is_string($allowed) || $allowed === '') {
+            continue;
+        }
+        $normalizedAllowed[] = rtrim($allowed, '/');
+    }
+
+    if ($normalizedAllowed === []) {
+        return;
+    }
+
+    $origin = get_request_origin();
+    if ($origin === '') {
+        return;
+    }
+
+    if (!in_array($origin, $normalizedAllowed, true)) {
+        respond(403, ['ok' => false, 'error' => 'Origen no permitido']);
+    }
+}
+
 // Honeypot
 $honeypot = $_POST['website'] ?? '';
 if ($honeypot !== '') {
     respond(200, ['ok' => true]);
+}
+
+$allowedOrigins = $config['allowed_origins'] ?? [];
+if (is_array($allowedOrigins)) {
+    /** @var list<string> $originList */
+    $originList = [];
+    foreach ($allowedOrigins as $item) {
+        if (is_string($item)) {
+            $originList[] = $item;
+        }
+    }
+    assert_allowed_origin($originList);
 }
 
 $name = sanitize_text((string) ($_POST['name'] ?? ''), 100);

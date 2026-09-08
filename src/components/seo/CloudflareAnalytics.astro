@@ -1,0 +1,21 @@
+---
+/**
+ * Cloudflare Web Analytics (privado, sin cookies propias).
+ * Solo se inyecta en builds de producción cuando existe el token.
+ * Variable: PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN
+ */
+const token = (import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN ?? '').trim();
+const enabled = import.meta.env.PROD && token.length > 0;
+const beacon = enabled ? JSON.stringify({ token, spa: false }) : '';
+---
+
+{
+  enabled && (
+    <script
+      is:inline
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={beacon}
+    />
+  )
+}

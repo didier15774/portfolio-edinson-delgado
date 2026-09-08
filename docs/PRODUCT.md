@@ -25,19 +25,19 @@ Los perfiles genéricos no comunican impacto real. Este portfolio debe responder
 
 ## Propuesta de valor (mensaje principal)
 
-**Senior Software Engineer / Technical Lead** con 20 años construyendo y modernizando sistemas empresariales.
+**Desarrollador de software senior y líder técnico** con 20 años construyendo y modernizando sistemas empresariales.
 
 Especialidades: GeneXus Senior, desarrollo full-stack, modernización e integración, desarrollo asistido por agentes de IA bajo control técnico humano.
 
-## Tres recorridos compartibles (un solo sitio)
+## Tres recorridos compartibles (capacidades complementarias)
 
-Cada recorrido es una ruta con hero, mensajes y CTAs contextualizados. La navegación global permanece.
+Cada recorrido es una ruta con hero, mensajes y CTAs contextualizados. No son niveles jerárquicos: son **capacidades complementarias** del mismo perfil. La navegación global permanece.
 
-| Ruta | Nivel | Enfoque comercial |
-|------|-------|-------------------|
-| `/genexus` | 1 | Desarrollo, mantenimiento y evolución de aplicaciones empresariales GeneXus |
-| `/modernizacion` | 2 | Liderazgo técnico, modernización, integraciones y sistemas críticos |
-| `/innovacion` | 3 | IA aplicada, agentes especializados, automatización y dirección tecnológica |
+| Ruta | Capacidad | Enfoque comercial |
+|------|-----------|-------------------|
+| `/genexus` | GeneXus | Desarrollo, mantenimiento y evolución de aplicaciones empresariales GeneXus |
+| `/modernizacion` | Modernización | Liderazgo técnico, modernización, integraciones y sistemas críticos |
+| `/innovacion` | Innovación | IA aplicada, agentes especializados, automatización y dirección tecnológica |
 
 ## Mapa del sitio
 
@@ -49,9 +49,9 @@ Cada recorrido es una ruta con hero, mensajes y CTAs contextualizados. La navega
 /proyectos/aprobar         Caso AProbar
 /proyectos/clicks          Caso Clicks
 /proyectos/colmena         Caso Proyecto Colmena
-/genexus                   Recorrido Nivel 1 + sección GeneXus
-/modernizacion             Recorrido Nivel 2
-/innovacion                Recorrido Nivel 3 + HEXYN
+/genexus                   Recorrido GeneXus + profundidad GeneXus
+/modernizacion             Recorrido modernización
+/innovacion                Recorrido innovación + HEXYN
 /hexyn                     Metodología HEXYN (también enlazada desde innovación)
 /experiencia               Línea de tiempo profesional
 /contacto                  Formulario + datos de contacto
@@ -71,7 +71,7 @@ Cada recorrido es una ruta con hero, mensajes y CTAs contextualizados. La navega
 ## Secciones y contenido mínimo
 
 ### Inicio
-- Título: Senior Software Engineer / Technical Lead
+- Título: Desarrollador de software senior y líder técnico
 - Subtítulo: 20 años construyendo y modernizando sistemas empresariales
 - Especialidades en chips o lista breve
 - CTAs: Ver proyectos, Descargar CV, Contactar
@@ -103,7 +103,7 @@ Proyectos iniciales: **AProbar**, **Clicks**, **Proyecto Colmena**.
 Proceso: requisitos → implementación con agentes → revisión humana → QA → despliegue → soporte. IA como acelerador, no sustituto.
 
 ### Experiencia
-Línea de tiempo: Sofis Solutions, Universal Soluciones Tecnológicas, Colmena y experiencias anteriores relevantes.
+Línea de tiempo: Sofis Solutions, Universal Soluciones Tecnológicas, Colmena y experiencias anteriores relevantes (ampliación pendiente del LinkedIn PDF; objetivo 5–7 hitos).
 
 ### Contacto
 - Formulario funcional
@@ -129,7 +129,7 @@ Línea de tiempo: Sofis Solutions, Universal Soluciones Tecnológicas, Colmena y
 | Bloque | Entregable | Commit sugerido |
 |--------|------------|-----------------|
 | 1 | Docs + tokens CSS + scaffold Astro | `docs: arquitectura y sistema visual base` |
-| 2 | Layout, nav, rutas nivel | `feat: estructura global y rutas por recorrido` |
+| 2 | Layout, nav, rutas de recorridos | `feat: estructura global y rutas por recorrido` |
 | 3 | Inicio + sobre mí | `feat: inicio y perfil profesional` |
 | 4 | Servicios + GeneXus | `feat: servicios y sección genexus` |
 | 5 | Casos de estudio | `feat: casos aprobar clicks colmena` |
@@ -149,7 +149,7 @@ Línea de tiempo: Sofis Solutions, Universal Soluciones Tecnológicas, Colmena y
 ## Criterios de aceptación (producto)
 
 - [ ] Un visitante identifica rol, años de experiencia y especialidades en la primera pantalla
-- [ ] Tres URLs compartibles (`/genexus`, `/modernizacion`, `/innovacion`) con mensaje diferenciado
+- [ ] Tres URLs compartibles (`/genexus`, `/modernizacion`, `/innovacion`) con mensaje diferenciado como capacidades complementarias
 - [ ] Al menos tres casos de estudio completos con estructura homogénea
 - [ ] Formulario de contacto operativo en Hostinger
 - [ ] CV descargable desde CTA principal

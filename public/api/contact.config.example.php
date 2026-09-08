@@ -7,10 +7,11 @@
  * 3. NUNCA commitear contact.config.php — está en .gitignore.
  *
  * Dominio de producción: https://edinson.proyectocolmena.com
+ * Buzón corporativo: edelgado@proyectocolmena.com
  */
 return [
-    'mail_to' => 'it.edelgado@gmail.com',
-    'mail_from' => 'noreply@edinson.proyectocolmena.com',
+    'mail_to' => 'edelgado@proyectocolmena.com',
+    'mail_from' => 'edelgado@proyectocolmena.com',
     'site_name' => 'Portfolio Edinson Delgado',
 
     'smtp' => [
@@ -18,7 +19,7 @@ return [
         'host' => 'smtp.hostinger.com',
         'port' => 465,
         'encryption' => 'ssl', // ssl (465) o tls (587)
-        'username' => '', // ← completar solo en el servidor
+        'username' => 'edelgado@proyectocolmena.com', // ← completar solo en el servidor
         'password' => '', // ← completar solo en el servidor
     ],
 

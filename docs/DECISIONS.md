@@ -158,6 +158,57 @@ Formato: **ADR** (Architecture Decision Record). Toda decisión importante se re
 
 ---
 
+## ADR-017: Imagen Open Graph PNG en redes
+
+**Estado:** Aceptada  
+**Fecha:** 2026-09-08  
+**Contexto:** Se necesita una imagen OG estable para compartidos en LinkedIn/Facebook/Twitter.  
+**Decisión:** Usar `/images/redes/og-default.png` (1200×630) como `og:image` por defecto vía `Meta.astro`. Archivo en `public/images/redes/og-default.png`.  
+**Consecuencias:**  
+- (+) Formato PNG ampliamente soportado por depuradores sociales  
+- (+) Ruta dedicada bajo `images/redes/`  
+- (-) Regenerar el PNG si cambia branding o rol  
+
+---
+
+## ADR-018: Email corporativo unificado y validación Origin
+
+**Estado:** Aceptada  
+**Fecha:** 2026-09-08  
+**Contexto:** El formulario y la documentación mezclaban Gmail personal y `noreply@` como destino/remitente.  
+**Decisión:** Unificar `mail_to`, `mail_from` y `smtp.username` en `edelgado@proyectocolmena.com`. Documentar y exigir `allowed_origins` con el dominio de producción; `contact.php` responde 403 si `Origin` está presente y no está en la lista.  
+**Consecuencias:**  
+- (+) Un solo buzón corporativo  
+- (+) Menos superficie de phishing / confusión de remitente  
+- (-) Credenciales SMTP solo en servidor (`contact.config.php`)  
+
+---
+
+## ADR-019: Cloudflare Web Analytics condicional
+
+**Estado:** Aceptada  
+**Fecha:** 2026-09-08  
+**Contexto:** Medición de tráfico sin panel propio ni cookies de primera parte.  
+**Decisión:** Inyectar el beacon solo en builds de producción cuando existe `PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN` (`CloudflareAnalytics.astro`). Sin token, no se emite script. Sin panel `/admin` en el sitio. Guía en `docs/ANALYTICS_CLOUDFLARE.md`.  
+**Consecuencias:**  
+- (+) Privacidad-friendly; cero código analytics en local  
+- (-) Métricas solo visibles en la cuenta Cloudflare del dominio  
+- (-) Si falta el token en el build de prod, no hay analítica  
+
+---
+
+## ADR-020: Timeline de experiencia extensible (pendiente LinkedIn)
+
+**Estado:** Aceptada  
+**Fecha:** 2026-09-08  
+**Contexto:** Solo hay 3 hitos publicados; el perfil completo requiere más evidencia verificable.  
+**Decisión:** Modelo en `src/data/experience.ts` con `published`, slots pendientes y objetivo 5–7 hitos. Ampliación solo con datos del PDF exportado del LinkedIn oficial — no inventar cargos ni fechas.  
+**Consecuencias:**  
+- (+) Extensible sin reescribir el componente  
+- (-) Contenido final bloqueado hasta recibir el export LinkedIn  
+
+---
+
 ## ADR-010: trailingSlash
 
 **Estado:** Aceptada  

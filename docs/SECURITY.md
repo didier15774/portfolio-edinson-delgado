@@ -12,7 +12,7 @@
 | Componente | Riesgo | Mitigación |
 |------------|--------|------------|
 | Sitio estático HTML/CSS/JS | Bajo | Sin datos dinámicos, sin DB |
-| `contact.php` | Medio | Validación, rate limiting básico, honeypot |
+| `contact.php` | Medio | Validación, rate limiting básico, honeypot, Origin |
 | Archivos en `public/` | Bajo | Solo assets públicos; sin `.env` |
 | Dependencias npm | Medio | `npm audit`, dependencias mínimas |
 
@@ -23,16 +23,30 @@
 ```php
 // contact.config.php — NO commitear
 return [
-    'mail_to' => 'it.edelgado@gmail.com',
-    'mail_from' => 'noreply@tudominio.com',
-    'allowed_origins' => ['https://tudominio.com'],
+    'mail_to' => 'edelgado@proyectocolmena.com',
+    'mail_from' => 'edelgado@proyectocolmena.com',
+    'allowed_origins' => ['https://edinson.proyectocolmena.com'],
     'max_requests_per_hour' => 10,  // por IP, archivo temporal
 ];
 ```
 
-- Incluir `contact.config.example.php` en el repo con valores de ejemplo
+- Incluir `contact.config.example.php` en el repo con valores de ejemplo (sin contraseñas)
 - Añadir `contact.config.php` a `.gitignore`
 - En Hostinger: crear `contact.config.php` manualmente post-despliegue
+- Buzón corporativo unificado: `edelgado@proyectocolmena.com` (to / from / SMTP username)
+
+### Validación Origin / `allowed_origins`
+
+`contact.php` llama a `assert_allowed_origin()` con la lista de `allowed_origins` del config:
+
+| Condición | Comportamiento |
+|-----------|----------------|
+| Lista vacía o ausente | No aplica el chequeo (útil solo en desarrollo local) |
+| Cabecera `Origin` ausente | No bloquea (p. ej. algunas herramientas locales / curl sin Origin) |
+| `Origin` presente y **no** está en la lista (comparación exacta, sin slash final) | **403** `{ "ok": false, "error": "Origen no permitido" }` |
+| `Origin` presente y coincide | Continúa el flujo normal |
+
+En producción, `allowed_origins` debe incluir únicamente `https://edinson.proyectocolmena.com`.
 
 ### Validaciones servidor
 
@@ -64,6 +78,7 @@ return [
 |--------|-----------|
 | 200 | Éxito (JSON `{ "ok": true }`) |
 | 400 | Validación fallida |
+| 403 | Origin no permitido |
 | 405 | Método no POST |
 | 429 | Rate limit excedido |
 | 500 | Error interno (sin detalles al cliente) |
@@ -71,7 +86,7 @@ return [
 ### CORS
 
 - Solo necesario si el formulario hace fetch desde el mismo dominio → CORS no aplica en producción normal
-- Si se prueba en otro origen durante desarrollo, restringir en config
+- Si se prueba en otro origen durante desarrollo, restringir en config vía `allowed_origins`
 
 ## Headers de seguridad (Hostinger / `.htaccess`)
 
@@ -98,7 +113,7 @@ base-uri 'self';
 form-action 'self';
 ```
 
-Ajustar tras integrar fuentes y scripts finales.
+Ajustar tras integrar fuentes y scripts finales (p. ej. beacon de Cloudflare Web Analytics si está activo).
 
 ## Secretos y `.gitignore`
 
@@ -126,6 +141,8 @@ node_modules/
 ## Checklist pre-despliegue
 
 - [ ] `contact.config.php` existe solo en servidor
+- [ ] `mail_to` / `mail_from` = `edelgado@proyectocolmena.com`
+- [ ] `allowed_origins` restringido al dominio de producción
 - [ ] Honeypot funcional
 - [ ] Inyección de cabeceras bloqueada (prueba manual con `%0aBcc:`)
 - [ ] Rate limiting activo

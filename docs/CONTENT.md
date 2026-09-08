@@ -15,9 +15,9 @@ Inventario de contenidos, tono editorial y datos pendientes.
 
 | Elemento | Contenido |
 |----------|-----------|
-| Título H1 | Senior Software Engineer / Technical Lead |
+| Título H1 | Desarrollador de software senior y líder técnico |
 | Subtítulo | 20 años construyendo y modernizando sistemas empresariales |
-| Especialidades | GeneXus Senior · Full-stack · Modernización · Desarrollo asistido por IA |
+| Especialidades | GeneXus · Web · Mobile · Escritorio · APIs · Modernización · IA aplicada |
 | CTA primario | Ver proyectos → `/proyectos` |
 | CTA secundario | Descargar CV → `/cv` |
 | CTA terciario | Contactar → `/contacto` |
@@ -26,7 +26,7 @@ Inventario de contenidos, tono editorial y datos pendientes.
 
 **Pendiente redacción final** — borrador estructural:
 
-- Ingeniero de software con foco en sistemas empresariales de misión crítica
+- Desarrollador de software senior y líder técnico con foco en sistemas empresariales de misión crítica
 - Experiencia en todo el ciclo de vida del software
 - Liderazgo técnico de equipos y comunicación con stakeholders
 - Base en Canelones, Uruguay; trabajo con equipos locales e internacionales
@@ -63,12 +63,14 @@ Mensaje clave: *La IA acelera; la experiencia humana garantiza calidad y respons
 
 ### Experiencia (`/experiencia`)
 
+Timeline extensible (`src/data/experience.ts`). Objetivo publicado: **5–7 hitos**. Ampliación pendiente del PDF exportado del LinkedIn oficial (sin inventar cargos ni fechas).
+
 | Empresa | Rol | Período | Notas |
 |---------|-----|---------|-------|
-| Sofis Solutions | Desarrollador GeneXus Senior | abril 2024 — enero 2026 | GeneXus Senior en producción |
+| Sofis Solutions | Desarrollador GeneXus Senior | abril 2024 — enero 2026 | GeneXus Senior en producción; SeCIU como cliente público pendiente de indicar |
 | Universal Soluciones Tecnológicas | Líder de Innovación y Desarrollo | marzo 2021 — febrero 2024 | Innovación y desarrollo |
-| Colmena Comunidad Digital | Fundador y Director | mayo 2016 — enero 2021 | Plataforma y servicios de software |
-| Experiencias anteriores | **Pendiente** | **Pendiente** | Resumir hitos relevantes |
+| Colmena | Fundador y Director | mayo 2016 — actualidad | Antes Colmena Comunidad Digital |
+| Experiencias iniciales / Consorcio del Uruguay / otros | **Pendiente** | **Pendiente** | Completar desde LinkedIn PDF |
 
 ### Contacto (`/contacto`)
 
@@ -131,19 +133,21 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 
 ---
 
-## Recorridos (journeys)
+## Recorridos (journeys) — capacidades complementarias
 
-### `/genexus` — Nivel 1
+No son niveles jerárquicos. Cada URL profundiza una capacidad del mismo perfil.
+
+### `/genexus` — GeneXus
 - **Headline**: Desarrollo GeneXus Senior para sistemas empresariales
 - **Subheadline**: Mantenimiento, evolución e integración de aplicaciones en producción
 - **CTA**: Ver experiencia GeneXus → ancla o `/genexus#experiencia`
 
-### `/modernizacion` — Nivel 2
+### `/modernizacion` — Modernización
 - **Headline**: Liderazgo técnico y modernización de sistemas críticos
 - **Subheadline**: Integraciones, migraciones y evolución arquitectónica con enfoque en continuidad operativa
 - **CTA**: Ver proyectos → `/proyectos`
 
-### `/innovacion` — Nivel 3
+### `/innovacion` — Innovación
 - **Headline**: Innovación y desarrollo agéntico con control técnico humano
 - **Subheadline**: IA aplicada, automatización y dirección tecnológica mediante metodología HEXYN
 - **CTA**: Conocer HEXYN → `/hexyn`
@@ -154,7 +158,7 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 
 | Ruta | Title (≤ 60 chars) |
 |------|---------------------|
-| `/` | Edinson Delgado — Senior Software Engineer |
+| `/` | Edinson Delgado — Desarrollador senior y líder técnico |
 | `/sobre-mi` | Sobre mí — Edinson Delgado |
 | `/servicios` | Servicios — Edinson Delgado |
 | `/proyectos` | Proyectos — Edinson Delgado |
@@ -172,11 +176,12 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 ### Críticos (bloquean contenido final)
 
 - [x] **CV en PDF** — archivo: `Edinson_Delgado_CV_2026.pdf` → `public/cv/`
-- [ ] **Roles, fechas y descripciones** en Sofis Solutions, UST y Colmena
+- [ ] **PDF exportado del LinkedIn** — completar timeline a 5–7 hitos (cargos, fechas, highlights verificados)
+- [ ] **Roles, fechas y descripciones** en Sofis Solutions, UST y Colmena (detalle)
 - [ ] **Responsabilidad específica** en AProbar, Clicks y Colmena
 - [ ] **Problema de negocio** y **resultados verificables** por proyecto
 - [ ] **Capturas de pantalla** anonimizadas (sin datos personales de terceros)
-- [ ] **Dominio final** del portfolio — `https://edinson.proyectocolmena.com`
+- [x] **Dominio final** del portfolio — `https://edinson.proyectocolmena.com`
 - [ ] **Foto profesional** (opcional; si no hay, diseño sin foto)
 
 ### Importantes (mejoran credibilidad)
@@ -189,8 +194,8 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 
 ### Configuración despliegue
 
-- [ ] Credenciales SMTP o método de envío de correo en Hostinger
-- [ ] Email destino del formulario (¿mismo it.edelgado@gmail.com?)
+- [ ] Credenciales SMTP en Hostinger (buzón `edelgado@proyectocolmena.com`)
+- [x] Email destino del formulario: `edelgado@proyectocolmena.com`
 
 ---
 
@@ -198,6 +203,6 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 
 - [ ] Cero lorem ipsum o placeholders visibles en producción
 - [ ] Tres casos con estructura homogénea completa
-- [ ] Timeline con al menos 3 entradas verificables
+- [ ] Timeline con 5–7 entradas verificables (hoy: 3 publicadas; resto pendiente LinkedIn PDF)
 - [ ] Todos los enlaces externos válidos
 - [ ] Mensaje HEXYN coherente en `/innovacion` y `/hexyn`

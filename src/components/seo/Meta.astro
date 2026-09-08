@@ -13,7 +13,9 @@ const { title, description, canonicalPath, noindex = false } = Astro.props;
 const siteUrl = Astro.site?.href ? Astro.site.href.replace(/\/$/, '') : undefined;
 const canonical = siteUrl ? absoluteUrl(canonicalPath, siteUrl) : undefined;
 const ogUrl = canonical;
-const ogImage = siteUrl ? absoluteUrl('/images/og-default.svg', siteUrl) : undefined;
+const ogImagePath = '/images/redes/og-default.png';
+const ogImage = siteUrl ? absoluteUrl(ogImagePath, siteUrl) : undefined;
+const ogImageAlt = `${siteConfig.name} — ${siteConfig.role}`;
 ---
 
 <title>{title}</title>
@@ -31,7 +33,12 @@ const ogImage = siteUrl ? absoluteUrl('/images/og-default.svg', siteUrl) : undef
 <meta property="og:description" content={description} />
 {ogUrl && <meta property="og:url" content={ogUrl} />}
 {ogImage && <meta property="og:image" content={ogImage} />}
+{ogImage && <meta property="og:image:type" content="image/png" />}
+{ogImage && <meta property="og:image:width" content="1200" />}
+{ogImage && <meta property="og:image:height" content="630" />}
+{ogImage && <meta property="og:image:alt" content={ogImageAlt} />}
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 {ogImage && <meta name="twitter:image" content={ogImage} />}
+{ogImage && <meta name="twitter:image:alt" content={ogImageAlt} />}

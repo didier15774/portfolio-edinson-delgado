@@ -1,17 +1,19 @@
 ---
-import { experienceTimeline } from '@/data/experience';
+import { getPublishedExperience } from '@/data/experience';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
+
+const entries = getPublishedExperience();
 ---
 
 <section class="section" id="experiencia-timeline">
   <div class="container container--narrow">
     <SectionHeading
       title="Experiencia profesional"
-      subtitle="Trayectoria en desarrollo, liderazgo técnico y dirección de proyectos."
+      subtitle="Trayectoria en desarrollo, liderazgo técnico y dirección de proyectos. Capacidades complementarias, no alternativas excluyentes."
     />
     <ol class="timeline">
       {
-        experienceTimeline.map((entry) => (
+        entries.map((entry) => (
           <li class="timeline__item">
             <div class="timeline__marker" aria-hidden="true"></div>
             <div class="timeline__content">
@@ -21,6 +23,9 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
                 {entry.company}
                 {entry.previousName && (
                   <span class="timeline__alias"> (antes {entry.previousName})</span>
+                )}
+                {entry.publicClient && (
+                  <span class="timeline__client"> — cliente: {entry.publicClient}</span>
                 )}
               </p>
               {entry.highlights.length > 0 && (
@@ -79,7 +84,8 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
     margin: 0 0 var(--space-sm);
   }
 
-  .timeline__alias {
+  .timeline__alias,
+  .timeline__client {
     font-weight: 400;
     color: var(--color-text-muted);
     font-size: var(--text-sm);

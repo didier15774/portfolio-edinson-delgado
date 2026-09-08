@@ -74,6 +74,8 @@ describe('critical routes', () => {
       join(dist, 'images', 'companies', 'sofis-gray.png'),
       join(dist, 'images', 'companies', 'universal-gray.png'),
       join(dist, 'images', 'companies', 'colmena-gray.png'),
+      join(dist, 'images', 'companies', 'aprobar-gray.png'),
+      join(dist, 'images', 'companies', 'clicks-gray.png'),
       join(dist, 'images', 'companies', 'itools-gray.png'),
       join(dist, 'images', 'companies', 'insis-gray.png'),
       join(dist, 'images', 'companies', 'consorcio-gray.png'),
@@ -88,8 +90,8 @@ describe('critical routes', () => {
 
     const html = readFileSync(join(dist, 'index.html'), 'utf8');
     assert.match(html, /\/images\/companies\/sofis-gray\.png/);
-    assert.match(html, /\/images\/projects\/aprobar-gray\.png/);
-    assert.match(html, /\/images\/projects\/clicks-gray\.png/);
+    assert.match(html, /\/images\/companies\/aprobar-gray\.png/);
+    assert.match(html, /\/images\/companies\/clicks-gray\.png/);
     assert.match(html, /alt="Logo de Sofis Solutions"/);
   });
 

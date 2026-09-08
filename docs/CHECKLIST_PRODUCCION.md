@@ -38,7 +38,8 @@ Dominio: **https://edinson.proyectocolmena.com**
 
 Ver [SMTP_HOSTINGER.md](./SMTP_HOSTINGER.md).
 
-- [ ] Buzón `noreply@edinson.proyectocolmena.com` (o el elegido) creado en Hostinger
+- [ ] Buzón corporativo `edelgado@proyectocolmena.com` creado en Hostinger
+- [ ] `mail_to` / `mail_from` / `smtp.username` = `edelgado@proyectocolmena.com`
 - [ ] `smtp.enabled = true` con usuario/contraseña solo en servidor
 - [ ] `allowed_origins` incluye `https://edinson.proyectocolmena.com`
 - [ ] Credenciales no aparecen en git, issues ni chats

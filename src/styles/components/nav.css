@@ -85,11 +85,49 @@
   border-top: 1px solid var(--color-border);
 }
 
-.site-nav__theme,
+.site-nav__theme--panel,
 .site-nav__cv {
   flex: 1 1 auto;
   font-size: var(--text-xs);
   min-height: 2.5rem;
+}
+
+.site-nav__theme--icon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+}
+
+.site-nav__theme--icon:hover,
+.site-nav__theme--icon:focus-visible {
+  color: var(--color-accent-hover);
+  border-color: var(--color-accent);
+}
+
+.site-nav__theme--icon:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.site-nav__theme-icon {
+  display: none;
+  line-height: 0;
+}
+
+html[data-theme='dark'] .site-nav__theme-icon--sun,
+html[data-theme='light'] .site-nav__theme-icon--moon {
+  display: inline-flex;
 }
 
 body.nav-open {
@@ -97,6 +135,13 @@ body.nav-open {
 }
 
 @media (min-width: 1024px) {
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    min-width: 0;
+  }
+
   .site-nav__toggle {
     display: none;
   }
@@ -105,11 +150,13 @@ body.nav-open {
     position: static;
     display: block !important;
     width: auto;
+    max-width: min(100%, 46rem);
     padding: 0;
     background: transparent;
     border: none;
     border-radius: 0;
     box-shadow: none;
+    min-width: 0;
   }
 
   .site-nav__panel[hidden] {
@@ -125,17 +172,25 @@ body.nav-open {
   }
 
   .site-nav__link {
-    padding: 0.5rem 0.625rem;
+    padding: 0.5rem 0.5rem;
     white-space: nowrap;
   }
 
   .site-nav__actions {
     display: none;
   }
+
+  .site-nav__theme--icon {
+    display: inline-flex;
+  }
 }
 
 @media (max-width: 1023px) {
   .site-header .site-nav__panel:not([hidden]) {
     display: block;
+  }
+
+  .site-nav__theme--icon {
+    display: none;
   }
 }

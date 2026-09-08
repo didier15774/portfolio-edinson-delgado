@@ -29,7 +29,7 @@ Rutas críticas que deben existir en `dist/`:
 
 | Ruta | Contiene (mínimo) |
 |------|-------------------|
-| `/` | "Senior Software Engineer" |
+| `/` | "Desarrollador de software senior" o "líder técnico" |
 | `/sobre-mi` | "Edinson" |
 | `/servicios` | "GeneXus" |
 | `/proyectos` | "AProbar" o slug |
@@ -93,12 +93,26 @@ Probar en anchos: **360**, **390**, **768**, **1024**, **1440** px.
 - [ ] Envío real llega a email configurado (staging/producción)
 - [ ] Reenvío doble no duplica (deshabilitar botón tras submit)
 
-## Checklist manual — Recorridos
+## Checklist manual — Recorridos (capacidades complementarias)
 
-- [ ] `/genexus` mensaje Nivel 1 diferenciado
-- [ ] `/modernizacion` mensaje Nivel 2 diferenciado
-- [ ] `/innovacion` mensaje Nivel 3 diferenciado
+- [ ] `/genexus` mensaje GeneXus diferenciado (sin «Nivel»)
+- [ ] `/modernizacion` mensaje modernización diferenciado (sin «Nivel»)
+- [ ] `/innovacion` mensaje innovación/HEXYN diferenciado (sin «Nivel»)
 - [ ] URLs compartibles copian correctamente en redes
+- [ ] Ninguna UI visible presenta «Nivel 1/2/3» como estructura del sitio
+
+## Checklist manual — Tema (desktop y móvil)
+
+- [ ] Toggle claro/oscuro funciona en desktop (≥ 1024 px)
+- [ ] Toggle claro/oscuro funciona en móvil (≤ 390 px)
+- [ ] Preferencia persistida en `localStorage` tras recargar
+- [ ] Contraste legible en ambos temas
+
+## Checklist manual — Open Graph
+
+- [ ] `og:image` apunta a `/images/redes/og-default.png` (o URL absoluta equivalente)
+- [ ] Dimensiones 1200×630
+- [ ] Depurador LinkedIn/Facebook muestra imagen y título correctos en dominio de producción
 
 ## Checklist manual — Contenido
 
@@ -106,6 +120,7 @@ Probar en anchos: **360**, **390**, **768**, **1024**, **1440** px.
 - [ ] Sin «TODO» o «pendiente» visible
 - [ ] Ortografía revisada (español Uruguay)
 - [ ] Capturas sin datos sensibles
+- [ ] Correo visible = `edelgado@proyectocolmena.com` (sin Gmail personal)
 
 ## Lighthouse — páginas a auditar
 

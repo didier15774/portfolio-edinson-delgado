@@ -5,8 +5,7 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
 
 <section class="section" id="proceso-hexyn">
   <div class="container">
-    <SectionHeading title={hexynContent.title} subtitle={hexynContent.summary} />
-    <p class="hexyn-principle">{hexynContent.principle}</p>
+    <SectionHeading title="Cómo funciona HEXYN" />
     <ol class="hexyn-steps">
       {
         hexynContent.steps.map((step) => (
@@ -24,17 +23,10 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
 </section>
 
 <style>
-  .hexyn-principle {
-    font-size: var(--text-lg);
-    color: var(--color-text-muted);
-    max-width: 48rem;
-    margin: 0 0 var(--space-2xl);
-  }
-
   .hexyn-steps {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: var(--space-lg) 0 0;
     display: grid;
     gap: var(--space-md);
   }
@@ -53,7 +45,7 @@ import SectionHeading from '@/components/ui/SectionHeading.astro';
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background: rgb(20 184 166 / 0.15);
+    background: rgb(244 122 22 / 0.16);
     color: var(--color-accent-hover);
     font-family: var(--font-mono);
     font-weight: 600;

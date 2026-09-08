@@ -16,10 +16,23 @@
     } catch (e) {
       /* ignore */
     }
+
+    var next = theme === 'dark' ? 'light' : 'dark';
+    var nextLabel = next === 'dark' ? 'oscuro' : 'claro';
+    var actionLabel = 'Cambiar a modo ' + nextLabel;
+    var shortLabel = next === 'dark' ? 'Modo oscuro' : 'Modo claro';
+
     getToggleButtons().forEach(function (button) {
-      var next = theme === 'dark' ? 'light' : 'dark';
-      button.setAttribute('aria-label', 'Cambiar a modo ' + (next === 'dark' ? 'oscuro' : 'claro'));
-      button.textContent = theme === 'dark' ? 'Modo claro' : 'Modo oscuro';
+      button.setAttribute('aria-label', actionLabel);
+      button.setAttribute('title', actionLabel);
+      button.setAttribute('data-theme-current', theme);
+
+      var textLabel = button.querySelector('[data-theme-label]');
+      if (textLabel) {
+        textLabel.textContent = shortLabel;
+      } else if (!button.classList.contains('site-nav__theme--icon')) {
+        button.textContent = shortLabel;
+      }
     });
   }
 

@@ -73,13 +73,16 @@ export default defineConfig({
 ```php
 <?php
 return [
-    'mail_to' => 'it.edelgado@gmail.com',
-    'mail_from' => 'noreply@tudominio.com',
+    'mail_to' => 'edelgado@proyectocolmena.com',
+    'mail_from' => 'edelgado@proyectocolmena.com',
     'site_name' => 'Portfolio Edinson Delgado',
+    'allowed_origins' => [
+        'https://edinson.proyectocolmena.com',
+    ],
 ];
 ```
 
-3. Verificar que `mail()` de PHP funciona en Hostinger o configurar SMTP si es necesario
+3. Preferir SMTP del buzón `edelgado@proyectocolmena.com` (ver `docs/SMTP_HOSTINGER.md`); `mail()` solo como respaldo si SMTP no está disponible
 
 ### Si mail() no funciona
 

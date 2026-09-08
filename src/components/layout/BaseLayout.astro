@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import type { ThemeMode } from '@/data/site';
 import { siteConfig } from '@/data/site';
 import Meta from '@/components/seo/Meta.astro';
+import CloudflareAnalytics from '@/components/seo/CloudflareAnalytics.astro';
 
 interface Props {
   title?: string;
@@ -47,6 +48,7 @@ const themeDefault: ThemeMode = siteConfig.theme.default;
         }
       })();
     </script>
+    <CloudflareAnalytics />
   </head>
   <body>
     <slot name="skip" />

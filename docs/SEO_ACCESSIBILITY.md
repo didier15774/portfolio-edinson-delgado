@@ -17,7 +17,7 @@ interface PageMeta {
   title: string;           // único, ≤ 60 caracteres
   description: string;     // 150–160 caracteres
   canonical: string;       // URL absoluta
-  ogImage?: string;        // 1200×630, /images/og-default.webp
+  ogImage?: string;        // 1200×630, /images/redes/og-default.png
   noindex?: boolean;       // solo 404 o páginas de prueba
 }
 ```
@@ -31,7 +31,7 @@ interface PageMeta {
 <meta name="twitter:card" content="summary_large_image" />
 ```
 
-Imagen OG por defecto: diseño con nombre, rol y paleta de marca (sin foto stock).
+Imagen OG por defecto: `/images/redes/og-default.png` (1200×630), en `public/images/redes/`. Diseño con nombre, rol y paleta de marca (sin foto stock).
 
 ### JSON-LD
 
@@ -42,7 +42,7 @@ Imagen OG por defecto: diseño con nombre, rol y paleta de marca (sin foto stock
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Edinson Delgado",
-  "jobTitle": "Senior Software Engineer",
+  "jobTitle": "Desarrollador de software senior y líder técnico",
   "url": "https://DOMINIO/",
   "email": "edelgado@proyectocolmena.com",
   "address": {
