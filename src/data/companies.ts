@@ -57,6 +57,26 @@ export const companies: CompanyEntry[] = [
     order: 3,
   },
   {
+    id: 'aprobar',
+    name: 'AProbar',
+    logoSrc: '/images/companies/aprobar-gray.png',
+    logoAlt: 'Logo de AProbar',
+    logoWidth: LOGO_WIDTH,
+    logoHeight: LOGO_HEIGHT,
+    validated: true,
+    order: 4,
+  },
+  {
+    id: 'clicks',
+    name: 'ClickS',
+    logoSrc: '/images/companies/clicks-gray.png',
+    logoAlt: 'Logo de ClickS',
+    logoWidth: LOGO_WIDTH,
+    logoHeight: LOGO_HEIGHT,
+    validated: true,
+    order: 5,
+  },
+  {
     id: 'itools',
     name: 'Itools.uy',
     logoSrc: '/images/companies/itools-gray.png',
@@ -64,7 +84,7 @@ export const companies: CompanyEntry[] = [
     logoWidth: LOGO_WIDTH,
     logoHeight: LOGO_HEIGHT,
     validated: true,
-    order: 4,
+    order: 6,
   },
   {
     id: 'insis',
@@ -74,7 +94,7 @@ export const companies: CompanyEntry[] = [
     logoWidth: LOGO_WIDTH,
     logoHeight: LOGO_HEIGHT,
     validated: true,
-    order: 5,
+    order: 7,
   },
   {
     id: 'consorcio',
@@ -84,7 +104,7 @@ export const companies: CompanyEntry[] = [
     logoWidth: LOGO_WIDTH,
     logoHeight: LOGO_HEIGHT,
     validated: true,
-    order: 6,
+    order: 8,
   },
   {
     id: 'puntoexe',
@@ -94,7 +114,7 @@ export const companies: CompanyEntry[] = [
     logoWidth: LOGO_WIDTH,
     logoHeight: LOGO_HEIGHT,
     validated: true,
-    order: 7,
+    order: 9,
   },
 ];
 
