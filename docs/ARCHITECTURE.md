@@ -15,9 +15,11 @@
 
 ## Estructura propuesta del repositorio
 
+`AGENTS.md` es una guía local y **no se versiona**.
+
 ```
 Portfolio_2026/
-├── AGENTS.md
+├── CONTRIBUTING.md
 ├── README.md
 ├── package.json
 ├── tsconfig.json

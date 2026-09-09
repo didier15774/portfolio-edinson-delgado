@@ -26,25 +26,33 @@ Write-Host "App path : $($config.RemoteAppPath)"
 Write-Host "Domain   : $($config.DomainPath)"
 Write-Host ''
 
+function Escape-BashSingleQuoted([string]$Value) {
+    return $Value.Replace("'", "'\''")
+}
+
+$domainPath = Escape-BashSingleQuoted ([string]$config.DomainPath)
+$appPath = Escape-BashSingleQuoted ([string]$config.RemoteAppPath)
+$domainsRoot = Escape-BashSingleQuoted (([string]$config.DomainPath) -replace '/[^/]+$', '')
+
 $session = New-DeploySshSession -Config $config -Credential $credential
 try {
-    Write-DeployStep 'Listando dominios en /home/.../domains'
-    $domains = Invoke-RemoteCommand -Session $session -Command 'ls -la /home/u506984013/domains'
+    Write-DeployStep 'Listando el directorio padre del dominio configurado'
+    $domains = Invoke-RemoteCommand -Session $session -Command "ls -la '$domainsRoot'"
     Write-Host ($domains.Output -join "`n")
 
     Write-DeployStep 'Comprobando directorio del dominio y public_html'
-    $script = @'
+    $script = @"
 set -e
-DOMAIN='/home/u506984013/domains/edinson.proyectocolmena.com'
-APP='/home/u506984013/domains/edinson.proyectocolmena.com/public_html'
-if [ -d "$DOMAIN" ]; then echo "DOMAIN_EXISTS=1"; else echo "DOMAIN_EXISTS=0"; fi
-if [ -d "$APP" ]; then echo "APP_EXISTS=1"; else echo "APP_EXISTS=0"; fi
+DOMAIN='$domainPath'
+APP='$appPath'
+if [ -d "`$DOMAIN" ]; then echo "DOMAIN_EXISTS=1"; else echo "DOMAIN_EXISTS=0"; fi
+if [ -d "`$APP" ]; then echo "APP_EXISTS=1"; else echo "APP_EXISTS=0"; fi
 echo '---DOMAIN---'
-ls -la "$DOMAIN"
+ls -la "`$DOMAIN"
 echo '---APP---'
-ls -la "$APP" || true
-if [ -L "$APP" ]; then echo "APP_IS_SYMLINK=1"; readlink -f "$APP"; else echo "APP_IS_SYMLINK=0"; fi
-case "$APP" in
+ls -la "`$APP" || true
+if [ -L "`$APP" ]; then echo "APP_IS_SYMLINK=1"; readlink -f "`$APP"; else echo "APP_IS_SYMLINK=0"; fi
+case "`$APP" in
   *clicks.proyectocolmena.com*) echo "ABORT_OTHER_PRODUCT=clicks";;
   *aprobar.proyectocolmena.com*) echo "ABORT_OTHER_PRODUCT=aprobar";;
   *edinson.proyectocolmena.com*) echo "PATH_PRODUCT=edinson";;
@@ -56,7 +64,7 @@ if command -v curl >/dev/null 2>&1; then
   echo 'HTTP_PROBE_END'
 fi
 whoami
-'@
+"@
 
     $checkDomain = Invoke-RemoteBashScript -Session $session -Script $script
     Write-Host ($checkDomain.Output -join "`n")

@@ -24,9 +24,9 @@ Inventario de contenidos, tono editorial y datos pendientes.
 
 ### Sobre mí (`/sobre-mi`)
 
-**Pendiente redacción final** — borrador estructural:
+**Redacción publicada** en `src/data/about.ts`:
 
-- Desarrollador de software senior y líder técnico con foco en sistemas empresariales de misión crítica
+- Desarrollador de software con 20 años de experiencia en diseño, desarrollo y evolución de sistemas empresariales
 - Experiencia en todo el ciclo de vida del software
 - Liderazgo técnico de equipos y comunicación con stakeholders
 - Base en Canelones, Uruguay; trabajo con equipos locales e internacionales
@@ -94,14 +94,14 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 |-------|-----------|
 | Resumen | Plataforma de muestreo de productos e inteligencia del consumidor |
 | Estado | En producción |
-| Problema | **Pendiente detalle de negocio de Edinson** |
-| Solución | Plataforma integral: campañas, productos, proveedores, CRM, reclutamiento, aprendizaje, automatizaciones |
-| Responsabilidad Edinson | **Pendiente** (arquitectura, desarrollo, liderazgo, etc.) |
+| Problema | Centralizar campañas de muestreo, productos, proveedores e inteligencia del consumidor |
+| Solución | Plataforma web: campañas, productos, proveedores, CRM, reclutamiento, aprendizaje y automatizaciones, con APIs REST |
+| Responsabilidad Edinson | Arquitectura, desarrollo full-stack, evolución continua e integración de módulos y APIs |
 | Funcionalidades | Campañas, productos, proveedores, CRM, reclutamiento, módulo de aprendizaje, automatizaciones |
-| Arquitectura | **Pendiente diagrama/descripción** |
+| Arquitectura | Web PHP + MySQL, frontend JS/HTML/CSS, capa REST (descripción de alto nivel; sin infraestructura real) |
 | Tecnologías | PHP, MySQL, JavaScript, HTML, CSS, REST, servicios web |
-| Resultados | **Pendiente métricas verificables** |
-| Capturas | **Pendiente** — sin datos sensibles de clientes |
+| Resultados | Sin métricas numéricas publicadas |
+| Capturas | Portada promocional publicada (`aprobar-cover.webp`) y logo |
 
 ### Clicks (`/proyectos/clicks`)
 
@@ -109,27 +109,27 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 |-------|-----------|
 | Resumen | Gestión de mantenimiento en campo desde dispositivos móviles |
 | Estado | En producción |
-| Problema | **Pendiente** |
-| Solución | Clientes, edificios, unidades, elementos, trabajos, fotografías, frecuencias, historial, informes PDF |
-| Responsabilidad Edinson | **Pendiente** |
+| Problema | Trazabilidad de clientes, edificios, unidades, elementos y evidencia fotográfica en campo |
+| Solución | Sistema web: clientes, edificios, unidades, elementos, trabajos, fotografías, frecuencias, historial e informes PDF |
+| Responsabilidad Edinson | Diseño, desarrollo y mantenimiento en producción; interfaz responsive e informes |
 | Funcionalidades | Gestión de clientes/edificios/unidades, órdenes de trabajo, evidencia fotográfica, frecuencias, historial, PDF |
-| Arquitectura | **Pendiente** |
+| Arquitectura | Web PHP + MySQL, interfaz responsive para móvil, APIs de integración (alto nivel) |
 | Tecnologías | PHP, MySQL, JavaScript, HTML, CSS, APIs, servicios web |
-| Resultados | **Pendiente** |
-| Capturas | **Pendiente** |
+| Resultados | Sin métricas numéricas publicadas |
+| Capturas | Portada promocional publicada (`clicks-cover.webp`) y logo |
 
 ### Proyecto Colmena (`/proyectos/colmena`)
 
 | Campo | Contenido |
 |-------|-----------|
 | Resumen | Empresa y plataforma de presentación de servicios, metodología y soluciones de software |
-| Estado | **Pendiente** (producción / en curso) |
-| Problema | **Pendiente** |
-| Solución | **Pendiente** |
-| Responsabilidad Edinson | **Pendiente** |
-| Tecnologías | **Pendiente** |
-| Resultados | **Pendiente** |
-| Capturas | **Pendiente** |
+| Estado | En producción (actividad vigente desde 2016) |
+| Problema | Presentar con claridad servicios, metodología y soluciones de software |
+| Solución | Plataforma de presentación evolucionada desde Colmena Comunidad Digital hacia Proyecto Colmena |
+| Responsabilidad Edinson | Fundación, dirección y evolución; metodología y propuesta comercial |
+| Tecnologías | Astro, PHP, CSS |
+| Resultados | Sin métricas numéricas publicadas |
+| Capturas | Portada promocional publicada (`colmena-cover.webp`) |
 
 ---
 
@@ -178,11 +178,10 @@ No son niveles jerárquicos. Cada URL profundiza una capacidad del mismo perfil.
 - [x] **CV en PDF** — archivo: `Edinson_Delgado_CV_2026.pdf` → `public/cv/`
 - [ ] **PDF exportado del LinkedIn** — completar timeline a 5–7 hitos (cargos, fechas, highlights verificados)
 - [ ] **Roles, fechas y descripciones** en Sofis Solutions, UST y Colmena (detalle)
-- [ ] **Responsabilidad específica** en AProbar, Clicks y Colmena
-- [ ] **Problema de negocio** y **resultados verificables** por proyecto
-- [ ] **Capturas de pantalla** anonimizadas (sin datos personales de terceros)
+- [ ] **Métricas de resultado verificables** en AProbar, Clicks y Colmena
+- [x] **Capturas de pantalla promocionales** — portadas WebP publicadas (revisar residuales: etiqueta «Panel Interno» en AProbar y «v1.6» en ClickS)
 - [x] **Dominio final** del portfolio — `https://edinson.proyectocolmena.com`
-- [ ] **Foto profesional** (opcional; si no hay, diseño sin foto)
+- [x] **Foto profesional** — `public/images/profile/`
 
 ### Importantes (mejoran credibilidad)
 
@@ -194,7 +193,8 @@ No son niveles jerárquicos. Cada URL profundiza una capacidad del mismo perfil.
 
 ### Configuración despliegue
 
-- [ ] Credenciales SMTP en Hostinger (buzón `edelgado@proyectocolmena.com`)
+- [x] `contact.config.php` presente en servidor (el endpoint no responde 503)
+- [ ] Entrega de correo SMTP comprobada con un mensaje real de prueba
 - [x] Email destino del formulario: `edelgado@proyectocolmena.com`
 
 ---

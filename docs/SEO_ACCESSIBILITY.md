@@ -43,7 +43,7 @@ Imagen OG por defecto: `/images/redes/og-default.png` (1200×630), en `public/im
   "@type": "Person",
   "name": "Edinson Delgado",
   "jobTitle": "Desarrollador de software senior y líder técnico",
-  "url": "https://DOMINIO/",
+  "url": "https://edinson.proyectocolmena.com/",
   "email": "edelgado@proyectocolmena.com",
   "address": {
     "@type": "PostalAddress",

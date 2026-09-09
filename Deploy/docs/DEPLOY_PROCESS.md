@@ -1,24 +1,8 @@
-# Despliegue Hostinger — Portfolio Edinson Delgado
+# Despliegue — Portfolio Edinson Delgado
 
-Sitio: **https://edinson.proyectocolmena.com**  
-Proyecto independiente de Clicks y AProbar (rutas, archivos y config separados).
+Sitio: **https://edinson.proyectocolmena.com**
 
-## Referencia tomada de Clicks (solo lectura)
-
-De `ClickS/Deploy/` se reutilizó el **mecanismo**:
-
-| Aspecto | Clicks | Portfolio |
-|---------|--------|-----------|
-| SSH | `149.62.37.221:65002` / Posh-SSH | Igual (misma cuenta Hostinger) |
-| Auth | `deploy.config.ps1` o `DEPLOY_SSH_PASSWORD` | Igual (archivo propio, gitignored) |
-| Build | ZIP de app PHP | ZIP de `dist/` Astro |
-| Deploy | SCP + bash remoto | SCP + bash remoto |
-| Destino | `domains/clicks.../public_html` | `domains/edinson.../public_html` |
-| Staging remoto | `/home/.../deploy` | `/home/.../deploy/portfolio-edinson` |
-| Persistente | storage symlink | N/A (sitio estático) |
-| Preservar | storage | `api/contact.config.php` |
-
-**No** se modificaron ni ejecutaron scripts de Clicks/AProbar apuntando a este sitio.
+El portfolio es un sitio estático independiente. Los scripts de esta carpeta solo deben apuntar al dominio de Edinson.
 
 ## Estructura
 
@@ -26,8 +10,8 @@ De `ClickS/Deploy/` se reutilizó el **mecanismo**:
 Deploy/
 ├── validate_remote.bat / .ps1     # Confirma ruta remota (sin subir)
 ├── build_Production.bat / .ps1    # npm run build:prod → ZIP
-├── deploy_Production.bat / .ps1   # SCP + replace public_html
-├── deploy.config.example.ps1      # Plantilla versionada
+├── deploy_Production.bat / .ps1   # SCP + replace document root
+├── deploy.config.example.ps1      # Plantilla versionada (placeholders)
 ├── deploy.config.ps1              # Secretos locales (NO versionar)
 ├── artifacts/                     # ZIPs generados (gitignored)
 ├── logs/                          # Logs locales (gitignored)
@@ -41,17 +25,11 @@ Deploy/
 copy Deploy\deploy.config.example.ps1 Deploy\deploy.config.ps1
 ```
 
-Completar `SshPassword` o definir `DEPLOY_SSH_PASSWORD`.
+Completar host, puerto, usuario y rutas **solo** en `deploy.config.ps1` (o definir `DEPLOY_SSH_PASSWORD`). No copiar esos valores a documentación, issues ni commits.
 
-## Ruta remota confirmada (SSH)
+## Ruta remota
 
-```text
-Host:     149.62.37.221:65002
-Usuario:  u506984013
-Dominio:  /home/u506984013/domains/edinson.proyectocolmena.com
-App:      /home/u506984013/domains/edinson.proyectocolmena.com/public_html
-Staging:  /home/u506984013/deploy/portfolio-edinson
-```
+Los valores reales de SSH y del document root se leen de `deploy.config.ps1`. `validate_remote.ps1` usa esa configuración local; no hay IP, usuario ni rutas internas versionadas.
 
 Protecciones del script:
 
@@ -87,16 +65,16 @@ Deploy\deploy_Production.bat
 1. `build:prod` con `PUBLIC_SITE_URL=https://edinson.proyectocolmena.com`
 2. ZIP con rutas Unix (sin backslash)
 3. Pre-flight SSH
-4. Backup `public_html_backup_*`
-5. Wipe solo `public_html` de Edinson
+4. Backup del document root
+5. Wipe solo el document root de Edinson
 6. Extraer + chmod 755/644
 7. Restaurar `contact.config.php` preservado
 
 ## Post-deploy SMTP
 
-Crear en el servidor (una sola vez):
+Crear en el servidor (una sola vez), junto a `contact.php`:
 
-`public_html/api/contact.config.php`
+`api/contact.config.php`
 
 Ver `docs/SMTP_HOSTINGER.md`. No versionar credenciales.
 
@@ -105,6 +83,6 @@ Ver `docs/SMTP_HOSTINGER.md`. No versionar credenciales.
 ```text
 https://edinson.proyectocolmena.com/          → 200 + estilos
 https://edinson.proyectocolmena.com/contacto/ → 200
-https://clicks.proyectocolmena.com/           → 200 (sin cambios)
-https://aprobar.proyectocolmena.com/          → 200 (sin cambios)
 ```
+
+Tras un despliegue, comprobar también que ningún otro sitio de la misma cuenta de hosting haya cambiado.

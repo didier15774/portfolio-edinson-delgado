@@ -45,3 +45,9 @@ coverage/
 
 # Capturas fuente de portadas (pueden contener datos sensibles; solo WebP publicados)
 assets/project-covers/
+
+# Guía interna de agentes — solo local, no versionar
+AGENTS.md
+
+# Staging temporal de repositorios públicos auxiliares
+.tmp-github-public/

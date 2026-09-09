@@ -8,7 +8,7 @@ Objetivo: convertir experiencia real en evidencia verificable para oportunidades
 |--|--|
 | **Sitio en producción** | [https://edinson.proyectocolmena.com](https://edinson.proyectocolmena.com) |
 | **Repositorio** | [github.com/didier15774/portfolio-edinson-delgado](https://github.com/didier15774/portfolio-edinson-delgado) |
-| **Versión** | `v1.0.0` |
+| **Versión** | `1.0.0` (tag `v1.0.0`) |
 
 ![Inicio del portfolio en producción](docs/assets/home-production.png)
 
@@ -18,7 +18,7 @@ Objetivo: convertir experiencia real en evidencia verificable para oportunidades
 
 El visitante debe comprender en segundos qué problemas resuelve Edinson, qué sistemas ha construido y cómo contactarlo. El sitio combina:
 
-- Identidad visual tecnológica (azul marino / turquesa, modo oscuro principal).
+- Identidad visual tecnológica (azul marino / naranja, modo oscuro principal).
 - Tres recorridos compartibles (`/genexus/`, `/modernizacion/`, `/innovacion/`) en un solo producto.
 - Casos de estudio extensibles, metodología HEXYN y formulario de contacto seguro.
 
@@ -32,14 +32,16 @@ El visitante debe comprender en segundos qué problemas resuelve Edinson, qué s
 | Lenguaje | TypeScript (strict) |
 | Estilos | CSS con variables de diseño (sin Tailwind) |
 | Contenido | Content Collections (Markdown + Zod) |
-| Contacto | PHP + SMTP Hostinger (`api/contact.php`) |
-| Hosting | Hostinger — `dist/` → `public_html` |
+| Contacto | PHP + SMTP (`api/contact.php`) |
+| Hosting | Hosting compartido — contenido de `dist/` en el document root |
 
 Sin React, Vue, Next.js ni base de datos en v1.
 
 ---
 
 ## Rutas principales
+
+14 rutas de contenido publicadas, más la página 404:
 
 ```
 /                          Inicio
@@ -57,6 +59,8 @@ Sin React, Vue, Next.js ni base de datos en v1.
 /contacto/                 Formulario + canales directos
 /cv/                       Descarga de CV (PDF)
 ```
+
+Verificadas en producción (HTTP 200) el 2026-09-09, junto con `/robots.txt`, `/sitemap-index.xml` y el CV en PDF.
 
 ---
 
@@ -83,8 +87,11 @@ Abrir http://localhost:4321 — no abrir `dist/index.html` con `file://` (los CS
 npm run build:prod
 npm test
 npm run check
+```
 
-# Despliegue automatizado a Hostinger (Windows)
+Despliegue desde Windows (credenciales solo en archivo local, no versionado):
+
+```bat
 Deploy\validate_remote.bat
 Deploy\build_Production.bat
 Deploy\deploy_Production.bat
@@ -92,6 +99,7 @@ Deploy\deploy_Production.bat
 
 Documentación:
 
+- [CONTRIBUTING.md](./CONTRIBUTING.md)
 - [Deploy/docs/DEPLOY_PROCESS.md](./Deploy/docs/DEPLOY_PROCESS.md)
 - [docs/CHECKLIST_PRODUCCION.md](./docs/CHECKLIST_PRODUCCION.md)
 - [docs/SMTP_HOSTINGER.md](./docs/SMTP_HOSTINGER.md)
@@ -100,15 +108,18 @@ Documentación:
 
 ---
 
-## Estado
+## Estado (verificado 2026-09-09)
 
 | Área | Estado |
 |------|--------|
-| Sitio estático (15 rutas) | En producción |
+| Sitio estático (14 rutas de contenido) | En producción |
 | Dominio | https://edinson.proyectocolmena.com |
-| Formulario + SMTP | Código listo — configurar `contact.config.php` en Hostinger |
+| Formulario de contacto | Configurado en servidor (GET 405; validación 400; honeypot 200). Entrega de correo no reprobada con un envío real en esta auditoría. |
+| Correo público | `edelgado@proyectocolmena.com` |
+| Cloudflare Web Analytics | Beacon presente en el HTML de producción |
+| Foto de perfil y portadas | Publicadas (AProbar, ClickS, Proyecto Colmena) |
 | Recomendaciones | Estructura lista — sección oculta hasta autorizaciones |
-| Capturas de proyectos | Pendientes |
+| Timeline de experiencia | 3 hitos publicados; ampliación pendiente de datos verificados |
 
 ---
 
@@ -116,7 +127,7 @@ Documentación:
 
 | Documento | Contenido |
 |-----------|-----------|
-| [AGENTS.md](./AGENTS.md) | Guía para agentes |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | Desarrollo local y convenciones |
 | [docs/PRODUCT.md](./docs/PRODUCT.md) | Producto y mapa del sitio |
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Arquitectura |
 | [docs/SECURITY.md](./docs/SECURITY.md) | Seguridad del formulario |

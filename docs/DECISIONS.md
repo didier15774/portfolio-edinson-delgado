@@ -22,7 +22,7 @@ Formato: **ADR** (Architecture Decision Record). Toda decisión importante se re
 
 **Estado:** Aceptada  
 **Fecha:** 2026-09-01  
-**Contexto:** El prompt permite Tailwind solo si reduce complejidad real. El diseño es acotado y con tokens definidos.  
+**Contexto:** Tailwind solo se usaría si reduce complejidad real. El diseño es acotado y con tokens definidos.  
 **Decisión:** CSS modular con `tokens.css`, sin Tailwind.  
 **Consecuencias:**  
 - (+) Cero dependencia de build CSS adicional  
@@ -63,7 +63,7 @@ Formato: **ADR** (Architecture Decision Record). Toda decisión importante se re
 
 **Estado:** Aceptada  
 **Fecha:** 2026-09-01  
-**Contexto:** Requisito del prompt y calidad a largo plazo.  
+**Contexto:** Requisito del proyecto y calidad a largo plazo.  
 **Decisión:** `strict: true` en `tsconfig.json`.  
 **Consecuencias:** Más rigor en desarrollo; menos errores en runtime.  
 
@@ -214,6 +214,19 @@ Formato: **ADR** (Architecture Decision Record). Toda decisión importante se re
 **Estado:** Aceptada  
 **Fecha:** 2026-09-01  
 **Decisión:** `trailingSlash: 'always'` — URLs tipo `/contacto/`.  
+
+---
+
+## ADR-021: Presentación pública en GitHub sin código de productos privados
+
+**Estado:** Aceptada  
+**Fecha:** 2026-09-09  
+**Contexto:** El portfolio es público; AProbar, ClickS y otros sistemas deben permanecer privados. `AGENTS.md` describe modalidad de trabajo con agentes y no debe versionarse.  
+**Decisión:** Mantener `portfolio-edinson-delgado` público. No versionar `AGENTS.md`. Sustituir IP, usuario SSH y rutas internas por placeholders en ejemplos. Presentar productos privados mediante repositorios `*-showcase` sin código ejecutable. No reescribir el historial.  
+**Consecuencias:**  
+- (+) Perfil profesional visible sin exponer sistemas privados  
+- (-) Valores antiguos de infraestructura siguen en commits previos  
+- (-) `AGENTS.md` queda solo en el entorno local de desarrollo  
 
 ---
 

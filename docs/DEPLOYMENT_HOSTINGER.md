@@ -56,11 +56,11 @@ public_html/
 ## Configuración Astro para producción
 
 ```javascript
-// astro.config.mjs
+// astro.config.ts
 export default defineConfig({
-  site: 'https://DOMINIO-PENDIENTE.com',
+  site: 'https://edinson.proyectocolmena.com',
   output: 'static',
-  trailingSlash: 'always', // o 'never' — ser consistente
+  trailingSlash: 'always',
   integrations: [sitemap()],
 });
 ```
@@ -119,14 +119,11 @@ ErrorDocument 404 /404.html
 </IfModule>
 ```
 
-## DNS (cuando se tenga dominio)
+## DNS
 
-| Tipo | Nombre | Valor |
-|------|--------|-------|
-| A | @ | IP de Hostinger |
-| CNAME | www | dominio principal o @ |
+El dominio de producción ya está activo: `https://edinson.proyectocolmena.com`.
 
-Activar SSL tras propagación DNS.
+No documentar aquí la IP del servidor ni credenciales DNS. Esos datos viven en el panel del hosting.
 
 ## Despliegue por FTP (paso a paso)
 
@@ -138,12 +135,12 @@ Activar SSL tras propagación DNS.
 6. Verificar permisos: archivos 644, carpetas 755
 7. Probar `https://dominio/` y `https://dominio/api/contact.php` (POST solo)
 
-## Despliegue con Git (si Hostinger lo permite)
+## Despliegue con Git (si el hosting lo permite)
 
-1. Repo privado en GitHub/GitLab
-2. GitHub Actions: build + deploy FTP/rsync
-3. **Nunca** commitear `contact.config.php`
-4. Secretos en variables del repositorio: `FTP_HOST`, `FTP_USER`, `FTP_PASS`
+1. Este repositorio es **público**; no contiene el código de productos privados
+2. GitHub Actions: build + deploy FTP/rsync (opcional; no está activo en v1)
+3. **Nunca** commitear `contact.config.php` ni `Deploy/deploy.config.ps1`
+4. Secretos solo en variables del entorno de CI o en el servidor: no versionar host, usuario ni contraseñas FTP/SSH
 
 ### Workflow ejemplo (futuro)
 

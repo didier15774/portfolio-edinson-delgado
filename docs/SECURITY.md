@@ -137,6 +137,13 @@ node_modules/
 
 - No publicar emails de terceros, datos de clientes ni capturas con información sensible
 - Anonimizar capturas de AProbar y Clicks antes de publicar
+- Las portadas actuales son promocionales; ClickS aún muestra «v1.6» y AProbar «Panel Interno» / nombre de demo
+
+## Historial git
+
+No se reescribe el historial. El commit `f7d887c` y derivados siguen conteniendo IP SSH, usuario de hosting y rutas internas que luego se sustituyeron por placeholders en HEAD. Quien clone el historial completo puede ver esos valores.
+
+Medida recomendada: dejar el historial intacto; rotar credenciales SSH si se sospecha uso indebido; no volver a versionar datos reales de infraestructura.
 
 ## Checklist pre-despliegue
 
@@ -152,5 +159,5 @@ node_modules/
 ## Criterios de aceptación (seguridad)
 
 - [ ] Pentest manual básico del formulario documentado en QA
-- [ ] Ningún secreto en git history
+- [ ] Ningún secreto nuevo en HEAD (el historial antiguo puede conservar datos de infraestructura; ver sección Historial git)
 - [ ] Respuestas de error no revelan rutas ni stack traces

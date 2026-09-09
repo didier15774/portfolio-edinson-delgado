@@ -151,7 +151,7 @@ Línea de tiempo: Sofis Solutions, Universal Soluciones Tecnológicas, Colmena y
 - [ ] Un visitante identifica rol, años de experiencia y especialidades en la primera pantalla
 - [ ] Tres URLs compartibles (`/genexus`, `/modernizacion`, `/innovacion`) con mensaje diferenciado como capacidades complementarias
 - [ ] Al menos tres casos de estudio completos con estructura homogénea
-- [ ] Formulario de contacto operativo en Hostinger
+- [x] Formulario de contacto configurado en Hostinger (validación y honeypot verificados; entrega de correo pendiente de prueba real)
 - [ ] CV descargable desde CTA principal
 - [ ] Sin contenido placeholder ni lorem ipsum en producción
 - [ ] Documentación en `docs/` coherente con lo implementado

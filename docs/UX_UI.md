@@ -27,8 +27,8 @@ Inspiración: estética **StackCraft** — tecnológica, moderna, profesional. *
 
 ### Uso de fondos
 
-- **Modo claro (default)**: `--color-slate-50` base, secciones alternas `--color-white` o `--color-slate-100`
-- **Modo oscuro (opcional)**: `--color-navy-900` base, texto `--color-slate-100`
+- **Modo oscuro (identidad principal)**: `--color-navy-900` base, texto `--color-slate-100`
+- **Modo claro (alternativo)**: `--color-slate-50` base, secciones alternas `--color-white` o `--color-slate-100`
 - **Hero / recorridos**: gradiente sutil navy → blue con overlay; sin efectos de partículas
 
 ## Tipografía
