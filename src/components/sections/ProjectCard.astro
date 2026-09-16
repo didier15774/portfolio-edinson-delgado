@@ -14,12 +14,16 @@ interface Props {
   summary: string;
   status: string;
   slug: string;
+  tagline?: string;
+  statusLabel?: string;
   technologies?: string[];
   problem?: string;
   responsibility?: string[];
   coverLabel?: string;
   cover?: ImageItem;
   logo?: ImageItem;
+  repoUrl?: string;
+  repoLabel?: string;
 }
 
 const {
@@ -27,14 +31,19 @@ const {
   summary,
   status,
   slug,
+  tagline,
+  statusLabel,
   technologies = [],
   problem,
   responsibility = [],
   coverLabel = title,
   cover,
   logo,
+  repoUrl,
+  repoLabel = 'Ver proyecto en GitHub',
 } = Astro.props;
 
+const statusText = statusLabel ?? status;
 const responsibilityText = responsibility.slice(0, 2).join(' · ');
 ---
 
@@ -81,11 +90,12 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
     )}
 
     <div class="project-card__meta">
-      <Chip label={status} />
+      <Chip label={statusText} />
     </div>
     <h3 class="card__title">
       <a href={`/proyectos/${slug}/`} class="project-card__link">{title}</a>
     </h3>
+    {tagline && <p class="project-card__tagline">{tagline}</p>}
     <p class="card__text">{summary}</p>
 
     {
@@ -109,7 +119,7 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
     {
       technologies.length > 0 && (
         <ul class="chip-list project-card__tech" role="list">
-          {technologies.slice(0, 5).map((tech) => (
+          {technologies.map((tech) => (
             <li role="listitem">
               <Chip label={tech} />
             </li>
@@ -119,6 +129,11 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
     }
 
     <div class="project-card__action">
+      {repoUrl ? (
+        <Button href={repoUrl} variant="primary" external>
+          {repoLabel}
+        </Button>
+      ) : null}
       <Button href={`/proyectos/${slug}/`} variant="ghost">Ver caso completo</Button>
     </div>
   </div>
@@ -149,8 +164,7 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top left;
-    /* No ampliar más allá de la resolución original (1600×900) */
+    object-position: center;
     max-width: 1600px;
   }
 
@@ -214,6 +228,13 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
     color: var(--color-accent-hover);
   }
 
+  .project-card__tagline {
+    margin: 0 0 var(--space-sm);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
   .project-card__detail {
     margin-top: var(--space-md);
   }
@@ -239,6 +260,9 @@ const responsibilityText = responsibility.slice(0, 2).join(' · ');
   }
 
   .project-card__action {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
     margin-top: var(--space-md);
   }
 </style>

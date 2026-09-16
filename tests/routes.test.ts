@@ -13,6 +13,7 @@ const routes = [
   { path: join('proyectos', 'aprobar', 'index.html'), contains: 'AProbar' },
   { path: join('proyectos', 'clicks', 'index.html'), contains: 'Clicks' },
   { path: join('proyectos', 'colmena', 'index.html'), contains: 'Colmena' },
+  { path: join('proyectos', 'argos', 'index.html'), contains: 'Argos' },
   { path: join('genexus', 'index.html'), contains: 'GeneXus' },
   { path: join('modernizacion', 'index.html'), contains: 'modernización' },
   { path: join('innovacion', 'index.html'), contains: 'HEXYN' },
@@ -100,6 +101,7 @@ describe('critical routes', () => {
       join(dist, 'images', 'projects', 'aprobar-cover.webp'),
       join(dist, 'images', 'projects', 'clicks-cover.webp'),
       join(dist, 'images', 'projects', 'colmena-cover.webp'),
+      join(dist, 'images', 'projects', 'argos-cover.webp'),
     ];
     for (const file of covers) {
       assert.ok(existsSync(file), `missing ${file}`);
@@ -116,6 +118,11 @@ describe('critical routes', () => {
     assert.match(home, /\/images\/projects\/aprobar-cover\.webp/);
     assert.match(home, /\/images\/projects\/clicks-cover\.webp/);
     assert.match(home, /\/images\/projects\/colmena-cover\.webp/);
+    assert.match(home, /\/images\/projects\/argos-cover\.webp/);
+    assert.match(home, /Argos, robot hexápodo inteligente con Raspberry Pi/);
+    assert.match(home, /Prototipo funcional en evolución/);
+    assert.match(home, /https:\/\/github\.com\/didier15774\/argos-showcase/);
+    assert.doesNotMatch(home, /argos-private|192\.168\.|calibration/i);
     assert.match(
       home,
       /AProbar en escritorio y móvil — insights de consumidores, pricing e intención de compra/,
@@ -123,6 +130,13 @@ describe('critical routes', () => {
 
     const caseHtml = readFileSync(join(dist, 'proyectos', 'aprobar', 'index.html'), 'utf8');
     assert.match(caseHtml, /\/images\/projects\/aprobar-cover\.webp/);
+
+    const argosHtml = readFileSync(join(dist, 'proyectos', 'argos', 'index.html'), 'utf8');
+    assert.match(argosHtml, /Funcionalidades verificadas/);
+    assert.match(argosHtml, /Funciones planificadas/);
+    assert.match(argosHtml, /Reconocimiento de personas/);
+    assert.match(argosHtml, /no se presentan como finalizadas/);
+    assert.doesNotMatch(argosHtml, /repositorio privado|credencial|calibraci[oó]n interna/i);
   });
 
   it('contact availability without duplicated label text', () => {

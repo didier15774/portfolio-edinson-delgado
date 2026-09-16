@@ -19,12 +19,18 @@ interface Props {
   technologies: string[];
   responsibility: string[];
   results: string[];
+  tagline?: string;
+  statusLabel?: string;
+  verifiedFeatures?: string[];
+  plannedFeatures?: string[];
   problem?: string;
   solution?: string;
   architecture?: string;
   cover?: ImageItem;
   logo?: ImageItem;
   images?: ImageItem[];
+  repoUrl?: string;
+  repoLabel?: string;
 }
 
 const {
@@ -35,13 +41,22 @@ const {
   technologies,
   responsibility,
   results,
+  tagline,
+  statusLabel,
+  verifiedFeatures = [],
+  plannedFeatures = [],
   problem,
   solution,
   architecture,
   cover,
   logo,
   images = [],
+  repoUrl,
+  repoLabel = 'Ver proyecto en GitHub',
 } = Astro.props;
+
+const statusText = statusLabel ?? status;
+const featureList = verifiedFeatures.length > 0 ? [] : features;
 ---
 
 <article class="section">
@@ -79,9 +94,17 @@ const {
           decoding="async"
         />
       )}
-      <Chip label={status} />
+      <Chip label={statusText} />
       <h1>{title}</h1>
+      {tagline && <p class="case-header__tagline">{tagline}</p>}
       <p class="case-header__summary">{summary}</p>
+      {repoUrl && (
+        <div class="case-header__actions">
+          <Button href={repoUrl} variant="primary" external>
+            {repoLabel}
+          </Button>
+        </div>
+      )}
     </header>
 
     {problem && (
@@ -107,11 +130,32 @@ const {
       </section>
     )}
 
-    {features.length > 0 && (
+    {verifiedFeatures.length > 0 && (
+      <section class="case-block">
+        <SectionHeading as="h2" title="Funcionalidades verificadas" />
+        <ul>
+          {verifiedFeatures.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+    )}
+
+    {plannedFeatures.length > 0 && (
+      <section class="case-block">
+        <SectionHeading as="h2" title="Funciones planificadas" />
+        <ul>
+          {plannedFeatures.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="case-block__note">
+          Estas capacidades forman parte de la hoja de ruta y no se presentan como finalizadas.
+        </p>
+      </section>
+    )}
+
+    {featureList.length > 0 && (
       <section class="case-block">
         <SectionHeading as="h2" title="Funcionalidades" />
         <ul>
-          {features.map((item) => <li>{item}</li>)}
+          {featureList.map((item) => <li>{item}</li>)}
         </ul>
       </section>
     )}
@@ -146,6 +190,11 @@ const {
     <ProjectGallery images={images} projectTitle={title} />
 
     <div class="case-cta">
+      {repoUrl && (
+        <Button href={repoUrl} variant="secondary" external>
+          {repoLabel}
+        </Button>
+      )}
       <Button href="/contacto/" variant="primary">Contactar sobre un proyecto similar</Button>
     </div>
 
@@ -170,8 +219,7 @@ const {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top left;
-    /* No ampliar más allá de la resolución original (1600×900) */
+    object-position: center;
     max-width: 1600px;
   }
 
@@ -201,12 +249,23 @@ const {
   }
 
   .case-header h1 {
-    margin: var(--space-md) 0;
+    margin: var(--space-md) 0 var(--space-sm);
+  }
+
+  .case-header__tagline {
+    margin: 0 0 var(--space-sm);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-muted);
   }
 
   .case-header__summary {
     font-size: var(--text-lg);
     color: var(--color-text-muted);
+  }
+
+  .case-header__actions {
+    margin-top: var(--space-lg);
   }
 
   /* ── Bloques de contenido ── */
@@ -219,7 +278,16 @@ const {
     color: var(--color-text-muted);
   }
 
+  .case-block__note {
+    margin: var(--space-md) 0 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
   .case-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
     margin-top: var(--space-3xl);
   }
 </style>

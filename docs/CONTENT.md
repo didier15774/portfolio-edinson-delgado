@@ -131,6 +131,19 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 | Resultados | Sin métricas numéricas publicadas |
 | Capturas | Portada promocional publicada (`colmena-cover.webp`) |
 
+### Argos (`/proyectos/argos`)
+
+| Campo | Contenido |
+|-------|-----------|
+| Tagline | Robot hexápodo inteligente |
+| Resumen | Evolución de hexápodo sobre Raspberry Pi, cámara, sensores y 18 servomotores; Python, control remoto y visión artificial |
+| Estado | Prototipo funcional en evolución |
+| Repo público | https://github.com/didier15774/argos-showcase |
+| Verificadas | Cámara/video, servidor/cliente, control remoto, movimiento/sensores, Python validado |
+| Planificadas | Reconocimiento, Home Assistant, Alexa, Telegram, panel web, navegación avanzada (hoja de ruta) |
+| Tecnologías | Raspberry Pi, Python, OpenCV, Cámara CSI, Sensores, Servomotores, Automatización |
+| Capturas | Portada `argos-cover.webp` |
+
 ---
 
 ## Recorridos (journeys) — capacidades complementarias
