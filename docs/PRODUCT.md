@@ -49,6 +49,8 @@ Cada recorrido es una ruta con hero, mensajes y CTAs contextualizados. No son ni
 /proyectos/aprobar         Caso AProbar
 /proyectos/clicks          Caso Clicks
 /proyectos/colmena         Caso Proyecto Colmena
+/proyectos/tradingbotia    Caso TradingBotIA
+/proyectos/argos           Caso Argos
 /genexus                   Recorrido GeneXus + profundidad GeneXus
 /modernizacion             Recorrido modernización
 /innovacion                Recorrido innovación + HEXYN
@@ -90,7 +92,7 @@ Cada recorrido es una ruta con hero, mensajes y CTAs contextualizados. No son ni
 ### Proyectos (casos de estudio)
 Cada caso incluye: problema, solución, responsabilidad, funcionalidades, arquitectura, tecnologías, estado, capturas, resultados verificables.
 
-Proyectos iniciales: **AProbar**, **Clicks**, **Proyecto Colmena**.
+Proyectos iniciales: **AProbar**, **Clicks**, **Proyecto Colmena**, **TradingBotIA**, **Argos**.
 
 ### GeneXus
 - GX 9 → GX 18, conocimiento GX Next

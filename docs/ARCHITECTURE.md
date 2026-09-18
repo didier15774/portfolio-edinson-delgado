@@ -83,7 +83,9 @@ Portfolio_2026/
 │   │   └── projects/
 │   │       ├── aprobar.md
 │   │       ├── clicks.md
-│   │       └── colmena.md
+│   │       ├── colmena.md
+│   │       ├── tradingbotia.md
+│   │       └── argos.md
 │   │
 │   ├── data/
 │   │   ├── site.ts                 # Metadatos globales, enlaces sociales

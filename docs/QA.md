@@ -36,6 +36,8 @@ Rutas críticas que deben existir en `dist/`:
 | `/proyectos/aprobar` | "AProbar" |
 | `/proyectos/clicks` | "Clicks" |
 | `/proyectos/colmena` | "Colmena" |
+| `/proyectos/tradingbotia` | "TradingBotIA" |
+| `/proyectos/argos` | "Argos" |
 | `/genexus` | "GeneXus" |
 | `/modernizacion` | "modernización" (case insensitive) |
 | `/innovacion` | "HEXYN" o "innovación" |
@@ -126,7 +128,8 @@ Probar en anchos: **360**, **390**, **768**, **1024**, **1440** px.
 
 1. `/` (inicio)
 2. `/proyectos/aprobar` (caso largo)
-3. `/contacto` (formulario)
+3. `/proyectos/tradingbotia` (caso con capturas escritorio/móvil)
+4. `/contacto` (formulario)
 
 | Métrica | Objetivo |
 |---------|----------|

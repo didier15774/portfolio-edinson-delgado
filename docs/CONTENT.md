@@ -144,6 +144,19 @@ Campos del formulario: nombre, email, asunto, mensaje, honeypot (oculto).
 | Tecnologías | Raspberry Pi, Python, OpenCV, Cámara CSI, Sensores, Servomotores, Automatización |
 | Capturas | Portada `argos-cover.webp` |
 
+### TradingBotIA (`/proyectos/tradingbotia`)
+
+| Campo | Contenido |
+|-------|-----------|
+| Tagline | KAIROS · análisis y paper trading de criptoactivos |
+| Resumen | Beta temprana: análisis de mercados spot cripto, backtesting y paper trading con capital simulado |
+| Estado | Desarrollo (etiqueta: Beta temprana · fondos simulados) |
+| Repo público | https://github.com/didier15774/TradingBotIA-showcase |
+| Verificadas | Consola KAIROS, datos spot cripto en solo lectura, indicadores por reglas, research/backtesting/walk-forward, paper trading simulado, riesgo, auditoría, móvil preliminar |
+| Planificadas | Madurar móvil, salvaguardas para eventual ejecución real, despliegue remoto |
+| Tecnologías | Python, FastAPI, MySQL, SQLAlchemy, Jinja2, HTMX, HTML, CSS |
+| Capturas | Portada `tradingbotia-cover.webp` (1600×900, 16:9), escritorio `tradingbotia-desktop.webp` (1660×1080), móvil `tradingbotia-mobile.webp` (499×1080) |
+
 ---
 
 ## Recorridos (journeys) — capacidades complementarias

@@ -13,7 +13,7 @@ cover:
 status: prototipo
 statusLabel: Prototipo funcional en evolución
 featured: true
-order: 4
+order: 5
 showCardDetails: false
 problem: >-
   Recuperar y modernizar un kit hexápodo físico para convertirlo en una plataforma

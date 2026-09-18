@@ -41,7 +41,7 @@ Sin React, Vue, Next.js ni base de datos en v1.
 
 ## Rutas principales
 
-14 rutas de contenido publicadas, más la página 404:
+16 rutas de contenido publicadas, más la página 404:
 
 ```
 /                          Inicio
@@ -51,6 +51,8 @@ Sin React, Vue, Next.js ni base de datos en v1.
 /proyectos/aprobar/        Caso AProbar
 /proyectos/clicks/         Caso Clicks
 /proyectos/colmena/        Caso Colmena
+/proyectos/tradingbotia/   Caso TradingBotIA
+/proyectos/argos/          Caso Argos
 /genexus/                  Capacidad GeneXus
 /modernizacion/            Capacidad modernización y liderazgo
 /innovacion/               Capacidad IA aplicada
@@ -112,12 +114,12 @@ Documentación:
 
 | Área | Estado |
 |------|--------|
-| Sitio estático (14 rutas de contenido) | En producción |
+| Sitio estático (16 rutas de contenido) | En producción |
 | Dominio | https://edinson.proyectocolmena.com |
 | Formulario de contacto | Configurado en servidor (GET 405; validación 400; honeypot 200). Entrega de correo no reprobada con un envío real en esta auditoría. |
 | Correo público | `edelgado@proyectocolmena.com` |
 | Cloudflare Web Analytics | Beacon presente en el HTML de producción |
-| Foto de perfil y portadas | Publicadas (AProbar, ClickS, Proyecto Colmena) |
+| Foto de perfil y portadas | Publicadas (AProbar, ClickS, Proyecto Colmena, TradingBotIA, Argos) |
 | Recomendaciones | Estructura lista — sección oculta hasta autorizaciones |
 | Timeline de experiencia | 3 hitos publicados; ampliación pendiente de datos verificados |
 

@@ -14,6 +14,7 @@ const routes = [
   { path: join('proyectos', 'clicks', 'index.html'), contains: 'Clicks' },
   { path: join('proyectos', 'colmena', 'index.html'), contains: 'Colmena' },
   { path: join('proyectos', 'argos', 'index.html'), contains: 'Argos' },
+  { path: join('proyectos', 'tradingbotia', 'index.html'), contains: 'TradingBotIA' },
   { path: join('genexus', 'index.html'), contains: 'GeneXus' },
   { path: join('modernizacion', 'index.html'), contains: 'modernización' },
   { path: join('innovacion', 'index.html'), contains: 'HEXYN' },
@@ -102,6 +103,7 @@ describe('critical routes', () => {
       join(dist, 'images', 'projects', 'clicks-cover.webp'),
       join(dist, 'images', 'projects', 'colmena-cover.webp'),
       join(dist, 'images', 'projects', 'argos-cover.webp'),
+      join(dist, 'images', 'projects', 'tradingbotia-cover.webp'),
     ];
     for (const file of covers) {
       assert.ok(existsSync(file), `missing ${file}`);
@@ -119,6 +121,7 @@ describe('critical routes', () => {
     assert.match(home, /\/images\/projects\/clicks-cover\.webp/);
     assert.match(home, /\/images\/projects\/colmena-cover\.webp/);
     assert.match(home, /\/images\/projects\/argos-cover\.webp/);
+    assert.match(home, /\/images\/projects\/tradingbotia-cover\.webp/);
     assert.match(home, /Argos, robot hexápodo inteligente con Raspberry Pi/);
     assert.match(home, /Prototipo funcional en evolución/);
     assert.match(home, /https:\/\/github\.com\/didier15774\/argos-showcase/);
@@ -137,6 +140,56 @@ describe('critical routes', () => {
     assert.match(argosHtml, /Reconocimiento de personas/);
     assert.match(argosHtml, /no se presentan como finalizadas/);
     assert.doesNotMatch(argosHtml, /repositorio privado|credencial|calibraci[oó]n interna/i);
+  });
+
+  it('tradingbotia case study is public, simulated-funds only, and free of private internals', () => {
+    const page = join(dist, 'proyectos', 'tradingbotia', 'index.html');
+    assert.ok(existsSync(page), `missing ${page}`);
+    const html = readFileSync(page, 'utf8');
+    const home = readFileSync(join(dist, 'index.html'), 'utf8');
+    const listing = readFileSync(join(dist, 'proyectos', 'index.html'), 'utf8');
+
+    assert.match(home, /TradingBotIA/);
+    assert.match(listing, /TradingBotIA/);
+    assert.match(listing, /\/proyectos\/tradingbotia\//);
+
+    assert.match(html, /Beta temprana/);
+    assert.match(html, /paper trading/i);
+    assert.match(html, /fondos simulados/i);
+    assert.match(html, /https:\/\/github\.com\/didier15774\/TradingBotIA-showcase/);
+    assert.match(html, /Ver presentación en GitHub/);
+    assert.match(html, /\/images\/projects\/tradingbotia-cover\.webp/);
+    assert.match(html, /\/images\/projects\/tradingbotia-desktop\.webp/);
+    assert.match(html, /\/images\/projects\/tradingbotia-mobile\.webp/);
+    assert.match(
+      html,
+      /TradingBotIA y consola KAIROS — beta de análisis y paper trading con fondos simulados/,
+    );
+    assert.match(html, /Consola KAIROS en escritorio con capital y operaciones simuladas/);
+    assert.match(html, /Consola KAIROS en teléfono con navegación responsive preliminar/);
+
+    const assets = [
+      join(dist, 'images', 'projects', 'tradingbotia-cover.webp'),
+      join(dist, 'images', 'projects', 'tradingbotia-desktop.webp'),
+      join(dist, 'images', 'projects', 'tradingbotia-mobile.webp'),
+    ];
+    for (const file of assets) {
+      assert.ok(existsSync(file), `missing ${file}`);
+      const bytes = readFileSync(file);
+      assert.equal(bytes.includes(Buffer.from('.env')), false);
+      assert.equal(bytes.includes(Buffer.from('it.edelgado@gmail.com')), false);
+    }
+
+    assert.doesNotMatch(html, /didier15774\/TradingBotIA(?!-showcase)/);
+    assert.doesNotMatch(html, /\.env\b/);
+    assert.doesNotMatch(html, /api[_-]?key|DB_PASSWORD|BEGIN PRIVATE/i);
+    assert.doesNotMatch(html, /\/api\/debug|\/api\/bot\/action|\/api\/settings/i);
+    assert.doesNotMatch(html, /aprendizaje automático|machine learning|red(?:es)? neuronal/i);
+    assert.doesNotMatch(html, /garantiza rentabilidad|rentabilidad garantizada/i);
+    assert.doesNotMatch(html, /utiliza dinero real/i);
+    assert.doesNotMatch(html, /envía órdenes reales/i);
+    assert.match(html, /sin utilizar dinero real/i);
+    assert.match(html, /capital simulado/i);
   });
 
   it('contact availability without duplicated label text', () => {
