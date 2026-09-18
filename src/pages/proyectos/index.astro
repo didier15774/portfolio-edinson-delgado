@@ -10,7 +10,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 
 <PageLayout
   title={`Proyectos — ${siteConfig.name}`}
-  description="Casos de estudio: AProbar, Clicks y Proyecto Colmena."
+  description="Casos de estudio: AProbar, Clicks, Proyecto Colmena y Argos."
   canonicalPath="/proyectos/"
 >
   <section class="section section--hero">
@@ -31,10 +31,16 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
               title={project.data.title}
               summary={project.data.summary}
               status={project.data.status}
+              statusLabel={project.data.statusLabel}
+              tagline={project.data.tagline}
               slug={project.id}
               technologies={project.data.technologies}
+              problem={project.data.showCardDetails ? project.data.problem : undefined}
+              responsibility={project.data.showCardDetails ? project.data.responsibility : undefined}
               cover={project.data.cover}
               logo={project.data.logo}
+              repoUrl={project.data.repoUrl}
+              repoLabel={project.data.repoLabel}
             />
           ))
         }

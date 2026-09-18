@@ -42,13 +42,17 @@ const projects = (await getCollection('projects'))
               title={project.data.title}
               summary={project.data.summary}
               status={project.data.status}
+              statusLabel={project.data.statusLabel}
+              tagline={project.data.tagline}
               slug={project.id}
               technologies={project.data.technologies}
-              problem={project.data.problem}
-              responsibility={project.data.responsibility}
+              problem={project.data.showCardDetails ? project.data.problem : undefined}
+              responsibility={project.data.showCardDetails ? project.data.responsibility : undefined}
               coverLabel={project.data.title}
               cover={project.data.cover}
               logo={project.data.logo}
+              repoUrl={project.data.repoUrl}
+              repoLabel={project.data.repoLabel}
             />
           ))
         }

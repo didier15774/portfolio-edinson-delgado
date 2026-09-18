@@ -57,7 +57,8 @@ export const homeContent = {
 
   projects: {
     title: 'Proyectos destacados',
-    subtitle: 'Sistemas en producción y plataformas empresariales desarrolladas o lideradas.',
+    subtitle:
+      'Sistemas en producción, plataformas empresariales y proyectos de hardware, robótica e IA aplicada.',
   },
 
   recommendations: {

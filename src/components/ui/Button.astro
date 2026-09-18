@@ -4,12 +4,19 @@ interface Props {
   variant?: 'primary' | 'secondary' | 'ghost';
   class?: string;
   download?: string | boolean;
+  external?: boolean;
 }
 
-const { href, variant = 'primary', class: className = '', download } = Astro.props;
+const { href, variant = 'primary', class: className = '', download, external = false } = Astro.props;
 const classes = ['btn', `btn--${variant}`, className].filter(Boolean).join(' ');
 ---
 
-<a href={href} class={classes} download={download}>
+<a
+  href={href}
+  class={classes}
+  download={download}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
   <slot />
 </a>
